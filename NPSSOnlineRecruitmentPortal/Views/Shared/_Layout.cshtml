@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html-templates.multipurposethemes.com/bootstrap-4/admin/fab-admin/src/pages/forms/form-wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 May 2018 17:00:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*<link rel="icon" href="http://html-templates.multipurposethemes.com/bootstrap-4/admin/fab-admin/images/favicon.ico">*@
+
+    <script src="https://use.fontawesome.com/ea96eb3725.js"></script>
+    <!-- Bootstrap 4.0-->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap-extend.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/master_style.css")" rel="stylesheet" type="text/css" />
+    @*@Styles.Render("~/Content/css");*@
+    @*<link href="~/Content/assets/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="../../css/master_style.css">*@
+    <!-- Fab Admin skins -->
+    @*<link rel="stylesheet" href="../../css/skins/_all-skins.css">*@
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p class="navbar-brand" style="font-size: 2em; font-weight: 700; padding-left: 48px;">Online Application System - Municipal School Board</p>
+                @*@Html.ActionLink("Online Application System - Municipal School Board", "", "", null, new { @class = "navbar-brand" })*@
+            </div>
+        </div>
+        @*<nav class="navbar navbar-light bg-light">
+                <form class="form-inline">
+                    <button class="btn btn-outline-success" type="button">Main button</button>
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+                </form>
+            </nav>*@
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Application", "Instructions", "Home")</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        @RenderBody()
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- Modal -->
+    <div class="modal" id="modal-center" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Self Declaration (બાંહેધરી)</h5>
+                    <button type="button" class="close" data-dismiss="modal" style="margin-top:-35px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        હું ખાત્રી પૂર્વક જાહેર કરું છું કે 
+                        (૧) મને નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદ કે અન્ય સરકારી/અર્ધ સરકારી / સરકાર હસ્તકની કોઈપણ સંસ્થા દ્વારા કયારેય પણ ગેરલાયક ઠરાવેલ નથી કે મારી ગેરલાયકાતનો સમય ચાલુ નથી.
+                        અરજીમાં દર્શાવેલ વિગતો મારી જાણ મુજબ સાચી છે અને જો તેમાં કોઈપણ વિગત ખોટી હશે તો તે અંગે નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદનો નિર્ણય અંતિમ રહેશે અને મને તે મને બંધનકર્તા છે.
+                        (ર) મેં નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદની જાહેરાતના બધા જ નિયમો અને સુચનાઓ વાંચી અને સમજી લીધી છે, જે મને બંધનકર્તા રહેશે. આ ઉપરાંત હું જાહેરાતમાં દર્શાવેલ લાયકાતની શરતોને અનુરૂપ પાત્રતા ધરાવું છુંં.
+                    </p>
+                </div>
+                <div class="modal-footer modal-footer-uniform">
+                    <button type="button" class="btn btn-info float-right" onclick="Application.addBasicDetails();">I Agree</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
+    <!-- ./wrapper -->
+    <!-- FastClick -->
+    <script src="~/Scripts/fastclick.js"></script>
+    @*<script src="../../../assets/vendor_components/fastclick/lib/fastclick.js"></script>*@
+
+    <!-- Fab Admin App -->
+    @*<script src="~/Scripts/template.js"></script>*@
+    @*<script src="../../js/template.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Fab Admin for demo purposes -->
+    <script src="~/Scripts/demo.js"></script>
+    @*<script src="../../js/demo.js"></script>*@
+
+    <!-- steps  -->
+    <script src="~/Scripts/jquery.steps.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <!-- validate  -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <!-- wizard  -->
+    <script src="~/Scripts/steps.js"></script>
+    @*<script src="~/Content/assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>*@
+    <script src="~/Scripts/Custom/enumeration.js"></script>
+    <script src="~/Scripts/Custom/common.js"></script>
+    <script>
+        common.init();
+        common.options.errorpageurl = "@Url.Action("Index", "Error")";
+    </script>
+</body>
+
+<!-- Mirrored from html-templates.multipurposethemes.com/bootstrap-4/admin/fab-admin/src/pages/forms/form-wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 May 2018 17:00:44 GMT -->
+</html>

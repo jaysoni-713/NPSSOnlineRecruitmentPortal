@@ -1,0 +1,444 @@
+﻿@model  NPSSOnlineRecruitmentPortal.Models.ApplicationViewModel
+@{
+    ViewBag.Title = "Application Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+
+
+        <!-- Step wizard -->
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h4 class="box-title">Application Form</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body wizard-content">
+                @using (Html.BeginForm(null, null, new { @id = string.Empty }, FormMethod.Post, new { @id = "frmbasicinfo", @class = "tab-wizard wizard-circle" }))
+                {
+
+                <!-- Step 1 -->
+                    <h6>
+                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">ઉમેદવારની માહિતી</p>
+                    </h6>
+                    <section>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-1 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="Label30">Title</span>
+                                    <span class="required">*</span>
+                                    <div id="ValidationSummary2" style="display:none;">
+                                    </div>
+                                    <select name="ddlSalute" id="ddlSalute" tabindex="1" class="form-control">
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Ms.">Ms.</option>
+                                        <option value="Dr.">Dr.</option>
+
+                                    </select>
+                                    <span id="RequiredFieldValidator10" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblSurname">Surname</span>
+                                    <span class="required">*</span>
+                                    <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control" />
+                                    <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblFname">First Name</span>
+                                    <span class="required">*</span>
+                                    <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control" />
+                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblLname">Father/Husband Name</span>
+                                    <span class="required">*</span>
+                                    <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12-col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblGender">Gender</span>
+                                    <span class="required">*</span>
+                                    <select name="ddlGender" id="ddlGender" tabindex="5" class="form-control">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+
+                                    </select>
+                                    <span id="RequiredFieldValidator8" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblCasteCategory">Category</span>
+                                    <span class="required">*</span>
+                                    <select name="ddlCategory" id="ddlCategory" tabindex="6" class="form-control">
+                                        <option value="General">General</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SEBC">SEBC</option>
+                                        <option value="ST">ST</option>
+
+                                    </select>
+                                    <span id="RequiredFieldValidator3321" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblMaritalStaus">Marital Staus</span>
+                                    <span class="required">*</span>
+                                    <select name="ddlMaritalStaus" id="ddlMaritalStaus" tabindex="7" class="form-control">
+                                        <option value="Married">Married</option>
+                                        <option value="Unmarried">Unmarried</option>
+                                        <option value="Separated">Separated</option>
+                                        <option value="Widow">Widow</option>
+
+                                    </select>
+                                    <span id="RequiredFieldValidator3321" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblDOB">Birth Date</span>
+                                    <span class="required">*</span>
+                                    <br />
+                                    <div class="input-group date" id="contractDateContainer">
+                                        <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
+                                        <div class="input-group-addon" id="btncontractDateContainer">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>*@
+                                    @*<input name="txtBirthDt" type="text" id="txtBirthDt" tabindex="8" class="form-control" />*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblBirthVillage">Birth Village</span>
+                                    <span class="required">*</span>
+                                    <input name="txtBirthVillage" type="text" id="txtBirthVillage" tabindex="9" class="form-control" />
+                                    <span style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblBirthCity">Birth City</span>
+                                    <span class="required">*</span>
+                                    <input name="txtBirthCity" type="text" id="txtBirthCity" tabindex="10" class="form-control" />
+                                    <span style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblBirthState">Birth State</span>
+                                    <span class="required">*</span>
+                                    <input name="txtBirthState" type="text" id="txtBirthState" tabindex="11" class="form-control" />
+                                    <span style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblDOB">Age as on Advertisement date </span>
+                                    <br />
+                                    <span id="lblAgeAsOnToday"> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblUploadImage">Upload Photo</span>
+                                    <span class="required">*</span>
+                                    <span class="btn btn-success btn-file">
+                                        Browse...<input type="file" name="file" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                <!-- Step 2 -->
+                    <h6>
+                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">સંદેશા-વ્યવહારની માહિતી</p>
+                    </h6>
+                    <section>
+                        <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblAddress1">Address 1</span>
+                                    <span class="required">*</span>
+                                    <input name="txtAddress1" type="text" id="txtAddress1" tabindex="1" class="form-control" />
+                                    <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblAddress2">Address 2</span>
+                                    <span class="required">*</span>
+                                    <input name="txtAddress2" type="text" id="txtAddress2" tabindex="2" class="form-control" />
+                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblAddress3">Address 3</span>
+                                    <span class="required">*</span>
+                                    <input name="txtAddress3" type="text" id="txtAddress3" tabindex="3" class="form-control" />
+                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblAddressCity">City/Village</span>
+                                    <span class="required">*</span>
+                                    <input type="text" id="ddlAddressCity" tabindex="4" class="form-control" style="width: 100%" />
+                                    <span id="RequiredFieldValidator14" style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lbltaluka">Taluka</span>
+                                    <span class="required">*</span>
+                                    <input type="text" id="txttaluka" tabindex="5" class="form-control" style="width: 100%" />
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lbldistrict">District</span>
+                                    <span class="required">*</span>
+                                    <input type="text" id="txtdistrict" tabindex="6" class="form-control" style="width: 100%" />
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="Label33">State </span>
+                                    <span class="required">*</span>
+                                    <select name="drpStateA" id="drpStateA" tabindex="7" class="form-control" style="width: 100%">
+                                        <option value="0">Select</option>
+                                        <option value="35">ANDAMAN &amp; NICOBAR ISLANDS</option>
+                                        <option value="28">ANDHRA PRADESH</option>
+                                        <option value="12">ARUNACHAL PRADESH</option>
+                                        <option value="18">ASSAM</option>
+                                        <option value="10">BIHAR</option>
+                                        <option value="4">CHANDIGARH</option>
+                                        <option value="22">CHHATTISGARH</option>
+                                        <option value="26">DADRA &amp; NAGAR HAVELI</option>
+                                        <option value="25">DAMAN &amp; DIU</option>
+                                        <option value="7">DELHI</option>
+                                        <option value="30">GOA</option>
+                                        <option selected="selected" value="24">GUJARAT</option>
+                                        <option value="6">HARYANA</option>
+                                        <option value="2">HIMACHAL PRADESH</option>
+                                        <option value="1">JAMMU &amp; KASHMIR</option>
+                                        <option value="20">JHARKHAND</option>
+                                        <option value="29">KARNATAKA</option>
+                                        <option value="32">KERALA</option>
+                                        <option value="31">LAKSHADWEEP</option>
+                                        <option value="23">MADHYA PRADESH</option>
+                                        <option value="27">MAHARASHTRA</option>
+                                        <option value="14">MANIPUR</option>
+                                        <option value="17">MEGHALAYA</option>
+                                        <option value="15">MIZORAM</option>
+                                        <option value="13">NAGALAND</option>
+                                        <option value="21">ORISSA</option>
+                                        <option value="34">PONDICHERRY</option>
+                                        <option value="3">PUNJAB</option>
+                                        <option value="8">RAJASTHAN</option>
+                                        <option value="11">SIKKIM</option>
+                                        <option value="33">TAMIL NADU</option>
+                                        <option value="16">TRIPURA</option>
+                                        <option value="9">UTTAR PRADESH</option>
+                                        <option value="5">UTTARANCHAL</option>
+                                        <option value="19">WEST BENGAL</option>
+
+                                    </select>
+                                    <span id="RequiredFieldValidator35" style="display:inline-block;width:1px;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblPin1">PIN Code</span>
+                                    <span class="required">*</span>
+                                    <input name="txtPIN" type="text" maxlength="6" id="txtPIN" tabindex="9" class="form-control QualificationInt" style="width: 100%" />
+                                    <span id="RequiredFieldValidator11" style="display:inline-block;width:1px;color:red;display:none;">*</span>
+                                    <span id="rngvalidate1" style="visibility:hidden;">Enter Correct PIN</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblMobileNO">Mobile No</span>
+                                    <span class="required">*</span>
+                                    <input name="txtMobileNo" type="text" maxlength="10" id="txtMobileNo" tabindex="10" class="form-control QualificationInt" style="width: 100%" />
+                                    <span id="RequiredFieldValidator1767" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
+                                    @*<span id="lblmobmsg" style="color:Red;">SMS Alert મેળવવા માટે <br /></span>*@
+                                    <span id="check" style="display:none;">*</span>
+                                    <span id="revtelephone" style="display:none;">*</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblEmail">Email</span>
+                                    <span class="required">*</span>
+                                    <input name="txtEmail" type="text" id="txtEmail" tabindex="11" class="form-control" style="width: 100%" />
+                                    <span id="RequiredFieldValidator13453456" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
+                                    @*<span id="Label9" style="color:Red;">Registration details will be sent to Email</span>*@
+                                    <span id="RegularExpressionValidator1" style="color:Red;display:none;">Email Address is not Valid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                <!-- Step 3 -->
+                    <h6>
+                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">લાયકાતની માહિતી</p>
+                    </h6>
+                    <section>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    @foreach (var item in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
+                                    {
+                                        <td>
+                                            @item.QualificationHeader1
+                                        </td>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.QualificationTypeList.OrderBy(x => x.QualificationTypeID))
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.QualificationType1
+                                        </td>
+                                        @foreach (var HeaderItem in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
+                                        {
+                                            var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
+                                            var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
+                                            <td>
+                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className" />
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </section>
+                <!-- Step 4 -->
+                    <h6>
+                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">અનુભવની માહિતી</p>
+                    </h6>
+                    <section>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp1">(1)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization1">Organization</span>
+                                    <input name="txtOrganization1" type="text" id="txtOrganization1" tabindex="1" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation1">Designation</span>
+                                    <input name="txtDesignation1" type="text" id="txtDesignation1" tabindex="2" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate1">Start Date</span>
+                                    <div class="input-group date" id="startDate1Container">
+                                        <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate1">End Date</span>
+                                    <div class="input-group date" id="endDate1Container">
+                                        <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp2">(2)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization2">Organization</span>
+                                    <input name="txtOrganization2" type="text" id="txtOrganization2" tabindex="5" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation2">Designation</span>
+                                    <input name="txtDesignation2" type="text" id="txtDesignation2" tabindex="6" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate2">Start Date</span>
+                                    <div class="input-group date" id="startDate2Container">
+                                        <input name="txtStartDate2" type="text" id="txtStartDate2" tabindex="7" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnstartDate2Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate2">End Date</span>
+                                    <div class="input-group date" id="endDate2Container">
+                                        <input name="txtendDate2" type="text" id="txtEndDate2" tabindex="8" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnendDate2Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp3">(3)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization3">Organization</span>
+                                    <input name="txtOrganization3" type="text" id="txtOrganization3" tabindex="9" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation3">Designation</span>
+                                    <input name="txtDesignation3" type="text" id="txtDesignation3" tabindex="10" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate1">Start Date</span>
+                                    <div class="input-group date" id="startDate1Container">
+                                        <input name="txtStartDate3" type="text" id="txtStartDate3" tabindex="11" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnstartDate3Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate1">End Date</span>
+                                    <div class="input-group date" id="endDate3Container">
+                                        <input type="text" id="txtEndDate3" tabindex="12" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnendDate3Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        <!-- Validation wizard -->
+
+    </section>
+    <!-- /.content -->
+</div>
+@Scripts.Render("~/bundles/Application")
+<script>
+    Application.init();
+    Application.options.postSelection = @Convert.ToString(ViewBag.postSelection);
+    Application.options.saveapplicationdormurl = "@Url.Action("Application", "Home")";
+    Application.options.errorPageurl = "@Url.Action("Index", "Error")";
+    Application.options.homepageurl = "@Url.Action("Index", "Home")";
+    Application.options.applicationsuccessful = "@Url.Action("ApplicationSuccessful", "Home")";
+</script>

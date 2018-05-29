@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NPSSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplicantExperienceDetails">
+    <Key>
+      <PropertyRef Name="ApplicantEDID" />
+    </Key>
+    <Property Name="ApplicantEDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="int" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicantMaster">
+    <Key>
+      <PropertyRef Name="ApplicantID" />
+    </Key>
+    <Property Name="ApplicantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="AgeOnApplicationDate" Type="date" Nullable="false" />
+    <Property Name="BirthPlaceVillage" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BirthPlaceCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BirthPlaceState" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MobileNumber" Type="bigint" Nullable="false" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Cast" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubCast" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaritalStaus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImagePath" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsAppliedForSupervisor" Type="bit" Nullable="false" />
+    <Property Name="SupervisotApplicationID" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupervisorSeatNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="ISAppliedForAsstAO" Type="bit" Nullable="false" />
+    <Property Name="AsstAOApplicationID" Type="nvarchar" MaxLength="50" />
+    <Property Name="AsstAOSeatNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="District" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Taluka" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PinCode" Type="int" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ApplicantQualificationDetails">
+    <Key>
+      <PropertyRef Name="ApplicantQDID" />
+    </Key>
+    <Property Name="ApplicantQDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="int" Nullable="false" />
+    <Property Name="QualificationTypeID" Type="int" Nullable="false" />
+    <Property Name="QualificationHeaderID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OtherQualificationName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="AsstAOApplicationID">
+    <Key>
+      <PropertyRef Name="AsstAOApplicationID" />
+    </Key>
+    <Property Name="AsstAOApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QualificationHeader">
+    <Key>
+      <PropertyRef Name="QualificationHeaderID" />
+    </Key>
+    <Property Name="QualificationHeaderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QualificationHeader" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FIELDTYPE" Type="bit" Nullable="false" />
+    <Property Name="ReportName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="QualificationType">
+    <Key>
+      <PropertyRef Name="QualificationTypeID" />
+    </Key>
+    <Property Name="QualificationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QualificationType" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupervisorApplicationID">
+    <Key>
+      <PropertyRef Name="SupervisorApplicationID" />
+    </Key>
+    <Property Name="SupervisorApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="DeleteApplicantDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ExpierienceDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetApplicationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_QualificationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateApplicationIDByPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantID" Type="int" Mode="In" />
+    <Parameter Name="Post" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="NPSSModelStoreContainer">
+    <EntitySet Name="ApplicantExperienceDetails" EntityType="Self.ApplicantExperienceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicantMaster" EntityType="Self.ApplicantMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicantQualificationDetails" EntityType="Self.ApplicantQualificationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsstAOApplicationID" EntityType="Self.AsstAOApplicationID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QualificationHeader" EntityType="Self.QualificationHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QualificationType" EntityType="Self.QualificationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupervisorApplicationID" EntityType="Self.SupervisorApplicationID" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

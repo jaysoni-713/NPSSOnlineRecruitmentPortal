@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Post Selection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <!-- Step wizard -->
+        <div class="box box-default">
+
+            <!-- /.box-header -->
+            <div class="box-body wizard-content" id="postSelection">
+                <h2>Post Selection (પોસ્ટ પસંદગી)</h2>
+                <br />
+                <div class="demo-radio-button">
+                    <input name="post" type="radio" value="1" id="radio_1" checked />
+                    <label for="radio_1" class="font-size-20">Supervisor (સુપરવાઇઝર)</label>
+                    <br /><br />
+                    <input name="post" type="radio" value="2" id="radio_2" />
+                    <label for="radio_2" class="font-size-20">Assistant Administration Officer (મદદનિશ શાસનાઅધિકારી)</label>
+                    <br /><br />
+                    <input name="post" type="radio" value="3" id="radio_3" />
+                    <label for="radio_3" class="font-size-20">Both (બંને)</label>
+                    <br /><br />
+                    <div class="text-xs-right">
+                        <button id="btnSelectPost" class="btn btn-info">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        <!-- Validation wizard -->
+
+    </section>
+    <!-- /.content -->
+</div>
+
+<script>
+    var redirectToAppUrl = "@Url.Action("Application", "Home")";
+    $(document).ready(function () {
+        $("#btnSelectPost").click(function () {
+            var value = $("#postSelection input[name='post']:checked").val();
+            location.href = redirectToAppUrl + "?postSelection=" + Number(value);
+        });
+    });
+</script>

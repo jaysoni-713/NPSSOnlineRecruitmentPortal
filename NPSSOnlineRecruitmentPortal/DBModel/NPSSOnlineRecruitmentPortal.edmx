@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NPSSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicantExperienceDetails">
+          <Key>
+            <PropertyRef Name="ApplicantEDID" />
+          </Key>
+          <Property Name="ApplicantEDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="int" Nullable="false" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicantMaster">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Name="ApplicantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="AgeOnApplicationDate" Type="date" Nullable="false" />
+          <Property Name="BirthPlaceVillage" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthPlaceCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthPlaceState" Type="nvarchar" MaxLength="50" />
+          <Property Name="AadharCardNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MobileNumber" Type="bigint" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cast" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubCast" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaritalStaus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsAppliedForSupervisor" Type="bit" Nullable="false" />
+          <Property Name="SupervisotApplicationID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupervisorSeatNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISAppliedForAsstAO" Type="bit" Nullable="false" />
+          <Property Name="AsstAOApplicationID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AsstAOSeatNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="District" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Taluka" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PinCode" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ApplicantQualificationDetails">
+          <Key>
+            <PropertyRef Name="ApplicantQDID" />
+          </Key>
+          <Property Name="ApplicantQDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="int" Nullable="false" />
+          <Property Name="QualificationTypeID" Type="int" Nullable="false" />
+          <Property Name="QualificationHeaderID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OtherQualificationName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="AsstAOApplicationID">
+          <Key>
+            <PropertyRef Name="AsstAOApplicationID" />
+          </Key>
+          <Property Name="AsstAOApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailFailureBacklog">
+          <Key>
+            <PropertyRef Name="EmailFailureID" />
+          </Key>
+          <Property Name="EmailFailureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="int" Nullable="false" />
+          <Property Name="FailureReason" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QualificationHeader">
+          <Key>
+            <PropertyRef Name="QualificationHeaderID" />
+          </Key>
+          <Property Name="QualificationHeaderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QualificationHeader" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FIELDTYPE" Type="bit" Nullable="false" />
+          <Property Name="ReportName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="QualificationType">
+          <Key>
+            <PropertyRef Name="QualificationTypeID" />
+          </Key>
+          <Property Name="QualificationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QualificationType" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupervisorApplicationID">
+          <Key>
+            <PropertyRef Name="SupervisorApplicationID" />
+          </Key>
+          <Property Name="SupervisorApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicantID" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="DeleteApplicantDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ExpierienceDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetApplicationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_QualificationDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateApplicationIDByPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantID" Type="int" Mode="In" />
+          <Parameter Name="Post" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="NPSSModelStoreContainer">
+          <EntitySet Name="ApplicantExperienceDetails" EntityType="Self.ApplicantExperienceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantMaster" EntityType="Self.ApplicantMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantQualificationDetails" EntityType="Self.ApplicantQualificationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsstAOApplicationID" EntityType="Self.AsstAOApplicationID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailFailureBacklog" EntityType="Self.EmailFailureBacklog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QualificationHeader" EntityType="Self.QualificationHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QualificationType" EntityType="Self.QualificationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupervisorApplicationID" EntityType="Self.SupervisorApplicationID" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NPSSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NPSSEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="DeleteApplicantDetails">
+          <Parameter Name="ApplicantID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateApplicationIDByPost">
+            <Parameter Name="ApplicantID" Mode="In" Type="Int32" />
+            <Parameter Name="Post" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ApplicantExperienceDetails" EntityType="NPSSModel.ApplicantExperienceDetail" />
+          <EntitySet Name="ApplicantQualificationDetails" EntityType="NPSSModel.ApplicantQualificationDetail" />
+          <EntitySet Name="AsstAOApplicationIDs" EntityType="NPSSModel.AsstAOApplicationID" />
+          <EntitySet Name="QualificationHeaders" EntityType="NPSSModel.QualificationHeader" />
+          <EntitySet Name="QualificationTypes" EntityType="NPSSModel.QualificationType" />
+          <EntitySet Name="SupervisorApplicationIDs" EntityType="NPSSModel.SupervisorApplicationID" />
+          <FunctionImport Name="SP_ExpierienceDetail" ReturnType="Collection(NPSSModel.SP_ExpierienceDetail_Result)">
+          <Parameter Name="ApplicantID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetApplicationDetail" ReturnType="Collection(NPSSModel.SP_GetApplicationDetail_Result)">
+          <Parameter Name="ApplicantID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_QualificationDetail">
+          <Parameter Name="ApplicantID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="EmailFailureBacklogs" EntityType="NPSSModel.EmailFailureBacklog" />
+          <EntitySet Name="ApplicantMasters" EntityType="NPSSModel.ApplicantMaster" />
+        </EntityContainer>
+        <EntityType Name="ApplicantExperienceDetail">
+          <Key>
+            <PropertyRef Name="ApplicantEDID" />
+          </Key>
+          <Property Name="ApplicantEDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicantQualificationDetail">
+          <Key>
+            <PropertyRef Name="ApplicantQDID" />
+          </Key>
+          <Property Name="ApplicantQDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" />
+          <Property Name="QualificationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="QualificationHeaderID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherQualificationName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AsstAOApplicationID">
+          <Key>
+            <PropertyRef Name="AsstAOApplicationID1" />
+          </Key>
+          <Property Name="AsstAOApplicationID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QualificationHeader">
+          <Key>
+            <PropertyRef Name="QualificationHeaderID" />
+          </Key>
+          <Property Name="QualificationHeaderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QualificationHeader1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FIELDTYPE" Type="Boolean" Nullable="false" />
+          <Property Name="ReportName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QualificationType">
+          <Key>
+            <PropertyRef Name="QualificationTypeID" />
+          </Key>
+          <Property Name="QualificationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QualificationType1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SupervisorApplicationID">
+          <Key>
+            <PropertyRef Name="SupervisorApplicationID1" />
+          </Key>
+          <Property Name="SupervisorApplicationID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="SP_ExpierienceDetail_Result">
+          <Property Type="Int32" Name="ApplicantEDID" Nullable="false" />
+          <Property Type="Int32" Name="ApplicantID" Nullable="false" />
+          <Property Type="String" Name="OrganizationName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Designation" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
+          <Property Type="Int32" Name="Sequence" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_GetApplicationDetail_Result">
+          <Property Type="Int32" Name="ApplicantID" Nullable="false" />
+          <Property Type="String" Name="Surname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="false" />
+          <Property Type="DateTime" Name="AgeOnApplicationDate" Nullable="false" />
+          <Property Type="String" Name="BirthPlaceVillage" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BirthPlaceCity" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BirthPlaceState" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address2" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address3" Nullable="false" MaxLength="250" />
+          <Property Type="Int64" Name="MobileNumber" Nullable="false" />
+          <Property Type="String" Name="EmailId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Cast" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SubCast" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MaritalStaus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="IsAppliedForSupervisor" Nullable="false" />
+          <Property Type="String" Name="SupervisorSeatNumber" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="ISAppliedForAsstAO" Nullable="false" />
+          <Property Type="String" Name="AsstAOSeatNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Taluka" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="PinCode" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="EmailFailureBacklog">
+          <Key>
+            <PropertyRef Name="EmailFailureID" />
+          </Key>
+          <Property Name="EmailFailureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" />
+          <Property Name="FailureReason" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ApplicantMaster">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Name="ApplicantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AgeOnApplicationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BirthPlaceVillage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthPlaceCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthPlaceState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AadharCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="Int64" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cast" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubCast" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStaus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsAppliedForSupervisor" Type="Boolean" Nullable="false" />
+          <Property Name="SupervisotApplicationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupervisorSeatNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISAppliedForAsstAO" Type="Boolean" Nullable="false" />
+          <Property Name="AsstAOApplicationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AsstAOSeatNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Taluka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NPSSModelStoreContainer" CdmEntityContainer="NPSSEntities">
+          <FunctionImportMapping FunctionImportName="DeleteApplicantDetails" FunctionName="NPSSModel.Store.DeleteApplicantDetails" />
+          <FunctionImportMapping FunctionImportName="UpdateApplicationIDByPost" FunctionName="NPSSModel.Store.UpdateApplicationIDByPost" />
+          <EntitySetMapping Name="ApplicantExperienceDetails">
+            <EntityTypeMapping TypeName="NPSSModel.ApplicantExperienceDetail">
+              <MappingFragment StoreEntitySet="ApplicantExperienceDetails">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="ApplicantEDID" ColumnName="ApplicantEDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantQualificationDetails">
+            <EntityTypeMapping TypeName="NPSSModel.ApplicantQualificationDetail">
+              <MappingFragment StoreEntitySet="ApplicantQualificationDetails">
+                <ScalarProperty Name="OtherQualificationName" ColumnName="OtherQualificationName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="QualificationHeaderID" ColumnName="QualificationHeaderID" />
+                <ScalarProperty Name="QualificationTypeID" ColumnName="QualificationTypeID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="ApplicantQDID" ColumnName="ApplicantQDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsstAOApplicationIDs">
+            <EntityTypeMapping TypeName="NPSSModel.AsstAOApplicationID">
+              <MappingFragment StoreEntitySet="AsstAOApplicationID">
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="AsstAOApplicationID1" ColumnName="AsstAOApplicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QualificationHeaders">
+            <EntityTypeMapping TypeName="NPSSModel.QualificationHeader">
+              <MappingFragment StoreEntitySet="QualificationHeader">
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="FIELDTYPE" ColumnName="FIELDTYPE" />
+                <ScalarProperty Name="QualificationHeader1" ColumnName="QualificationHeader" />
+                <ScalarProperty Name="QualificationHeaderID" ColumnName="QualificationHeaderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QualificationTypes">
+            <EntityTypeMapping TypeName="NPSSModel.QualificationType">
+              <MappingFragment StoreEntitySet="QualificationType">
+                <ScalarProperty Name="QualificationType1" ColumnName="QualificationType" />
+                <ScalarProperty Name="QualificationTypeID" ColumnName="QualificationTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupervisorApplicationIDs">
+            <EntityTypeMapping TypeName="NPSSModel.SupervisorApplicationID">
+              <MappingFragment StoreEntitySet="SupervisorApplicationID">
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="SupervisorApplicationID1" ColumnName="SupervisorApplicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ExpierienceDetail" FunctionName="NPSSModel.Store.SP_ExpierienceDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NPSSModel.SP_ExpierienceDetail_Result">
+                <ScalarProperty Name="ApplicantEDID" ColumnName="ApplicantEDID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetApplicationDetail" FunctionName="NPSSModel.Store.SP_GetApplicationDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NPSSModel.SP_GetApplicationDetail_Result">
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="AgeOnApplicationDate" ColumnName="AgeOnApplicationDate" />
+                <ScalarProperty Name="BirthPlaceVillage" ColumnName="BirthPlaceVillage" />
+                <ScalarProperty Name="BirthPlaceCity" ColumnName="BirthPlaceCity" />
+                <ScalarProperty Name="BirthPlaceState" ColumnName="BirthPlaceState" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Cast" ColumnName="Cast" />
+                <ScalarProperty Name="SubCast" ColumnName="SubCast" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MaritalStaus" ColumnName="MaritalStaus" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="IsAppliedForSupervisor" ColumnName="IsAppliedForSupervisor" />
+                <ScalarProperty Name="SupervisorSeatNumber" ColumnName="SupervisorSeatNumber" />
+                <ScalarProperty Name="ISAppliedForAsstAO" ColumnName="ISAppliedForAsstAO" />
+                <ScalarProperty Name="AsstAOSeatNumber" ColumnName="AsstAOSeatNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_QualificationDetail" FunctionName="NPSSModel.Store.SP_QualificationDetail" />
+          <EntitySetMapping Name="EmailFailureBacklogs">
+            <EntityTypeMapping TypeName="NPSSModel.EmailFailureBacklog">
+              <MappingFragment StoreEntitySet="EmailFailureBacklog">
+                <ScalarProperty Name="FailureReason" ColumnName="FailureReason" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="EmailFailureID" ColumnName="EmailFailureID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantMasters">
+            <EntityTypeMapping TypeName="NPSSModel.ApplicantMaster">
+              <MappingFragment StoreEntitySet="ApplicantMaster">
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AsstAOSeatNumber" ColumnName="AsstAOSeatNumber" />
+                <ScalarProperty Name="AsstAOApplicationID" ColumnName="AsstAOApplicationID" />
+                <ScalarProperty Name="ISAppliedForAsstAO" ColumnName="ISAppliedForAsstAO" />
+                <ScalarProperty Name="SupervisorSeatNumber" ColumnName="SupervisorSeatNumber" />
+                <ScalarProperty Name="SupervisotApplicationID" ColumnName="SupervisotApplicationID" />
+                <ScalarProperty Name="IsAppliedForSupervisor" ColumnName="IsAppliedForSupervisor" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="MaritalStaus" ColumnName="MaritalStaus" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SubCast" ColumnName="SubCast" />
+                <ScalarProperty Name="Cast" ColumnName="Cast" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="AadharCardNo" ColumnName="AadharCardNo" />
+                <ScalarProperty Name="BirthPlaceState" ColumnName="BirthPlaceState" />
+                <ScalarProperty Name="BirthPlaceCity" ColumnName="BirthPlaceCity" />
+                <ScalarProperty Name="BirthPlaceVillage" ColumnName="BirthPlaceVillage" />
+                <ScalarProperty Name="AgeOnApplicationDate" ColumnName="AgeOnApplicationDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

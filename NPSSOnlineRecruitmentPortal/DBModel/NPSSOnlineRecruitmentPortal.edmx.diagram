@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9cb1ed7f5884482c8ca7651a6443080a" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="NPSSModel.ApplicantExperienceDetail" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NPSSModel.ApplicantQualificationDetail" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NPSSModel.AsstAOApplicationID" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NPSSModel.QualificationHeader" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NPSSModel.QualificationType" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NPSSModel.SupervisorApplicationID" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="NPSSModel.EmailFailureBacklog" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="NPSSModel.ApplicantMaster" Width="1.5" PointX="2.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,35 @@
+﻿@model NPSSOnlineRecruitmentPortal.DBModel.ApplicantMaster
+@{
+    ViewBag.Title = "ApplicationSuccessful";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<center>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!-- Main content -->
+        <section class="content">
+            <!-- Step wizard -->
+            <div class="box box-default">
+                <!-- /.box-header -->
+                <div class="box-body wizard-content" id="postSelection">
+                    <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">
+                        @if (Model.IsAppliedForSupervisor)
+                        {
+                        <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of Supervisor is successfully submitted.<br /><br />Your application number is <b> @Model.SupervisotApplicationID </b> </p>
+                            <br /><br /><br /><br /><br />
+                        }
+                        @if (Model.ISAppliedForAsstAO)
+                        {
+                            
+                            <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of Assistant Administration Officer is successfully submitted.<br /><br />Your application number is <b> @Model.AsstAOApplicationID </b> </p>
+                        }
+                        </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <!-- Validation wizard -->
+            </section>
+            <!-- /.content -->
+        </div>
+    </center>
