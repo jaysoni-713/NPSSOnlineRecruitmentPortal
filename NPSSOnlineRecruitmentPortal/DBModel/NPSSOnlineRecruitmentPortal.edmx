@@ -98,6 +98,7 @@
           </Key>
           <Property Name="QualificationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QualificationType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SupervisorApplicationID">
           <Key>
@@ -207,6 +208,7 @@
           </Key>
           <Property Name="QualificationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QualificationType1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="SupervisorApplicationID">
           <Key>
@@ -359,6 +361,7 @@
           <EntitySetMapping Name="QualificationTypes">
             <EntityTypeMapping TypeName="NPSSModel.QualificationType">
               <MappingFragment StoreEntitySet="QualificationType">
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
                 <ScalarProperty Name="QualificationType1" ColumnName="QualificationType" />
                 <ScalarProperty Name="QualificationTypeID" ColumnName="QualificationTypeID" />
               </MappingFragment>

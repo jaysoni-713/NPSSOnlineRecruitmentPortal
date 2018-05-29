@@ -3,31 +3,16 @@
     ViewBag.Title = "Application Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .example-modal .modal {
-        position: relative;
-        top: auto;
-        bottom: auto;
-        right: auto;
-        left: auto;
-        display: block;
-        z-index: 1;
-    }
-
-    .example-modal .modal {
-        background: transparent !important;
-    }
-</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="content" style="padding-top:0px">
-        <!-- Step wizard -->
+        <!-- Step wizard --> 
         <div class="box box-default">
             @*<h4 class="box-title" style="font-weight:bold">
-                <span class="required">*</span> indicates mandatory field.
-                </h4>*@
+            <span class="required">*</span> indicates mandatory field.
+            </h4>*@    
             <div class="box-header with-border">
                 <h4 class="box-title">Online Application Form</h4>
             </div>
@@ -116,11 +101,11 @@
                                     <span class="required">*</span>
                                     <br />
                                     @*<div class="input-group date" id="contractDateContainer">
-                                            <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
-                                            <div class="input-group-addon" id="btncontractDateContainer">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
+                                        <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
+                                        <div class="input-group-addon" id="btncontractDateContainer">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>*@
                                     <input id="txtBirthDt" data-inputmask="'alias': 'date'" tabindex="8" class="form-control" />
                                     @*<div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
@@ -154,12 +139,11 @@
                                     <input name="txtAadharCard" type="text" id="txtAadharCard" tabindex="12" class="form-control" />
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
-                                <div class="col-md-3 col-xs-7 col-sm-7 col-lg-4">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblDOB" style="font-weight: bold; color: #03a9f3; font-size: 16px;">Age as on Advertisement date </span>
                                     <br />
                                     @*<span id="lblAgeAsOnToday" style="font-weight: bold; color: #03a9f3; font-size: 16px;"> </span>*@
-                                    @*<a href="javascript:void(0)" title="Agree" id="btnAgeAsOnToday" style="font-weight: bold; font-size: large;display:none" class="btn btn-info"></a>*@
-                                    <label id="btnAgeAsOnToday" style="font-weight: bold; font-size: large;display:none" class="btn btn-info"></label>
+                                    <a href="javascript:void(0)" title="Agree" id="btnAgeAsOnToday" style="font-weight: bold; font-size: initial; display: none" class="btn btn-info"></a>
                                 </div>
                             </div>
                         </div>
@@ -341,6 +325,7 @@
                             <tbody>
                                 @foreach (var item in Model.QualificationTypeList.OrderBy(x => x.QualificationTypeID))
                                 {
+                                    var QualificationTypeRequiredclassName = @item.IsRequired == true ? "QualificationRequired" : "";
                                     <tr>
                                         <td>
                                             <p class="headerstyle">@item.QualificationType1</p>
@@ -350,7 +335,7 @@
                                             var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
                                             var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
                                             <td>
-                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className" />
+                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
                                             </td>
                                         }
                                     </tr>
@@ -380,21 +365,21 @@
                                     <span id="lblStartDate1" class="headerstyle">From Date</span>
                                     <input id="txtStartDate1" data-inputmask="'alias': 'date'" tabindex="3" class="form-control expdatepicker" />
                                     @*<div class="input-group date" id="startDate1Container">
-                                            <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
+                                        <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>*@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate1" class="headerstyle">To Date</span>
                                     <input id="txtEndDate1" data-inputmask="'alias': 'date'" tabindex="4" class="form-control expdatepicker" />
                                     @*<div class="input-group date" id="endDate1Container">
-                                            <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
+                                        <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker" readonly required />
+                                        <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -414,22 +399,10 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate2" class="headerstyle">From Date</span>
                                     <input id="txtStartDate2" data-inputmask="'alias': 'date'" tabindex="7" class="form-control expdatepicker" />
-                                    @*<div class="input-group date" id="startDate2Container">
-                                            <input name="txtStartDate2" type="text" id="txtStartDate2" tabindex="7" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnstartDate2Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate2" class="headerstyle">To Date</span>
                                     <input id="txtEndDate2" data-inputmask="'alias': 'date'" tabindex="8" class="form-control expdatepicker" />
-                                    @*<div class="input-group date" id="endDate2Container">
-                                            <input name="txtendDate2" type="text" id="txtEndDate2" tabindex="8" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnendDate2Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
                                 </div>
                             </div>
                         </div>
@@ -447,24 +420,81 @@
                                     <input name="txtDesignation3" type="text" id="txtDesignation3" tabindex="10" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblStartDate1" class="headerstyle">From Date</span>
+                                    <span id="lblStartDate3" class="headerstyle">From Date</span>
                                     <input id="txtStartDate3" data-inputmask="'alias': 'date'" tabindex="11" class="form-control expdatepicker" />
-                                    @*<div class="input-group date" id="startDate1Container">
-                                            <input name="txtStartDate3" type="text" id="txtStartDate3" tabindex="11" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnstartDate3Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate1" class="headerstyle">To Date</span>
                                     <input id="txtEndDate3" data-inputmask="'alias': 'date'" tabindex="12" class="form-control expdatepicker" />
-                                    @*<div class="input-group date" id="endDate3Container">
-                                            <input type="text" id="txtEndDate3" tabindex="12" class="form-control expdatepicker" readonly required />
-                                            <div class="input-group-addon expGroupaddon" id="btnendDate3Container">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp4">(4)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization4" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization4" type="text" id="txtOrganization4" tabindex="13" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation4" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation4" type="text" id="txtDesignation4" tabindex="14" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate4" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate4" data-inputmask="'alias': 'date'" tabindex="15" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate4" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate4" data-inputmask="'alias': 'date'" tabindex="16" class="form-control expdatepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp5">(5)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization5" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization5" type="text" id="txtOrganization5" tabindex="17" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation5" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation5" type="text" id="txtDesignation5" tabindex="18" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate5" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate5" data-inputmask="'alias': 'date'" tabindex="19" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate5" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate5" data-inputmask="'alias': 'date'" tabindex="20" class="form-control expdatepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp6">(6)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization6" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization6" type="text" id="txtOrganization6" tabindex="21" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation6" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation6" type="text" id="txtDesignation5" tabindex="22" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate6" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate6" data-inputmask="'alias': 'date'" tabindex="23" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate6" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate6" data-inputmask="'alias': 'date'" tabindex="24" class="form-control expdatepicker" />
                                 </div>
                             </div>
                         </div>
@@ -478,7 +508,6 @@
 
     </section>
     <!-- /.content -->
-    
 </div>
 @Scripts.Render("~/bundles/Application")
 <script>

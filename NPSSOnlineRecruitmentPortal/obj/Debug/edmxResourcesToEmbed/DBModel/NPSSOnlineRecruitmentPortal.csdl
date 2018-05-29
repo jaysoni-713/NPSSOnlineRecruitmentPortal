@@ -71,6 +71,7 @@
     </Key>
     <Property Name="QualificationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="QualificationType1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsRequired" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="SupervisorApplicationID">
     <Key>

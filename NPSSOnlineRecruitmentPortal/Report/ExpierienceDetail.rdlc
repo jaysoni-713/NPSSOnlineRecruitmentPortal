@@ -180,6 +180,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -306,7 +307,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.25in</Top>
         <Height>0.5in</Height>
-        <Width>7.27083in</Width>
+        <Width>7.27084in</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -357,7 +358,7 @@
     <Height>1.905cm</Height>
     <Style />
   </Body>
-  <Width>18.46792cm</Width>
+  <Width>18.46793cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

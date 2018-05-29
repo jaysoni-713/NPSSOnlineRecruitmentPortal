@@ -50,17 +50,56 @@ import icon and fonts Styles
 @import url(assets/simple-line-icons-master/css/simple-line-icons.css);
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
+/*------------------------------------------------------------------
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #101010 !important;
-    background: #4b6c9e !important;
-    font-size: 1.2em !important;
-    font-weight: bold !important;
-}
+[Typography]
 
+Body :		Poppins, sans-serif;
+-------------------------------------------------------------------*/
+
+/*Body, layout*/
 .layout-boxed body, .layout-boxed html, .wrapper, body, html {
     height: 100%;
 }
+
+/***** Loader scss start here *****/
+.loader-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999999999; }
+  .loader-overlay .loader {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 30px;
+    border-radius: 5em;
+    border-color: #0099f0 transparent #0099f0 transparent;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes fade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+/***** Loader scss end here *****/
 
 .wrapper, body {
     overflow-x: hidden;
@@ -6565,49 +6604,6 @@ ul.panel-actions {
 
 .list-group .badge-pill {
     margin-top: 3px;
-}
-
-.modal-backdrop.show {
-    opacity: .5;
-}
-.fade {
-    opacity: 0;
-    transition: opacity .15s linear;
-}
-
-.close {
-
-    float: right;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
-
-}
-button.close {
-
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-    -webkit-appearance: none;
-
-}
-
-.modal-header .close {
-
-    padding: 1rem;
-    margin: -1rem -1rem -1rem auto;
-
-}
-.modal-header .close {
-
-    -webkit-box-ordinal-group: 3;
-    -webkit-order: 2;
-    -ms-flex-order: 2;
-    order: 2;
-
 }
 
 /*---modal---*/

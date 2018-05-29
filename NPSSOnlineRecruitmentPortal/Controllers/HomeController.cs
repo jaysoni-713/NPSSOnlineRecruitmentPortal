@@ -69,15 +69,15 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
                                 LastName = objApplication.LastName.Trim(),
                                 BirthDate = objApplication.BirthDate,
                                 AgeOnApplicationDate = objApplication.AgeOnApplicationDate,
-                                BirthPlaceVillage = objApplication.BirthPlaceVillage.Trim(),
-                                BirthPlaceCity = objApplication.BirthPlaceCity.Trim(),
-                                BirthPlaceState = objApplication.BirthPlaceState.Trim(),
-                                AadharCardNo = objApplication.AadharCardNo.Trim(),
-                                Address1 = objApplication.Address1.Trim(),
-                                Address2 = objApplication.Address2.Trim(),
-                                Address3 = objApplication.Address3.Trim(),
+                                BirthPlaceVillage = objApplication.BirthPlaceVillage,
+                                BirthPlaceCity = objApplication.BirthPlaceCity,
+                                BirthPlaceState = objApplication.BirthPlaceState,
+                                AadharCardNo = objApplication.AadharCardNo,
+                                Address1 = objApplication.Address1,
+                                Address2 = objApplication.Address2,
+                                Address3 = objApplication.Address3,
                                 MobileNumber = objApplication.MobileNumber,
-                                EmailId = objApplication.EmailId.Trim(),
+                                EmailId = objApplication.EmailId,
                                 Cast = objApplication.Cast,
                                 SubCast = objApplication.SubCast,
                                 ImagePath = objApplication.ImagePath,
@@ -145,7 +145,7 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
 
                             #endregion
 
-                            Task.Run(() => context.UpdateApplicationIDByPost(dbApplication.ApplicantID, objApplication.postSelected)).ConfigureAwait(true);
+                            context.UpdateApplicationIDByPost(dbApplication.ApplicantID, objApplication.postSelected);
                             Report("Application Form", dbApplication.ApplicantID, dbApplication.EmailId, objApplication.postSelected, dbApplication);
                         }
                         else
@@ -273,12 +273,12 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             ApplicantMaster dbApplication;
             using (context = new NPSSEntities())
             {
-                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + 8).ToList<ApplicantMaster>();
-                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + 8).ToList<ApplicantExperienceDetail>();
-                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + 8).ToList<ApplicationQualificationDetail>();
-                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == 8).FirstOrDefault();
+                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + 6).ToList<ApplicantMaster>();
+                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + 6).ToList<ApplicantExperienceDetail>();
+                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + 6).ToList<ApplicationQualificationDetail>();
+                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == 6).FirstOrDefault();
             }
-            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), 8, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
+            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), 6, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
         }
 
         private void CreatePDF(string fileName, List<ApplicantMaster> ds, string reportFileName, int applicantID, string toMail, string isSuperVisor, ApplicantMaster dbApplication, string ApplicationId)
@@ -302,17 +302,15 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             viewer.LocalReport.DataSources.Add(rds); // Add datasource here
             viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
 
-
             byte[] bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
-            SendMailToMultipleUser(toMail, fileName, bytes, dbApplication, isSuperVisor, ApplicationId);
+            //SendMailToMultipleUser(toMail, fileName, bytes, dbApplication, isSuperVisor, ApplicationId);
 
-            //Response.Buffer = true;
-            //Response.Clear();
-            //Response.ContentType = mimeType;
-            //Response.AddHeader("content-disposition", "attachment; filename=" + fileName + "." + extension);
-            //Response.BinaryWrite(bytes); // create the file
-            //Response.Flush(); // send it to the client to download
-
+            Response.Buffer = true;
+            Response.Clear();
+            Response.ContentType = mimeType;
+            Response.AddHeader("content-disposition", "attachment; filename=" + fileName + "." + extension);
+            Response.BinaryWrite(bytes); // create the file
+            Response.Flush(); // send it to the client to download
         }
 
         public void SetSubDataSource(object sender, SubreportProcessingEventArgs e)

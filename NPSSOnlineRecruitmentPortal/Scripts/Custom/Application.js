@@ -9,11 +9,6 @@
     },
     init: function () {
         $(document).ready(function () {
-            $("#modal-center").modal({
-                backdrop: 'static',
-                keyboard: false,
-                show: false
-            })
             $("#Step_1").text("Personal Details");
             $("#Step_2").text("Communication Details");
             $("#Step_3").text("Qualification Details");
@@ -96,6 +91,7 @@
         }
     },
     addBasicDetails: function () {
+        $("#pageloader").css("display", "block");
         var model = {};
         var isAppliedforSupervisor = false;
         var isAppliedForAsstAO = false;
@@ -111,20 +107,20 @@
         }
         model = {
             postSelected: Application.options.postSelection,
-            Surname: $("#txtSurname").val(),
-            FirstName: $("#txtFirstName").val(),
-            LastName: $("#txtLastName").val(),
-            BirthDate: $("#txtBirthDt").val(),
+            Surname: $("#txtSurname").val().trim(),
+            FirstName: $("#txtFirstName").val().trim(),
+            LastName: $("#txtLastName").val().trim(),
+            BirthDate: Application.formatDate($("#txtBirthDt").val()),
             AgeOnApplicationDate: Application.calculateAge(),
-            BirthPlaceVillage: $("#txtBirthVillage").val(),
-            BirthPlaceCity: $("#txtBirthCity").val(),
-            BirthPlaceState: $("#txtBirthState").val(),
+            BirthPlaceVillage: "", //$("#txtBirthVillage").val()
+            BirthPlaceCity: "", //$("#txtBirthCity").val()
+            BirthPlaceState: "", //$("#txtBirthState").val()
             AadharCardNo: $("#txtAadharCard").val(),
-            Address1: $("#txtAddress1").val(),
-            Address2: $("#txtAddress2").val(),
-            Address3: $("#txtAddress3").val(),
+            Address1: $("#txtAddress1").val().trim(),
+            Address2: $("#txtAddress2").val().trim(),
+            Address3: $("#txtAddress3").val().trim(),
             MobileNumber: $("#txtMobileNo").val(),
-            EmailId: $("#txtEmail").val(),
+            EmailId: $("#txtEmail").val().trim(),
             Cast: "",
             SubCast: "",
             ImagePath: "",
@@ -134,10 +130,10 @@
             MaritalStaus: $("#ddlMaritalStaus").val(),
             Title: $("#ddlSalute").val(),
             Gender: $("#ddlGender").val(),
-            City: $("#ddlAddressCity").val(),
-            District: $("#txtdistrict").val(),
-            Taluka: $("#txttaluka").val(),
-            PinCode: $("#txtPIN").val(),
+            City: $("#ddlAddressCity").val().trim(),
+            District: $("#txtdistrict").val().trim(),
+            Taluka: $("#txttaluka").val().trim(),
+            PinCode: $("#txtPIN").val().trim(),
             State: $("#drpStateA option:selected").text(),
             QualificationDetails: QualificationDetail,
             ExperienceDetails: ExperienceDetail
@@ -150,6 +146,9 @@
             contentType: "application/json; charset=utf-8",
             data: jsondata,
             async: false,
+            beforeSend: function () {
+                $("#pageloader").css("display", "block");
+            },
             dataType: "json",
             type: "POST",
             success: function (result) {
@@ -162,18 +161,22 @@
                     }
                 }
                 else {
+                    $("#pageloader").css("display", "none");
                     location.href = Application.options.errorPageurl;
                 }
             },
             error: function (result) {
+                $("#pageloader").css("display", "none");
                 location.href = Application.options.errorPageurl;
             }
         });
-        //    }
-        //    else {
-        //        alert("You are not eligible to apply for this post.");
-        //    }
         //}
+        //else {
+        //    $("#pageloader").css("display", "none");
+        //    alert("You are not eligible to apply for this post.");
+        //}
+        //}
+        $("#pageloader").css("display", "none");
     },
     calculateAge: function () {
         return 25;
@@ -256,22 +259,39 @@
         if ($("#txtOrganization1").val() != undefined && $("#txtOrganization1").val() != "") {
             array.push({
                 Key: "1",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization1").val(), Designation: $("#txtDesignation1").val(), StartDate: $("#txtStartDate1").val(), EndDate: $("#txtEndDate1").val(), Sequence: 1 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization1").val(), Designation: $("#txtDesignation1").val(), StartDate: Application.formatDate($("#txtStartDate1").val()), EndDate: Application.formatDate($("#txtEndDate1").val()), Sequence: 1 })
             });
         }
         if ($("#txtOrganization2").val() != undefined && $("#txtOrganization2").val() != "") {
             array.push({
                 Key: "2",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization2").val(), Designation: $("#txtDesignation2").val(), StartDate: $("#txtStartDate2").val(), EndDate: $("#txtEndDate2").val(), Sequence: 2 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization2").val(), Designation: $("#txtDesignation2").val(), StartDate: Application.formatDate($("#txtStartDate2").val()), EndDate: Application.formatDate($("#txtEndDate2").val()), Sequence: 2 })
             });
         }
         if ($("#txtOrganization3").val() != undefined && $("#txtOrganization3").val() != "") {
             array.push({
                 Key: "3",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization3").val(), Designation: $("#txtDesignation3").val(), StartDate: $("#txtStartDate3").val(), EndDate: $("#txtEndDate3").val(), Sequence: 3 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization3").val(), Designation: $("#txtDesignation3").val(), StartDate: Application.formatDate($("#txtStartDate3").val()), EndDate: Application.formatDate($("#txtEndDate3").val()), Sequence: 3 })
             });
         }
-
+        if ($("#txtOrganization4").val() != undefined && $("#txtOrganization4").val() != "") {
+            array.push({
+                Key: "4",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization4").val(), Designation: $("#txtDesignation4").val(), StartDate: Application.formatDate($("#txtStartDate4").val()), EndDate: Application.formatDate($("#txtEndDate4").val()), Sequence: 4 })
+            });
+        }
+        if ($("#txtOrganization5").val() != undefined && $("#txtOrganization5").val() != "") {
+            array.push({
+                Key: "5",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization5").val(), Designation: $("#txtDesignation5").val(), StartDate: Application.formatDate($("#txtStartDate5").val()), EndDate: Application.formatDate($("#txtEndDate5").val()), Sequence: 5 })
+            });
+        }
+        if ($("#txtOrganization6").val() != undefined && $("#txtOrganization6").val() != "") {
+            array.push({
+                Key: "6",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization6").val(), Designation: $("#txtDesignation6").val(), StartDate: Application.formatDate($("#txtStartDate6").val()), EndDate: Application.formatDate($("#txtEndDate6").val()), Sequence: 6 })
+            });
+        }
         return array;
     },
     validateExperienceDetail: function (list) {
@@ -286,12 +306,9 @@
         var now = new Date();
         var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-        //var yearNow = now.getFullYear();
-        //var monthNow = now.getMonth();
-        //var dateNow = now.getDate();
-        var yearNow = "2018";
-        var monthNow = "06";
-        var dateNow = "01";
+        var yearNow = now.getFullYear();
+        var monthNow = now.getMonth();
+        var dateNow = now.getDate();
         //date must be mm/dd/yyyy
         var dob = new Date(parseInt(dateString.substring(6, 10)),
                             parseInt(dateString.substring(3, 5)) - 1,
@@ -360,5 +377,15 @@
         else ageString = "Oops! Could not calculate age!";
 
         return ageString;
+    },
+    formatDate: function (date) {
+        var formatedDate;
+        if (date != null && date != "" && date != undefined) {
+            formatedDate = date.substring(3, 5) + "/" + date.substring(0, 2) + "/" + date.substring(6, 10);
+        }
+        else {
+            formatedDate = "";
+        }
+        return formatedDate;
     }
 }

@@ -56,6 +56,7 @@
               <Mapping SourceColumn="SupervisotApplicationID" DataSetColumn="SupervisotApplicationID" />
               <Mapping SourceColumn="AsstAOApplicationID" DataSetColumn="AsstAOApplicationID" />
               <Mapping SourceColumn="CreatedDateTime" DataSetColumn="CreatedDateTime" />
+              <Mapping SourceColumn="AadharCardNo" DataSetColumn="AadharCardNo" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -109,7 +110,7 @@
   <xs:element name="NPSSDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="NPSSDataSet" msprop:Generator_UserDSName="NPSSDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_GetApplicationDetail" msprop:Generator_TableClassName="SP_GetApplicationDetailDataTable" msprop:Generator_TableVarName="tableSP_GetApplicationDetail" msprop:Generator_RowChangedName="SP_GetApplicationDetailRowChanged" msprop:Generator_TablePropName="SP_GetApplicationDetail" msprop:Generator_RowDeletingName="SP_GetApplicationDetailRowDeleting" msprop:Generator_RowChangingName="SP_GetApplicationDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_GetApplicationDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_GetApplicationDetailRowDeleted" msprop:Generator_RowClassName="SP_GetApplicationDetailRow" msprop:Generator_UserTableName="SP_GetApplicationDetail" msprop:Generator_RowEvArgName="SP_GetApplicationDetailRowChangeEvent">
+        <xs:element name="SP_GetApplicationDetail" msprop:Generator_TableClassName="SP_GetApplicationDetailDataTable" msprop:Generator_TableVarName="tableSP_GetApplicationDetail" msprop:Generator_TablePropName="SP_GetApplicationDetail" msprop:Generator_RowDeletingName="SP_GetApplicationDetailRowDeleting" msprop:Generator_RowChangingName="SP_GetApplicationDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_GetApplicationDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_GetApplicationDetailRowDeleted" msprop:Generator_UserTableName="SP_GetApplicationDetail" msprop:Generator_RowChangedName="SP_GetApplicationDetailRowChanged" msprop:Generator_RowEvArgName="SP_GetApplicationDetailRowChangeEvent" msprop:Generator_RowClassName="SP_GetApplicationDetailRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ApplicantID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnApplicantID" msprop:Generator_ColumnPropNameInRow="ApplicantID" msprop:Generator_ColumnPropNameInTable="ApplicantIDColumn" msprop:Generator_UserColumnName="ApplicantID" type="xs:int" />
@@ -136,21 +137,21 @@
               </xs:element>
               <xs:element name="BirthDate" msprop:Generator_ColumnVarNameInTable="columnBirthDate" msprop:Generator_ColumnPropNameInRow="BirthDate" msprop:Generator_ColumnPropNameInTable="BirthDateColumn" msprop:Generator_UserColumnName="BirthDate" type="xs:dateTime" />
               <xs:element name="AgeOnApplicationDate" msprop:Generator_ColumnVarNameInTable="columnAgeOnApplicationDate" msprop:Generator_ColumnPropNameInRow="AgeOnApplicationDate" msprop:Generator_ColumnPropNameInTable="AgeOnApplicationDateColumn" msprop:Generator_UserColumnName="AgeOnApplicationDate" type="xs:dateTime" />
-              <xs:element name="BirthPlaceVillage" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceVillage" msprop:Generator_ColumnPropNameInRow="BirthPlaceVillage" msprop:Generator_ColumnPropNameInTable="BirthPlaceVillageColumn" msprop:Generator_UserColumnName="BirthPlaceVillage">
+              <xs:element name="BirthPlaceVillage" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceVillage" msprop:Generator_ColumnPropNameInRow="BirthPlaceVillage" msprop:Generator_ColumnPropNameInTable="BirthPlaceVillageColumn" msprop:Generator_UserColumnName="BirthPlaceVillage" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BirthPlaceCity" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceCity" msprop:Generator_ColumnPropNameInRow="BirthPlaceCity" msprop:Generator_ColumnPropNameInTable="BirthPlaceCityColumn" msprop:Generator_UserColumnName="BirthPlaceCity">
+              <xs:element name="BirthPlaceCity" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceCity" msprop:Generator_ColumnPropNameInRow="BirthPlaceCity" msprop:Generator_ColumnPropNameInTable="BirthPlaceCityColumn" msprop:Generator_UserColumnName="BirthPlaceCity" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BirthPlaceState" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceState" msprop:Generator_ColumnPropNameInRow="BirthPlaceState" msprop:Generator_ColumnPropNameInTable="BirthPlaceStateColumn" msprop:Generator_UserColumnName="BirthPlaceState">
+              <xs:element name="BirthPlaceState" msprop:Generator_ColumnVarNameInTable="columnBirthPlaceState" msprop:Generator_ColumnPropNameInRow="BirthPlaceState" msprop:Generator_ColumnPropNameInTable="BirthPlaceStateColumn" msprop:Generator_UserColumnName="BirthPlaceState" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -302,10 +303,17 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="CreatedDateTime" msprop:Generator_ColumnVarNameInTable="columnCreatedDateTime" msprop:Generator_ColumnPropNameInRow="CreatedDateTime" msprop:Generator_ColumnPropNameInTable="CreatedDateTimeColumn" msprop:Generator_UserColumnName="CreatedDateTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AadharCardNo" msprop:Generator_ColumnVarNameInTable="columnAadharCardNo" msprop:Generator_ColumnPropNameInRow="AadharCardNo" msprop:Generator_ColumnPropNameInTable="AadharCardNoColumn" msprop:Generator_UserColumnName="AadharCardNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_ExpierienceDetail" msprop:Generator_TableClassName="SP_ExpierienceDetailDataTable" msprop:Generator_TableVarName="tableSP_ExpierienceDetail" msprop:Generator_TablePropName="SP_ExpierienceDetail" msprop:Generator_RowDeletingName="SP_ExpierienceDetailRowDeleting" msprop:Generator_RowChangingName="SP_ExpierienceDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_ExpierienceDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ExpierienceDetailRowDeleted" msprop:Generator_UserTableName="SP_ExpierienceDetail" msprop:Generator_RowChangedName="SP_ExpierienceDetailRowChanged" msprop:Generator_RowEvArgName="SP_ExpierienceDetailRowChangeEvent" msprop:Generator_RowClassName="SP_ExpierienceDetailRow">
+        <xs:element name="SP_ExpierienceDetail" msprop:Generator_TableClassName="SP_ExpierienceDetailDataTable" msprop:Generator_TableVarName="tableSP_ExpierienceDetail" msprop:Generator_RowChangedName="SP_ExpierienceDetailRowChanged" msprop:Generator_TablePropName="SP_ExpierienceDetail" msprop:Generator_RowDeletingName="SP_ExpierienceDetailRowDeleting" msprop:Generator_RowChangingName="SP_ExpierienceDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_ExpierienceDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ExpierienceDetailRowDeleted" msprop:Generator_RowClassName="SP_ExpierienceDetailRow" msprop:Generator_UserTableName="SP_ExpierienceDetail" msprop:Generator_RowEvArgName="SP_ExpierienceDetailRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ApplicantEDID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnApplicantEDID" msprop:Generator_ColumnPropNameInRow="ApplicantEDID" msprop:Generator_ColumnPropNameInTable="ApplicantEDIDColumn" msprop:Generator_UserColumnName="ApplicantEDID" type="xs:int" />
@@ -330,11 +338,11 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_QualificationDetail" msprop:Generator_TableClassName="SP_QualificationDetailDataTable" msprop:Generator_TableVarName="tableSP_QualificationDetail" msprop:Generator_RowChangedName="SP_QualificationDetailRowChanged" msprop:Generator_TablePropName="SP_QualificationDetail" msprop:Generator_RowDeletingName="SP_QualificationDetailRowDeleting" msprop:Generator_RowChangingName="SP_QualificationDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_QualificationDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_QualificationDetailRowDeleted" msprop:Generator_RowClassName="SP_QualificationDetailRow" msprop:Generator_UserTableName="SP_QualificationDetail" msprop:Generator_RowEvArgName="SP_QualificationDetailRowChangeEvent">
+        <xs:element name="SP_QualificationDetail" msprop:Generator_TableClassName="SP_QualificationDetailDataTable" msprop:Generator_TableVarName="tableSP_QualificationDetail" msprop:Generator_TablePropName="SP_QualificationDetail" msprop:Generator_RowDeletingName="SP_QualificationDetailRowDeleting" msprop:Generator_RowChangingName="SP_QualificationDetailRowChanging" msprop:Generator_RowEvHandlerName="SP_QualificationDetailRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_QualificationDetailRowDeleted" msprop:Generator_UserTableName="SP_QualificationDetail" msprop:Generator_RowChangedName="SP_QualificationDetailRowChanged" msprop:Generator_RowEvArgName="SP_QualificationDetailRowChangeEvent" msprop:Generator_RowClassName="SP_QualificationDetailRow">
           <xs:complexType>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PASSINGYEAR" msprop:Generator_ColumnVarNameInTable="columnPASSINGYEAR" msprop:Generator_ColumnPropNameInRow="PASSINGYEAR" msprop:Generator_ColumnPropNameInTable="PASSINGYEARColumn" msprop:Generator_UserColumnName="PASSINGYEAR" type="xs:string" minOccurs="0" />
@@ -345,6 +353,7 @@
               <xs:element name="PERCENTAGE" msprop:Generator_ColumnVarNameInTable="columnPERCENTAGE" msprop:Generator_ColumnPropNameInRow="PERCENTAGE" msprop:Generator_ColumnPropNameInTable="PERCENTAGEColumn" msprop:Generator_UserColumnName="PERCENTAGE" type="xs:string" minOccurs="0" />
               <xs:element name="REMARKS" msprop:Generator_ColumnVarNameInTable="columnREMARKS" msprop:Generator_ColumnPropNameInRow="REMARKS" msprop:Generator_ColumnPropNameInTable="REMARKSColumn" msprop:Generator_UserColumnName="REMARKS" type="xs:string" minOccurs="0" />
               <xs:element name="QualificationType" msprop:Generator_ColumnVarNameInTable="columnQualificationType" msprop:Generator_ColumnPropNameInRow="QualificationType" msprop:Generator_ColumnPropNameInTable="QualificationTypeColumn" msprop:Generator_UserColumnName="QualificationType" type="xs:string" minOccurs="0" />
+              <xs:element name="EXAMNAME" msprop:Generator_ColumnVarNameInTable="columnEXAMNAME" msprop:Generator_ColumnPropNameInRow="EXAMNAME" msprop:Generator_ColumnPropNameInTable="EXAMNAMEColumn" msprop:Generator_UserColumnName="EXAMNAME" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -452,6 +452,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             private global::System.Data.DataColumn columnCreatedDateTime;
             
+            private global::System.Data.DataColumn columnAadharCardNo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_GetApplicationDetailDataTable() {
@@ -759,6 +761,14 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AadharCardNoColumn {
+                get {
+                    return this.columnAadharCardNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -827,7 +837,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         int PinCode, 
                         string SupervisotApplicationID, 
                         string AsstAOApplicationID, 
-                        System.DateTime CreatedDateTime) {
+                        System.DateTime CreatedDateTime, 
+                        string AadharCardNo) {
                 SP_GetApplicationDetailRow rowSP_GetApplicationDetailRow = ((SP_GetApplicationDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -863,7 +874,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         PinCode,
                         SupervisotApplicationID,
                         AsstAOApplicationID,
-                        CreatedDateTime};
+                        CreatedDateTime,
+                        AadharCardNo};
                 rowSP_GetApplicationDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_GetApplicationDetailRow);
                 return rowSP_GetApplicationDetailRow;
@@ -927,6 +939,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnSupervisotApplicationID = base.Columns["SupervisotApplicationID"];
                 this.columnAsstAOApplicationID = base.Columns["AsstAOApplicationID"];
                 this.columnCreatedDateTime = base.Columns["CreatedDateTime"];
+                this.columnAadharCardNo = base.Columns["AadharCardNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1000,6 +1013,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 base.Columns.Add(this.columnAsstAOApplicationID);
                 this.columnCreatedDateTime = new global::System.Data.DataColumn("CreatedDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedDateTime);
+                this.columnAadharCardNo = new global::System.Data.DataColumn("AadharCardNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAadharCardNo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnApplicantID}, true));
                 this.columnApplicantID.AutoIncrement = true;
@@ -1014,11 +1029,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnLastName.MaxLength = 50;
                 this.columnBirthDate.AllowDBNull = false;
                 this.columnAgeOnApplicationDate.AllowDBNull = false;
-                this.columnBirthPlaceVillage.AllowDBNull = false;
                 this.columnBirthPlaceVillage.MaxLength = 50;
-                this.columnBirthPlaceCity.AllowDBNull = false;
                 this.columnBirthPlaceCity.MaxLength = 50;
-                this.columnBirthPlaceState.AllowDBNull = false;
                 this.columnBirthPlaceState.MaxLength = 50;
                 this.columnAddress1.AllowDBNull = false;
                 this.columnAddress1.MaxLength = 250;
@@ -1056,6 +1068,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnPinCode.AllowDBNull = false;
                 this.columnSupervisotApplicationID.MaxLength = 50;
                 this.columnAsstAOApplicationID.MaxLength = 50;
+                this.columnAadharCardNo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1792,6 +1805,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             private global::System.Data.DataColumn columnQualificationType;
             
+            private global::System.Data.DataColumn columnEXAMNAME;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable1DataTable() {
@@ -1891,6 +1906,14 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EXAMNAMEColumn {
+                get {
+                    return this.columnEXAMNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1926,7 +1949,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string PASSINGYEAR, string INSTITUTENAME, string NOOFTRIALS, string TOTALMARKS, string MARKS, string PERCENTAGE, string REMARKS, string QualificationType) {
+            public DataTable1Row AddDataTable1Row(string PASSINGYEAR, string INSTITUTENAME, string NOOFTRIALS, string TOTALMARKS, string MARKS, string PERCENTAGE, string REMARKS, string QualificationType, string EXAMNAME) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PASSINGYEAR,
@@ -1936,7 +1959,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         MARKS,
                         PERCENTAGE,
                         REMARKS,
-                        QualificationType};
+                        QualificationType,
+                        EXAMNAME};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -1967,6 +1991,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnPERCENTAGE = base.Columns["PERCENTAGE"];
                 this.columnREMARKS = base.Columns["REMARKS"];
                 this.columnQualificationType = base.Columns["QualificationType"];
+                this.columnEXAMNAME = base.Columns["EXAMNAME"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1988,6 +2013,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 base.Columns.Add(this.columnREMARKS);
                 this.columnQualificationType = new global::System.Data.DataColumn("QualificationType", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQualificationType);
+                this.columnEXAMNAME = new global::System.Data.DataColumn("EXAMNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXAMNAME);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2198,7 +2225,13 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string BirthPlaceVillage {
                 get {
-                    return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BirthPlaceVillage\' in table \'SP_GetApplicationDetail\' is DB" +
+                                "Null.", e);
+                    }
                 }
                 set {
                     this[this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn] = value;
@@ -2209,7 +2242,13 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string BirthPlaceCity {
                 get {
-                    return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceCityColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceCityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BirthPlaceCity\' in table \'SP_GetApplicationDetail\' is DBNul" +
+                                "l.", e);
+                    }
                 }
                 set {
                     this[this.tableSP_GetApplicationDetail.BirthPlaceCityColumn] = value;
@@ -2220,7 +2259,13 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string BirthPlaceState {
                 get {
-                    return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceStateColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_GetApplicationDetail.BirthPlaceStateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BirthPlaceState\' in table \'SP_GetApplicationDetail\' is DBNu" +
+                                "ll.", e);
+                    }
                 }
                 set {
                     this[this.tableSP_GetApplicationDetail.BirthPlaceStateColumn] = value;
@@ -2554,6 +2599,59 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AadharCardNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_GetApplicationDetail.AadharCardNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AadharCardNo\' in table \'SP_GetApplicationDetail\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.AadharCardNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBirthPlaceVillageNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBirthPlaceVillageNull() {
+                this[this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBirthPlaceCityNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.BirthPlaceCityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBirthPlaceCityNull() {
+                this[this.tableSP_GetApplicationDetail.BirthPlaceCityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBirthPlaceStateNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.BirthPlaceStateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBirthPlaceStateNull() {
+                this[this.tableSP_GetApplicationDetail.BirthPlaceStateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEmailIdNull() {
                 return this.IsNull(this.tableSP_GetApplicationDetail.EmailIdColumn);
             }
@@ -2658,6 +2756,18 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCreatedDateTimeNull() {
                 this[this.tableSP_GetApplicationDetail.CreatedDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAadharCardNoNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.AadharCardNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAadharCardNoNull() {
+                this[this.tableSP_GetApplicationDetail.AadharCardNoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2912,6 +3022,22 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EXAMNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.EXAMNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXAMNAME\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.EXAMNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPASSINGYEARNull() {
                 return this.IsNull(this.tableDataTable1.PASSINGYEARColumn);
             }
@@ -3004,6 +3130,18 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQualificationTypeNull() {
                 this[this.tableDataTable1.QualificationTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXAMNAMENull() {
+                return this.IsNull(this.tableDataTable1.EXAMNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXAMNAMENull() {
+                this[this.tableDataTable1.EXAMNAMEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3302,6 +3440,7 @@ namespace NPSSOnlineRecruitmentPortal.Report.NPSSDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("SupervisotApplicationID", "SupervisotApplicationID");
             tableMapping.ColumnMappings.Add("AsstAOApplicationID", "AsstAOApplicationID");
             tableMapping.ColumnMappings.Add("CreatedDateTime", "CreatedDateTime");
+            tableMapping.ColumnMappings.Add("AadharCardNo", "AadharCardNo");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

@@ -49,6 +49,7 @@
     <EntitySetMapping Name="QualificationTypes">
       <EntityTypeMapping TypeName="NPSSModel.QualificationType">
         <MappingFragment StoreEntitySet="QualificationType">
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
           <ScalarProperty Name="QualificationType1" ColumnName="QualificationType" />
           <ScalarProperty Name="QualificationTypeID" ColumnName="QualificationTypeID" />
         </MappingFragment>

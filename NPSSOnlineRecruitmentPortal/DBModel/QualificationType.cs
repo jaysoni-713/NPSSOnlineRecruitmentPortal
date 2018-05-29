@@ -16,5 +16,6 @@ namespace NPSSOnlineRecruitmentPortal.DBModel
     {
         public int QualificationTypeID { get; set; }
         public string QualificationType1 { get; set; }
+        public bool IsRequired { get; set; }
     }
 }
