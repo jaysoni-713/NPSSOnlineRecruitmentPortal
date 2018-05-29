@@ -62,9 +62,54 @@ Body :		Poppins, sans-serif;
     height: 100%;
 }
 
+/***** Loader scss start here *****/
+.loader-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999999999; }
+  .loader-overlay .loader {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 30px;
+    border-radius: 5em;
+    border-color: #0099f0 transparent #0099f0 transparent;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes fade {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+/***** Loader scss end here *****/
+
 .wrapper, body {
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.headerstyle
+{
+    font-weight:bold;
+    color:#03a9f3;
 }
 
 .required

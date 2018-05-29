@@ -5,7 +5,7 @@
         saveapplicationdormurl: "",
         errorPageurl: "",
         homepageurl: "",
-        applicationsuccessful:""
+        applicationsuccessful: ""
     },
     init: function () {
         $(document).ready(function () {
@@ -20,23 +20,29 @@
                 });
             }
 
-            $('#txtBirthDt').datepicker({
-                format: 'mm/dd/yyyy',
-                endDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 1)
-            });
+            $('#txtBirthDt').mask('99/99/9999', { placeholder: "DD/MM/YYYY" });
 
-            $('.expdatepicker').datepicker({
-                format: 'mm/dd/yyyy',
-                endDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 1)
-            });
+            $('#txtAadharCard').mask('9999-9999-9999', { placeholder: "XXXX-XXXX-XXXX" });
 
-            $("#btncontractDateContainer").on("click", function () {
-                $("#txtBirthDt").datepicker('show');
-            });
+            $('.expdatepicker').mask('99/99/9999', { placeholder: "DD/MM/YYYY" });
 
-            $(".expGroupaddon").on("click", function () {
-                $(this).siblings(".expdatepicker").datepicker('show');
-            });
+            //$('#txtBirthDt').datepicker({
+            //    format: 'mm/dd/yyyy',
+            //    endDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 1)
+            //});
+
+            //$('.expdatepicker').datepicker({
+            //    format: 'mm/dd/yyyy',
+            //    endDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 1)
+            //});
+
+            //$("#btncontractDateContainer").on("click", function () {
+            //    $("#txtBirthDt").datepicker('show');
+            //});
+
+            //$(".expGroupaddon").on("click", function () {
+            //    $(this).siblings(".expdatepicker").datepicker('show');
+            //});
 
             $('.QualificationInt').keydown(function (e) {
                 if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -51,10 +57,14 @@
 
             $('#txtBirthDt').focusout(function (e) {
                 if ($('#txtBirthDt').val() != null && $('#txtBirthDt').val() != "" && $('#txtBirthDt').val() != undefined) {
-                    $("#lblAgeAsOnToday").text(Application.getAge($("#txtBirthDt").val()));
+                    //$("#lblAgeAsOnToday").text(Application.getAge($("#txtBirthDt").val()));
+                    $("#btnAgeAsOnToday").text(Application.getAge($("#txtBirthDt").val()));
+                    $("#btnAgeAsOnToday").css("display", "block");
                 }
                 else {
-                    $("#lblAgeAsOnToday").text('');
+                    //$("#lblAgeAsOnToday").text('');
+                    $("#btnAgeAsOnToday").text('');
+                    $("#btnAgeAsOnToday").css("display", "none");
                     Application.options.ApplicantAge = 0;
                 }
             });
@@ -70,86 +80,103 @@
             });
         });
     },
+    confirmSubmit: function () {
+        if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(ExperienceDetail)) {
+            if (Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 45) {
+                $("#modal-center").modal("show");
+            }
+            else {
+                alert("You are not eligible to apply for this post.");
+            }
+        }
+    },
     addBasicDetails: function () {
+        $("#pageloader").css("display", "block");
         var model = {};
         var isAppliedforSupervisor = false;
         var isAppliedForAsstAO = false;
-        if (Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 40) {
-            if (Application.options.postSelection == "1" || Application.options.postSelection == "3") {
-                isAppliedforSupervisor = true;
-            }
-            if (Application.options.postSelection == "2" || Application.options.postSelection == "3") {
-                isAppliedForAsstAO = true;
-            }
-            var QualificationDetail = Application.QualificationDetailsList();
-            var ExperienceDetail = Application.ExperienceDetailsList();
-            model = {
-                postSelected:Application.options.postSelection,
-                Surname: $("#txtSurname").val(),
-                FirstName: $("#txtFirstName").val(),
-                LastName: $("#txtLastName").val(),
-                BirthDate: $("#txtBirthDt").val(),
-                AgeOnApplicationDate: Application.calculateAge(),
-                BirthPlaceVillage: $("#txtBirthVillage").val(),
-                BirthPlaceCity: $("#txtBirthCity").val(),
-                BirthPlaceState: $("#txtBirthState").val(),
-                Address1: $("#txtAddress1").val(),
-                Address2: $("#txtAddress2").val(),
-                Address3: $("#txtAddress3").val(),
-                MobileNumber: $("#txtMobileNo").val(),
-                EmailId: $("#txtEmail").val(),
-                Cast: "",
-                SubCast: "",
-                ImagePath: "",
-                IsAppliedForSupervisor: isAppliedforSupervisor,
-                ISAppliedForAsstAO: isAppliedForAsstAO,
-                Category: $("#ddlCategory").val(),
-                MaritalStaus: $("#ddlMaritalStaus").val(),
-                Title: $("#ddlSalute").val(),
-                Gender: $("#ddlGender").val(),
-                City: $("#ddlAddressCity").val(),
-                District: $("#txtdistrict").val(),
-                Taluka: $("#txttaluka").val(),
-                PinCode: $("#txtPIN").val(),
-                State: $("#drpStateA option:selected").text(),
-                QualificationDetails: QualificationDetail,
-                ExperienceDetails: ExperienceDetail
-            };
-            var jsondata = JSON.stringify({
-                'objApplication': model
-            });
-            if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(ExperienceDetail)) {
-                $.ajax({
-                    url: Application.options.saveapplicationdormurl,
-                    contentType: "application/json; charset=utf-8",
-                    data: jsondata,
-                    async: false,
-                    dataType: "json",
-                    type: "POST",
-                    success: function (result) {
-                        if (result.IsSuccess) {
-                            if (result.IsDuplicate) {
-                                alert("You are already applied for the selected post. Your application number is " + result.ApplicationID.replace("@_@"," & ") + ".");
-                            }
-                            else
-                            {
-                                location.href = Application.options.applicationsuccessful + "?applicantID=" + result.ApplicantID;
-                            }
-                        }
-                        else {
-                            location.href = Application.options.errorPageurl;
-                        }
-                    },
-                    error:function(result)
-                    {
-                        location.href = Application.options.errorPageurl;
+        var QualificationDetail = Application.QualificationDetailsList();
+        var ExperienceDetail = Application.ExperienceDetailsList();
+        //if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(ExperienceDetail)) {
+        //    if (Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 45) {
+        if (Application.options.postSelection == "1" || Application.options.postSelection == "3") {
+            isAppliedforSupervisor = true;
+        }
+        if (Application.options.postSelection == "2" || Application.options.postSelection == "3") {
+            isAppliedForAsstAO = true;
+        }
+        model = {
+            postSelected: Application.options.postSelection,
+            Surname: $("#txtSurname").val().trim(),
+            FirstName: $("#txtFirstName").val().trim(),
+            LastName: $("#txtLastName").val().trim(),
+            BirthDate: Application.formatDate($("#txtBirthDt").val()),
+            AgeOnApplicationDate: Application.calculateAge(),
+            BirthPlaceVillage: "", //$("#txtBirthVillage").val()
+            BirthPlaceCity: "", //$("#txtBirthCity").val()
+            BirthPlaceState: "", //$("#txtBirthState").val()
+            AadharCardNo: $("#txtAadharCard").val(),
+            Address1: $("#txtAddress1").val().trim(),
+            Address2: $("#txtAddress2").val().trim(),
+            Address3: $("#txtAddress3").val().trim(),
+            MobileNumber: $("#txtMobileNo").val(),
+            EmailId: $("#txtEmail").val().trim(),
+            Cast: "",
+            SubCast: "",
+            ImagePath: "",
+            IsAppliedForSupervisor: isAppliedforSupervisor,
+            ISAppliedForAsstAO: isAppliedForAsstAO,
+            Category: $("#ddlCategory").val(),
+            MaritalStaus: $("#ddlMaritalStaus").val(),
+            Title: $("#ddlSalute").val(),
+            Gender: $("#ddlGender").val(),
+            City: $("#ddlAddressCity").val().trim(),
+            District: $("#txtdistrict").val().trim(),
+            Taluka: $("#txttaluka").val().trim(),
+            PinCode: $("#txtPIN").val().trim(),
+            State: $("#drpStateA option:selected").text(),
+            QualificationDetails: QualificationDetail,
+            ExperienceDetails: ExperienceDetail
+        };
+        var jsondata = JSON.stringify({
+            'objApplication': model
+        });
+        $.ajax({
+            url: Application.options.saveapplicationdormurl,
+            contentType: "application/json; charset=utf-8",
+            data: jsondata,
+            async: false,
+            beforeSend: function () {
+                $("#pageloader").css("display", "block");
+            },
+            dataType: "json",
+            type: "POST",
+            success: function (result) {
+                if (result.IsSuccess) {
+                    if (result.IsDuplicate) {
+                        alert("You are already applied for the selected post. Your application number is " + result.ApplicationID.replace("@_@", " & ") + ".");
                     }
-                });
+                    else {
+                        location.href = Application.options.applicationsuccessful + "?applicantID=" + result.ApplicantID;
+                    }
+                }
+                else {
+                    $("#pageloader").css("display", "none");
+                    location.href = Application.options.errorPageurl;
+                }
+            },
+            error: function (result) {
+                $("#pageloader").css("display", "none");
+                location.href = Application.options.errorPageurl;
             }
-        }
-        else {
-            alert("You are not eligible to apply for this post.");
-        }
+        });
+        //}
+        //else {
+        //    $("#pageloader").css("display", "none");
+        //    alert("You are not eligible to apply for this post.");
+        //}
+        //}
+        $("#pageloader").css("display", "none");
     },
     calculateAge: function () {
         return 25;
@@ -232,22 +259,39 @@
         if ($("#txtOrganization1").val() != undefined && $("#txtOrganization1").val() != "") {
             array.push({
                 Key: "1",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization1").val(), Designation: $("#txtDesignation1").val(), StartDate: $("#txtStartDate1").val(), EndDate: $("#txtEndDate1").val(), Sequence: 1 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization1").val(), Designation: $("#txtDesignation1").val(), StartDate: Application.formatDate($("#txtStartDate1").val()), EndDate: Application.formatDate($("#txtEndDate1").val()), Sequence: 1 })
             });
         }
         if ($("#txtOrganization2").val() != undefined && $("#txtOrganization2").val() != "") {
             array.push({
                 Key: "2",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization2").val(), Designation: $("#txtDesignation2").val(), StartDate: $("#txtStartDate2").val(), EndDate: $("#txtEndDate2").val(), Sequence: 2 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization2").val(), Designation: $("#txtDesignation2").val(), StartDate: Application.formatDate($("#txtStartDate2").val()), EndDate: Application.formatDate($("#txtEndDate2").val()), Sequence: 2 })
             });
         }
         if ($("#txtOrganization3").val() != undefined && $("#txtOrganization3").val() != "") {
             array.push({
                 Key: "3",
-                Value: JSON.stringify({ OrganizationName: $("#txtOrganization3").val(), Designation: $("#txtDesignation3").val(), StartDate: $("#txtStartDate3").val(), EndDate: $("#txtEndDate3").val(), Sequence: 3 })
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization3").val(), Designation: $("#txtDesignation3").val(), StartDate: Application.formatDate($("#txtStartDate3").val()), EndDate: Application.formatDate($("#txtEndDate3").val()), Sequence: 3 })
             });
         }
-
+        if ($("#txtOrganization4").val() != undefined && $("#txtOrganization4").val() != "") {
+            array.push({
+                Key: "4",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization4").val(), Designation: $("#txtDesignation4").val(), StartDate: Application.formatDate($("#txtStartDate4").val()), EndDate: Application.formatDate($("#txtEndDate4").val()), Sequence: 4 })
+            });
+        }
+        if ($("#txtOrganization5").val() != undefined && $("#txtOrganization5").val() != "") {
+            array.push({
+                Key: "5",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization5").val(), Designation: $("#txtDesignation5").val(), StartDate: Application.formatDate($("#txtStartDate5").val()), EndDate: Application.formatDate($("#txtEndDate5").val()), Sequence: 5 })
+            });
+        }
+        if ($("#txtOrganization6").val() != undefined && $("#txtOrganization6").val() != "") {
+            array.push({
+                Key: "6",
+                Value: JSON.stringify({ OrganizationName: $("#txtOrganization6").val(), Designation: $("#txtDesignation6").val(), StartDate: Application.formatDate($("#txtStartDate6").val()), EndDate: Application.formatDate($("#txtEndDate6").val()), Sequence: 6 })
+            });
+        }
         return array;
     },
     validateExperienceDetail: function (list) {
@@ -267,8 +311,8 @@
         var dateNow = now.getDate();
         //date must be mm/dd/yyyy
         var dob = new Date(parseInt(dateString.substring(6, 10)),
-                            parseInt(dateString.substring(0, 2)) - 1,
-                           parseInt(dateString.substring(3, 5))
+                            parseInt(dateString.substring(3, 5)) - 1,
+                           parseInt(dateString.substring(0, 2))
                            );
 
         var yearDob = dob.getFullYear();
@@ -307,7 +351,6 @@
             months: monthAge,
             days: dateAge
         };
-        debugger;
         Application.options.ApplicantAge = age.years;
         if (age.years > 1) yearString = " years";
         else yearString = " year";
@@ -318,21 +361,31 @@
 
 
         if ((age.years > 0) && (age.months > 0) && (age.days > 0))
-            ageString = age.years + yearString + ", " + age.months + monthString + ", and " + age.days + dayString + " old.";
+            ageString = age.years + yearString + ", " + age.months + monthString + ", " + age.days + dayString;
         else if ((age.years == 0) && (age.months == 0) && (age.days > 0))
             ageString = "Only " + age.days + dayString + " old!";
         else if ((age.years > 0) && (age.months == 0) && (age.days == 0))
-            ageString = age.years + yearString + " old. Happy Birthday!!";
+            ageString = age.years + yearString + " . Happy Birthday!!";
         else if ((age.years > 0) && (age.months > 0) && (age.days == 0))
-            ageString = age.years + yearString + " and " + age.months + monthString + " old.";
+            ageString = age.years + yearString + " " + age.months + monthString;
         else if ((age.years == 0) && (age.months > 0) && (age.days > 0))
-            ageString = age.months + monthString + " and " + age.days + dayString + " old.";
+            ageString = age.months + monthString + " " + age.days + dayString;
         else if ((age.years > 0) && (age.months == 0) && (age.days > 0))
-            ageString = age.years + yearString + " and " + age.days + dayString + " old.";
+            ageString = age.years + yearString + " " + age.days + dayString;
         else if ((age.years == 0) && (age.months > 0) && (age.days == 0))
-            ageString = age.months + monthString + " old.";
+            ageString = age.months + monthString;
         else ageString = "Oops! Could not calculate age!";
 
         return ageString;
+    },
+    formatDate: function (date) {
+        var formatedDate;
+        if (date != null && date != "" && date != undefined) {
+            formatedDate = date.substring(3, 5) + "/" + date.substring(0, 2) + "/" + date.substring(6, 10);
+        }
+        else {
+            formatedDate = "";
+        }
+        return formatedDate;
     }
 }

@@ -705,16 +705,16 @@
         event.preventDefault();
         var current = $("li.current");
         var span = $(current).find(".step");
-        if (span != undefined && $(span).attr("id").toString().replace("Step_", "") == "1") {
-            if (!Application.validateApplicant(enumeration.firstStepFields, false)) {
-                return false;
-            }
-        }
-        else if (span != undefined && $(span).attr("id").toString().replace("Step_", "") == "2") {
-            if (!Application.validateApplicant(enumeration.secondStepFields, false)) {
-                return false;
-            }
-        }
+        //if (span != undefined && $(span).attr("id").toString().replace("Step_", "") == "1") {
+        //    if (!Application.validateApplicant(enumeration.firstStepFields, false)) {
+        //        return false;
+        //    }
+        //}
+        //else if (span != undefined && $(span).attr("id").toString().replace("Step_", "") == "2") {
+        //    if (!Application.validateApplicant(enumeration.secondStepFields, false)) {
+        //        return false;
+        //    }
+        //}
         var anchor = $(this),
             wizard = anchor.parent().parent().parent().parent(),
             options = getOptions(wizard),
@@ -975,7 +975,7 @@
             buttons += buttonTemplate.format("next", options.labels.next, "btnnext");
 
             if (options.enableFinishButton) {
-                buttons += finishbuttonTemplate.format("finish", options.labels.finish, "btnsubmit", "Application.addBasicDetails();");
+                buttons += finishbuttonTemplate.format("finish", options.labels.finish, "btnsubmit", "Application.confirmSubmit();");
             }
 
             if (options.enableCancelButton) {

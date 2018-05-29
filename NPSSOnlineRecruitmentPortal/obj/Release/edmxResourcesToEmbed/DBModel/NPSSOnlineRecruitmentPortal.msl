@@ -16,46 +16,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ApplicantMasters">
-      <EntityTypeMapping TypeName="NPSSModel.ApplicantMaster">
-        <MappingFragment StoreEntitySet="ApplicantMaster">
-          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
-          <ScalarProperty Name="Taluka" ColumnName="Taluka" />
-          <ScalarProperty Name="District" ColumnName="District" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="AsstAOSeatNumber" ColumnName="AsstAOSeatNumber" />
-          <ScalarProperty Name="AsstAOApplicationID" ColumnName="AsstAOApplicationID" />
-          <ScalarProperty Name="ISAppliedForAsstAO" ColumnName="ISAppliedForAsstAO" />
-          <ScalarProperty Name="SupervisorSeatNumber" ColumnName="SupervisorSeatNumber" />
-          <ScalarProperty Name="SupervisotApplicationID" ColumnName="SupervisotApplicationID" />
-          <ScalarProperty Name="IsAppliedForSupervisor" ColumnName="IsAppliedForSupervisor" />
-          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-          <ScalarProperty Name="MaritalStaus" ColumnName="MaritalStaus" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="SubCast" ColumnName="SubCast" />
-          <ScalarProperty Name="Cast" ColumnName="Cast" />
-          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-          <ScalarProperty Name="Address3" ColumnName="Address3" />
-          <ScalarProperty Name="Address2" ColumnName="Address2" />
-          <ScalarProperty Name="Address1" ColumnName="Address1" />
-          <ScalarProperty Name="BirthPlaceState" ColumnName="BirthPlaceState" />
-          <ScalarProperty Name="BirthPlaceCity" ColumnName="BirthPlaceCity" />
-          <ScalarProperty Name="BirthPlaceVillage" ColumnName="BirthPlaceVillage" />
-          <ScalarProperty Name="AgeOnApplicationDate" ColumnName="AgeOnApplicationDate" />
-          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ApplicantQualificationDetails">
       <EntityTypeMapping TypeName="NPSSModel.ApplicantQualificationDetail">
         <MappingFragment StoreEntitySet="ApplicantQualificationDetails">
@@ -89,6 +49,7 @@
     <EntitySetMapping Name="QualificationTypes">
       <EntityTypeMapping TypeName="NPSSModel.QualificationType">
         <MappingFragment StoreEntitySet="QualificationType">
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
           <ScalarProperty Name="QualificationType1" ColumnName="QualificationType" />
           <ScalarProperty Name="QualificationTypeID" ColumnName="QualificationTypeID" />
         </MappingFragment>
@@ -153,5 +114,55 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SP_QualificationDetail" FunctionName="NPSSModel.Store.SP_QualificationDetail" />
+    <EntitySetMapping Name="EmailFailureBacklogs">
+      <EntityTypeMapping TypeName="NPSSModel.EmailFailureBacklog">
+        <MappingFragment StoreEntitySet="EmailFailureBacklog">
+          <ScalarProperty Name="FailureReason" ColumnName="FailureReason" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+          <ScalarProperty Name="EmailFailureID" ColumnName="EmailFailureID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicantMasters">
+      <EntityTypeMapping TypeName="NPSSModel.ApplicantMaster">
+        <MappingFragment StoreEntitySet="ApplicantMaster">
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AsstAOSeatNumber" ColumnName="AsstAOSeatNumber" />
+          <ScalarProperty Name="AsstAOApplicationID" ColumnName="AsstAOApplicationID" />
+          <ScalarProperty Name="ISAppliedForAsstAO" ColumnName="ISAppliedForAsstAO" />
+          <ScalarProperty Name="SupervisorSeatNumber" ColumnName="SupervisorSeatNumber" />
+          <ScalarProperty Name="SupervisotApplicationID" ColumnName="SupervisotApplicationID" />
+          <ScalarProperty Name="IsAppliedForSupervisor" ColumnName="IsAppliedForSupervisor" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="MaritalStaus" ColumnName="MaritalStaus" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SubCast" ColumnName="SubCast" />
+          <ScalarProperty Name="Cast" ColumnName="Cast" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="AadharCardNo" ColumnName="AadharCardNo" />
+          <ScalarProperty Name="BirthPlaceState" ColumnName="BirthPlaceState" />
+          <ScalarProperty Name="BirthPlaceCity" ColumnName="BirthPlaceCity" />
+          <ScalarProperty Name="BirthPlaceVillage" ColumnName="BirthPlaceVillage" />
+          <ScalarProperty Name="AgeOnApplicationDate" ColumnName="AgeOnApplicationDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -7,19 +7,19 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
-    <section class="content">
-
-
-        <!-- Step wizard -->
+    <section class="content" style="padding-top:0px">
+        <!-- Step wizard --> 
         <div class="box box-default">
+            @*<h4 class="box-title" style="font-weight:bold">
+            <span class="required">*</span> indicates mandatory field.
+            </h4>*@    
             <div class="box-header with-border">
-                <h4 class="box-title">Application Form</h4>
+                <h4 class="box-title">Online Application Form</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body wizard-content">
                 @using (Html.BeginForm(null, null, new { @id = string.Empty }, FormMethod.Post, new { @id = "frmbasicinfo", @class = "tab-wizard wizard-circle" }))
                 {
-
                 <!-- Step 1 -->
                     <h6>
                         <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">ઉમેદવારની માહિતી</p>
@@ -28,7 +28,7 @@
                         <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <div class="col-md-1 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="Label30">Title</span>
+                                    <span id="Label30" class="headerstyle">Title</span>
                                     <span class="required">*</span>
                                     <div id="ValidationSummary2" style="display:none;">
                                     </div>
@@ -42,19 +42,19 @@
                                     <span id="RequiredFieldValidator10" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblSurname">Surname</span>
+                                    <span id="lblSurname" class="headerstyle">Surname</span>
                                     <span class="required">*</span>
                                     <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control" />
                                     <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblFname">First Name</span>
+                                    <span id="lblFname" class="headerstyle">First Name</span>
                                     <span class="required">*</span>
                                     <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control" />
                                     <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblLname">Father/Husband Name</span>
+                                    <span id="lblLname" class="headerstyle">Father/Husband Name</span>
                                     <span class="required">*</span>
                                     <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control" />
                                 </div>
@@ -63,7 +63,7 @@
                         <div class="row table-responsive col-md-12-col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblGender">Gender</span>
+                                    <span id="lblGender" class="headerstyle">Gender</span>
                                     <span class="required">*</span>
                                     <select name="ddlGender" id="ddlGender" tabindex="5" class="form-control">
                                         <option value="Male">Male</option>
@@ -73,7 +73,7 @@
                                     <span id="RequiredFieldValidator8" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblCasteCategory">Category</span>
+                                    <span id="lblCasteCategory" class="headerstyle">Category</span>
                                     <span class="required">*</span>
                                     <select name="ddlCategory" id="ddlCategory" tabindex="6" class="form-control">
                                         <option value="General">General</option>
@@ -85,7 +85,7 @@
                                     <span id="RequiredFieldValidator3321" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblMaritalStaus">Marital Staus</span>
+                                    <span id="lblMaritalStaus" class="headerstyle">Marital Staus</span>
                                     <span class="required">*</span>
                                     <select name="ddlMaritalStaus" id="ddlMaritalStaus" tabindex="7" class="form-control">
                                         <option value="Married">Married</option>
@@ -97,16 +97,16 @@
                                     <span id="RequiredFieldValidator3321" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblDOB">Birth Date</span>
+                                    <span id="lblDOB" class="headerstyle">Birth Date</span>
                                     <span class="required">*</span>
                                     <br />
-                                    <div class="input-group date" id="contractDateContainer">
+                                    @*<div class="input-group date" id="contractDateContainer">
                                         <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
                                         <div class="input-group-addon" id="btncontractDateContainer">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </div>
-                                    </div>
-
+                                    </div>*@
+                                    <input id="txtBirthDt" data-inputmask="'alias': 'date'" tabindex="8" class="form-control" />
                                     @*<div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>*@
@@ -116,36 +116,41 @@
                         </div>
                         <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblBirthVillage">Birth Village</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
+                                    <span id="lblBirthVillage" class="headerstyle">Birth Village</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthVillage" type="text" id="txtBirthVillage" tabindex="9" class="form-control" />
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
-                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblBirthCity">Birth City</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
+                                    <span id="lblBirthCity" class="headerstyle">Birth City</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthCity" type="text" id="txtBirthCity" tabindex="10" class="form-control" />
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
-                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblBirthState">Birth State</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
+                                    <span id="lblBirthState" class="headerstyle">Birth State</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthState" type="text" id="txtBirthState" tabindex="11" class="form-control" />
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblDOB">Age as on Advertisement date </span>
+                                    <span id="lblAadharCard" class="headerstyle QualificationInt">Aadhar Card Number (Optional)</span>
+                                    <input name="txtAadharCard" type="text" id="txtAadharCard" tabindex="12" class="form-control" />
+                                    <span style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblDOB" style="font-weight: bold; color: #03a9f3; font-size: 16px;">Age as on Advertisement date </span>
                                     <br />
-                                    <span id="lblAgeAsOnToday"> </span>
+                                    @*<span id="lblAgeAsOnToday" style="font-weight: bold; color: #03a9f3; font-size: 16px;"> </span>*@
+                                    <a href="javascript:void(0)" title="Agree" id="btnAgeAsOnToday" style="font-weight: bold; font-size: initial; display: none" class="btn btn-info"></a>
                                 </div>
                             </div>
                         </div>
                         <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
-
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblUploadImage">Upload Photo</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
+                                    <span id="lblUploadImage" class="headerstyle">Upload Photo</span>
                                     <span class="required">*</span>
                                     <span class="btn btn-success btn-file">
                                         Browse...<input type="file" name="file" class="form-control">
@@ -162,19 +167,19 @@
                         <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
-                                    <span id="lblAddress1">Address 1</span>
+                                    <span id="lblAddress1" class="headerstyle">Address 1</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress1" type="text" id="txtAddress1" tabindex="1" class="form-control" />
                                     <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
-                                    <span id="lblAddress2">Address 2</span>
+                                    <span id="lblAddress2" class="headerstyle">Address 2</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress2" type="text" id="txtAddress2" tabindex="2" class="form-control" />
                                     <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
-                                    <span id="lblAddress3">Address 3</span>
+                                    <span id="lblAddress3" class="headerstyle">Address 3</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress3" type="text" id="txtAddress3" tabindex="3" class="form-control" />
                                     <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
@@ -184,18 +189,18 @@
                         <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
-                                    <span id="lblAddressCity">City/Village</span>
+                                    <span id="lblAddressCity" class="headerstyle">City / Village</span>
                                     <span class="required">*</span>
                                     <input type="text" id="ddlAddressCity" tabindex="4" class="form-control" style="width: 100%" />
                                     <span id="RequiredFieldValidator14" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
-                                    <span id="lbltaluka">Taluka</span>
+                                    <span id="lbltaluka" class="headerstyle">Taluka</span>
                                     <span class="required">*</span>
                                     <input type="text" id="txttaluka" tabindex="5" class="form-control" style="width: 100%" />
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
-                                    <span id="lbldistrict">District</span>
+                                    <span id="lbldistrict" class="headerstyle">District</span>
                                     <span class="required">*</span>
                                     <input type="text" id="txtdistrict" tabindex="6" class="form-control" style="width: 100%" />
                                 </div>
@@ -206,7 +211,7 @@
                         <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
-                                    <span id="Label33">State </span>
+                                    <span id="Label33" class="headerstyle">State </span>
                                     <span class="required">*</span>
                                     <select name="drpStateA" id="drpStateA" tabindex="7" class="form-control" style="width: 100%">
                                         <option value="0">Select</option>
@@ -250,14 +255,14 @@
                                     <span id="RequiredFieldValidator35" style="display:inline-block;width:1px;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
-                                    <span id="lblPin1">PIN Code</span>
+                                    <span id="lblPin1" class="headerstyle">PIN Code</span>
                                     <span class="required">*</span>
                                     <input name="txtPIN" type="text" maxlength="6" id="txtPIN" tabindex="9" class="form-control QualificationInt" style="width: 100%" />
                                     <span id="RequiredFieldValidator11" style="display:inline-block;width:1px;color:red;display:none;">*</span>
                                     <span id="rngvalidate1" style="visibility:hidden;">Enter Correct PIN</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
-                                    <span id="lblMobileNO">Mobile No</span>
+                                    <span id="lblMobileNO" class="headerstyle">Mobile No</span>
                                     <span class="required">*</span>
                                     <input name="txtMobileNo" type="text" maxlength="10" id="txtMobileNo" tabindex="10" class="form-control QualificationInt" style="width: 100%" />
                                     <span id="RequiredFieldValidator1767" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
@@ -270,10 +275,29 @@
 
                         <div class="table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
-                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
-                                    <span id="lblEmail">Email</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblReTypeMobileNO" class="headerstyle">Re-Type Mobile No</span>
                                     <span class="required">*</span>
-                                    <input name="txtEmail" type="text" id="txtEmail" tabindex="11" class="form-control" style="width: 100%" />
+                                    <input name="txtMobileNo" type="text" maxlength="10" id="txtMobileNo" tabindex="11" class="form-control QualificationInt" style="width: 100%" />
+                                    <span id="RequiredFieldValidator1767" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
+                                    @*<span id="lblmobmsg" style="color:Red;">SMS Alert મેળવવા માટે <br /></span>*@
+                                    <span id="check" style="display:none;">*</span>
+                                    <span id="revtelephone" style="display:none;">*</span>
+                                </div>
+
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblEmail" class="headerstyle">Email</span>
+                                    <span class="required">*</span>
+                                    <input name="txtEmail" type="text" id="txtEmail" tabindex="12" class="form-control" style="width: 100%" />
+                                    <span id="RequiredFieldValidator13453456" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
+                                    @*<span id="Label9" style="color:Red;">Registration details will be sent to Email</span>*@
+                                    <span id="RegularExpressionValidator1" style="color:Red;display:none;">Email Address is not Valid</span>
+                                </div>
+
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
+                                    <span id="lblEmail" class="headerstyle">Re-Type Email</span>
+                                    <span class="required">*</span>
+                                    <input name="txtEmail" type="text" id="txtEmail" tabindex="13" class="form-control" style="width: 100%" />
                                     <span id="RequiredFieldValidator13453456" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
                                     @*<span id="Label9" style="color:Red;">Registration details will be sent to Email</span>*@
                                     <span id="RegularExpressionValidator1" style="color:Red;display:none;">Email Address is not Valid</span>
@@ -283,7 +307,7 @@
                     </section>
                 <!-- Step 3 -->
                     <h6>
-                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">લાયકાતની માહિતી</p>
+                        <p style="color:#03a9f3;font-size:1.3rem;font-weight:bold;">શૈક્ષણિક માહિતી</p>
                     </h6>
                     <section>
                         <table class="table table-bordered">
@@ -293,7 +317,7 @@
                                     @foreach (var item in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
                                     {
                                         <td>
-                                            @item.QualificationHeader1
+                                            <p class="headerstyle">@item.QualificationHeader1</p>
                                         </td>
                                     }
                                 </tr>
@@ -301,16 +325,17 @@
                             <tbody>
                                 @foreach (var item in Model.QualificationTypeList.OrderBy(x => x.QualificationTypeID))
                                 {
+                                    var QualificationTypeRequiredclassName = @item.IsRequired == true ? "QualificationRequired" : "";
                                     <tr>
                                         <td>
-                                            @item.QualificationType1
+                                            <p class="headerstyle">@item.QualificationType1</p>
                                         </td>
                                         @foreach (var HeaderItem in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
                                         {
                                             var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
                                             var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
                                             <td>
-                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className" />
+                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
                                             </td>
                                         }
                                     </tr>
@@ -329,30 +354,32 @@
                                     <span id="exp1">(1)</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization1">Organization</span>
+                                    <span id="lblOrganization1" class="headerstyle">Organization</span>
                                     <input name="txtOrganization1" type="text" id="txtOrganization1" tabindex="1" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblDesignation1">Designation</span>
+                                    <span id="lblDesignation1" class="headerstyle">Designation</span>
                                     <input name="txtDesignation1" type="text" id="txtDesignation1" tabindex="2" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblStartDate1">Start Date</span>
-                                    <div class="input-group date" id="startDate1Container">
+                                    <span id="lblStartDate1" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate1" data-inputmask="'alias': 'date'" tabindex="3" class="form-control expdatepicker" />
+                                    @*<div class="input-group date" id="startDate1Container">
                                         <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker" readonly required />
                                         <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblEndDate1">End Date</span>
-                                    <div class="input-group date" id="endDate1Container">
+                                    <span id="lblEndDate1" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate1" data-inputmask="'alias': 'date'" tabindex="4" class="form-control expdatepicker" />
+                                    @*<div class="input-group date" id="endDate1Container">
                                         <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker" readonly required />
                                         <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -362,30 +389,20 @@
                                     <span id="exp2">(2)</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization2">Organization</span>
+                                    <span id="lblOrganization2" class="headerstyle">Organization</span>
                                     <input name="txtOrganization2" type="text" id="txtOrganization2" tabindex="5" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblDesignation2">Designation</span>
+                                    <span id="lblDesignation2" class="headerstyle">Designation</span>
                                     <input name="txtDesignation2" type="text" id="txtDesignation2" tabindex="6" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblStartDate2">Start Date</span>
-                                    <div class="input-group date" id="startDate2Container">
-                                        <input name="txtStartDate2" type="text" id="txtStartDate2" tabindex="7" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnstartDate2Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
+                                    <span id="lblStartDate2" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate2" data-inputmask="'alias': 'date'" tabindex="7" class="form-control expdatepicker" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblEndDate2">End Date</span>
-                                    <div class="input-group date" id="endDate2Container">
-                                        <input name="txtendDate2" type="text" id="txtEndDate2" tabindex="8" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnendDate2Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
+                                    <span id="lblEndDate2" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate2" data-inputmask="'alias': 'date'" tabindex="8" class="form-control expdatepicker" />
                                 </div>
                             </div>
                         </div>
@@ -395,30 +412,89 @@
                                     <span id="exp3">(3)</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization3">Organization</span>
+                                    <span id="lblOrganization3" class="headerstyle">Organization</span>
                                     <input name="txtOrganization3" type="text" id="txtOrganization3" tabindex="9" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
-                                    <span id="lblDesignation3">Designation</span>
+                                    <span id="lblDesignation3" class="headerstyle">Designation</span>
                                     <input name="txtDesignation3" type="text" id="txtDesignation3" tabindex="10" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblStartDate1">Start Date</span>
-                                    <div class="input-group date" id="startDate1Container">
-                                        <input name="txtStartDate3" type="text" id="txtStartDate3" tabindex="11" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnstartDate3Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
+                                    <span id="lblStartDate3" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate3" data-inputmask="'alias': 'date'" tabindex="11" class="form-control expdatepicker" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
-                                    <span id="lblEndDate1">End Date</span>
-                                    <div class="input-group date" id="endDate3Container">
-                                        <input type="text" id="txtEndDate3" tabindex="12" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnendDate3Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
+                                    <span id="lblEndDate1" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate3" data-inputmask="'alias': 'date'" tabindex="12" class="form-control expdatepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp4">(4)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization4" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization4" type="text" id="txtOrganization4" tabindex="13" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation4" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation4" type="text" id="txtDesignation4" tabindex="14" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate4" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate4" data-inputmask="'alias': 'date'" tabindex="15" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate4" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate4" data-inputmask="'alias': 'date'" tabindex="16" class="form-control expdatepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp5">(5)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization5" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization5" type="text" id="txtOrganization5" tabindex="17" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation5" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation5" type="text" id="txtDesignation5" tabindex="18" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate5" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate5" data-inputmask="'alias': 'date'" tabindex="19" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate5" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate5" data-inputmask="'alias': 'date'" tabindex="20" class="form-control expdatepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
+                                    <span id="exp6">(6)</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblOrganization6" class="headerstyle">Organization</span>
+                                    <input name="txtOrganization6" type="text" id="txtOrganization6" tabindex="21" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
+                                    <span id="lblDesignation6" class="headerstyle">Designation</span>
+                                    <input name="txtDesignation6" type="text" id="txtDesignation5" tabindex="22" class="form-control" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblStartDate6" class="headerstyle">From Date</span>
+                                    <input id="txtStartDate6" data-inputmask="'alias': 'date'" tabindex="23" class="form-control expdatepicker" />
+                                </div>
+                                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
+                                    <span id="lblEndDate6" class="headerstyle">To Date</span>
+                                    <input id="txtEndDate6" data-inputmask="'alias': 'date'" tabindex="24" class="form-control expdatepicker" />
                                 </div>
                             </div>
                         </div>

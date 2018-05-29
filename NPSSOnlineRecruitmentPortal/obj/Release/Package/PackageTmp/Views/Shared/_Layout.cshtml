@@ -15,7 +15,7 @@
     <link href="@Url.Content("~/Content/bootstrap-extend.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/master_style.css")" rel="stylesheet" type="text/css" />*@
     @Styles.Render("~/Content/css");
-    <link href="~/Content/assets/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    @*<link href="~/Content/assets/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />*@
     @*<link rel="stylesheet" href="../../css/master_style.css">*@
     <!-- Fab Admin skins -->
     @*<link rel="stylesheet" href="../../css/skins/_all-skins.css">*@
@@ -28,6 +28,9 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+    <div class="loader-overlay" id="pageloader" style="display: none">
+        <div class="loader"></div>
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -50,6 +53,7 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Application", "Instructions", "Home")</li>
+                <li>@Html.ActionLink("ReportDetail", "ReportDetail", "Home")</li>
             </ul>
         </div>
 
@@ -59,6 +63,32 @@
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
+    <!-- Modal -->
+    <div class="modal" id="modal-center" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Self Declaration (બાંહેધરી)</h5>
+                    <button type="button" class="close" data-dismiss="modal" style="margin-top:-35px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        હું ખાત્રી પૂર્વક જાહેર કરું છું કે
+                        (૧) મને નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદ કે અન્ય સરકારી/અર્ધ સરકારી / સરકાર હસ્તકની કોઈપણ સંસ્થા દ્વારા કયારેય પણ ગેરલાયક ઠરાવેલ નથી કે મારી ગેરલાયકાતનો સમય ચાલુ નથી.
+                        અરજીમાં દર્શાવેલ વિગતો મારી જાણ મુજબ સાચી છે અને જો તેમાં કોઈપણ વિગત ખોટી હશે તો તે અંગે નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદનો નિર્ણય અંતિમ રહેશે અને મને તે મને બંધનકર્તા છે.
+                        (ર) મેં નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદની જાહેરાતના બધા જ નિયમો અને સુચનાઓ વાંચી અને સમજી લીધી છે, જે મને બંધનકર્તા રહેશે. આ ઉપરાંત હું જાહેરાતમાં દર્શાવેલ લાયકાતની શરતોને અનુરૂપ પાત્રતા ધરાવું છુંં.
+                    </p>
+                </div>
+                <div class="modal-footer modal-footer-uniform">
+                    <button type="button" class="btn btn-info float-right" onclick="Application.addBasicDetails();">I Agree</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
     <!-- FastClick -->
     <script src="~/Scripts/fastclick.js"></script>
     @*<script src="../../../assets/vendor_components/fastclick/lib/fastclick.js"></script>*@
@@ -73,12 +103,12 @@
 
 <!-- steps  -->
     <script src="~/Scripts/jquery.steps.js"></script>
-
+    <script src="~/Scripts/jquery.mask.min.js"></script>
     <!-- validate  -->
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <!-- wizard  -->
     <script src="~/Scripts/steps.js"></script>
-    <script src="~/Content/assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    @*<script src="~/Content/assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>*@
     <script src="~/Scripts/Custom/enumeration.js"></script>
     <script src="~/Scripts/Custom/common.js"></script>
     <script>

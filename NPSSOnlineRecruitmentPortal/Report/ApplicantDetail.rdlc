@@ -609,7 +609,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="ઇમેલ : " + First(Fields!EmailId.Value, "DataSet1")</Value>
+                    <Value>="ઇમેલ : " + LCase(First(Fields!EmailId.Value, "DataSet1"))</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>8pt</FontSize>
@@ -942,7 +942,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="( " +First(Fields!FirstName.Value, "DataSet1") + " " + First(Fields!LastName.Value, "DataSet1") + " )"</Value>
+                <Value>="( " +First(Fields!FirstName.Value, "DataSet1") + " " + First(Fields!Surname.Value, "DataSet1") + " )"</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>

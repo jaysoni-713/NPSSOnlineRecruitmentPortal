@@ -22,9 +22,10 @@
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="BirthDate" Type="date" Nullable="false" />
     <Property Name="AgeOnApplicationDate" Type="date" Nullable="false" />
-    <Property Name="BirthPlaceVillage" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="BirthPlaceCity" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="BirthPlaceState" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BirthPlaceVillage" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthPlaceCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthPlaceState" Type="nvarchar" MaxLength="50" />
+    <Property Name="AadharCardNo" Type="nvarchar" MaxLength="50" />
     <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -69,6 +70,14 @@
     <Property Name="AsstAOApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ApplicantID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EmailFailureBacklog">
+    <Key>
+      <PropertyRef Name="EmailFailureID" />
+    </Key>
+    <Property Name="EmailFailureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantID" Type="int" Nullable="false" />
+    <Property Name="FailureReason" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="QualificationHeader">
     <Key>
       <PropertyRef Name="QualificationHeaderID" />
@@ -84,6 +93,7 @@
     </Key>
     <Property Name="QualificationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="QualificationType" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsRequired" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="SupervisorApplicationID">
     <Key>
@@ -113,6 +123,7 @@
     <EntitySet Name="ApplicantMaster" EntityType="Self.ApplicantMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ApplicantQualificationDetails" EntityType="Self.ApplicantQualificationDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AsstAOApplicationID" EntityType="Self.AsstAOApplicationID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailFailureBacklog" EntityType="Self.EmailFailureBacklog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QualificationHeader" EntityType="Self.QualificationHeader" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QualificationType" EntityType="Self.QualificationType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SupervisorApplicationID" EntityType="Self.SupervisorApplicationID" Schema="dbo" store:Type="Tables" />
