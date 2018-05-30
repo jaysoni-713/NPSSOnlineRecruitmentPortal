@@ -144,6 +144,9 @@
     <Property Name="BirthPlaceCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="BirthPlaceState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AadharCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhysicalDisability" Type="Boolean" Nullable="false" />
+    <Property Name="DisabilityPercentage" Type="Int32" Nullable="false" />
+    <Property Name="IsMSBEmp" Type="Boolean" Nullable="false" />
     <Property Name="Address1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Address2" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Address3" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -153,7 +156,6 @@
     <Property Name="SubCast" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MaritalStaus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="IsAppliedForSupervisor" Type="Boolean" Nullable="false" />
     <Property Name="SupervisotApplicationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SupervisorSeatNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -168,6 +170,8 @@
     <Property Name="District" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Taluka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="PinCode" Type="Int32" Nullable="false" />
-    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
 </Schema>

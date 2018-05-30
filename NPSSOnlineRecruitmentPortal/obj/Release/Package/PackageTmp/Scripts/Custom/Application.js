@@ -81,8 +81,8 @@
         });
     },
     confirmSubmit: function () {
-        if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(ExperienceDetail)) {
-            if (Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 45) {
+        if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(Application.ExperienceDetailsList())) {
+            if (Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 40) {
                 $("#modal-center").modal("show");
             }
             else {
@@ -91,6 +91,7 @@
         }
     },
     addBasicDetails: function () {
+        debugger;
         $("#pageloader").css("display", "block");
         var model = {};
         var isAppliedforSupervisor = false;
@@ -145,13 +146,14 @@
             url: Application.options.saveapplicationdormurl,
             contentType: "application/json; charset=utf-8",
             data: jsondata,
-            async: false,
+            //async: false,
             beforeSend: function () {
                 $("#pageloader").css("display", "block");
             },
             dataType: "json",
             type: "POST",
             success: function (result) {
+                debugger;
                 if (result.IsSuccess) {
                     if (result.IsDuplicate) {
                         alert("You are already applied for the selected post. Your application number is " + result.ApplicationID.replace("@_@", " & ") + ".");

@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>F:\project\Publish NPSS</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Projects\MSB\Publish_NPSSOnlineRecruitmentPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Readme/Elmah.txt">
@@ -67,7 +67,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:47:52</publishTime>
     </File>
     <File Include="bin/NPSSOnlineRecruitmentPortal.dll">
-      <publishTime>05/30/2018 02:10:53</publishTime>
+      <publishTime>05/30/2018 02:08:28</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>05/25/2018 13:48:32</publishTime>
@@ -382,22 +382,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 17:55:50</publishTime>
     </File>
     <File Include="Content/Images/TechIssue.jpg">
-      <publishTime>05/27/2018 12:37:02</publishTime>
+      <publishTime>05/27/2018 12:37:00</publishTime>
     </File>
     <File Include="Content/Images/Title.jpg">
       <publishTime>05/25/2018 18:03:18</publishTime>
     </File>
     <File Include="Content/master_style.css">
-      <publishTime>05/29/2018 23:12:50</publishTime>
+      <publishTime>05/30/2018 01:49:51</publishTime>
     </File>
     <File Include="Content/PDF/AgatyaNiSuchna.pdf">
-      <publishTime>05/29/2018 19:45:12</publishTime>
+      <publishTime>05/29/2018 19:45:11</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>05/26/2018 13:31:20</publishTime>
     </File>
     <File Include="DBModel/NPSSOnlineRecruitmentPortal.edmx.diagram">
-      <publishTime>05/29/2018 20:57:24</publishTime>
+      <publishTime>05/29/2018 20:57:22</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>05/25/2018 13:47:06</publishTime>
@@ -421,10 +421,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/26/2018 15:41:34</publishTime>
     </File>
     <File Include="Report/NPSSDataSet.xsc">
-      <publishTime>05/30/2018 01:13:06</publishTime>
+      <publishTime>05/30/2018 01:13:08</publishTime>
     </File>
     <File Include="Report/NPSSDataSet.xss">
-      <publishTime>05/30/2018 01:13:06</publishTime>
+      <publishTime>05/30/2018 01:13:08</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/25/2018 13:47:24</publishTime>
@@ -433,13 +433,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:47:24</publishTime>
     </File>
     <File Include="Scripts/Custom/Application.js">
-      <publishTime>05/30/2018 00:33:00</publishTime>
+      <publishTime>05/30/2018 01:13:42</publishTime>
     </File>
     <File Include="Scripts/Custom/common.js">
-      <publishTime>05/28/2018 00:58:56</publishTime>
+      <publishTime>05/28/2018 00:58:55</publishTime>
     </File>
     <File Include="Scripts/Custom/enumeration.js">
-      <publishTime>05/29/2018 00:39:52</publishTime>
+      <publishTime>05/29/2018 00:39:50</publishTime>
     </File>
     <File Include="Scripts/demo.js">
       <publishTime>05/26/2018 00:05:06</publishTime>
@@ -457,10 +457,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:47:26</publishTime>
     </File>
     <File Include="Scripts/jquery.mask.min.js">
-      <publishTime>05/29/2018 00:25:22</publishTime>
+      <publishTime>05/29/2018 00:25:20</publishTime>
     </File>
     <File Include="Scripts/jquery.steps.js">
-      <publishTime>05/30/2018 00:31:10</publishTime>
+      <publishTime>05/30/2018 00:31:08</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>05/25/2018 13:48:36</publishTime>
@@ -520,28 +520,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:48:16</publishTime>
     </File>
     <File Include="Views/Error/Index.cshtml">
-      <publishTime>05/27/2018 12:45:46</publishTime>
+      <publishTime>05/27/2018 12:45:45</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>05/25/2018 13:47:06</publishTime>
     </File>
     <File Include="Views/Home/Application.cshtml">
-      <publishTime>05/30/2018 00:15:12</publishTime>
+      <publishTime>05/30/2018 01:10:32</publishTime>
     </File>
     <File Include="Views/Home/ApplicationSuccessful.cshtml">
-      <publishTime>05/27/2018 22:06:02</publishTime>
+      <publishTime>05/27/2018 22:06:00</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>05/25/2018 13:47:06</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/28/2018 23:43:40</publishTime>
+      <publishTime>05/28/2018 23:43:39</publishTime>
     </File>
     <File Include="Views/Home/Instructions.cshtml">
-      <publishTime>05/30/2018 00:29:28</publishTime>
+      <publishTime>05/30/2018 00:29:26</publishTime>
     </File>
     <File Include="Views/Home/PostSelection.cshtml">
-      <publishTime>05/29/2018 00:07:16</publishTime>
+      <publishTime>05/29/2018 00:07:14</publishTime>
     </File>
     <File Include="Views/Home/ThemeSamplePage.cshtml">
       <publishTime>05/26/2018 13:41:50</publishTime>
@@ -550,7 +550,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:48:14</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/30/2018 01:09:12</publishTime>
+      <publishTime>05/30/2018 00:30:29</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>05/25/2018 13:48:16</publishTime>
@@ -562,7 +562,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2018 13:47:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/30/2018 02:10:56</publishTime>
+      <publishTime>05/30/2018 02:08:30</publishTime>
     </File>
   </ItemGroup>
 </Project>

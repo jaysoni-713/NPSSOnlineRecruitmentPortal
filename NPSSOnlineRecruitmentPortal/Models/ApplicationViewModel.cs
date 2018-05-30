@@ -19,6 +19,9 @@ namespace NPSSOnlineRecruitmentPortal.Models
         public string BirthPlaceCity { get; set; }
         public string BirthPlaceState { get; set; }
         public string AadharCardNo { get; set; }
+        public bool PhysicalDisability { get; set; }
+        public int DisabilityPercentage { get; set; }
+        public bool IsMSBEmp { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
@@ -26,7 +29,6 @@ namespace NPSSOnlineRecruitmentPortal.Models
         public string EmailId { get; set; }
         public string Cast { get; set; }
         public string SubCast { get; set; }
-        public string ImagePath { get; set; }
         public bool IsAppliedForSupervisor { get; set; }
         public string SupervisorSeatNumber { get; set; }
         public bool ISAppliedForAsstAO { get; set; }
@@ -41,6 +43,8 @@ namespace NPSSOnlineRecruitmentPortal.Models
         public string District { get; set; }
         public string Taluka { get; set; }
         public int PinCode { get; set; }
+        public byte[] photo { get; set; }
+        public byte[] signature { get; set; }
         public List<QualificationType> QualificationTypeList { get; set; }
         public List<QualificationHeader> QualificationHeaderList { get; set; }
         public Dictionary<string, object> QualificationDetails { get; set; }

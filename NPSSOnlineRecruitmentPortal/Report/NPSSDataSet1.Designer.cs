@@ -454,6 +454,16 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             private global::System.Data.DataColumn columnAadharCardNo;
             
+            private global::System.Data.DataColumn columnphoto;
+            
+            private global::System.Data.DataColumn columnsignature;
+            
+            private global::System.Data.DataColumn columnPhysicalDisability;
+            
+            private global::System.Data.DataColumn columnDisabilityPercentage;
+            
+            private global::System.Data.DataColumn columnIsMSBEmp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_GetApplicationDetailDataTable() {
@@ -769,6 +779,46 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn photoColumn {
+                get {
+                    return this.columnphoto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn signatureColumn {
+                get {
+                    return this.columnsignature;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhysicalDisabilityColumn {
+                get {
+                    return this.columnPhysicalDisability;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DisabilityPercentageColumn {
+                get {
+                    return this.columnDisabilityPercentage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsMSBEmpColumn {
+                get {
+                    return this.columnIsMSBEmp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -838,7 +888,12 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         string SupervisotApplicationID, 
                         string AsstAOApplicationID, 
                         System.DateTime CreatedDateTime, 
-                        string AadharCardNo) {
+                        string AadharCardNo, 
+                        byte[] photo, 
+                        byte[] signature, 
+                        bool PhysicalDisability, 
+                        int DisabilityPercentage, 
+                        bool IsMSBEmp) {
                 SP_GetApplicationDetailRow rowSP_GetApplicationDetailRow = ((SP_GetApplicationDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -875,7 +930,12 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         SupervisotApplicationID,
                         AsstAOApplicationID,
                         CreatedDateTime,
-                        AadharCardNo};
+                        AadharCardNo,
+                        photo,
+                        signature,
+                        PhysicalDisability,
+                        DisabilityPercentage,
+                        IsMSBEmp};
                 rowSP_GetApplicationDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_GetApplicationDetailRow);
                 return rowSP_GetApplicationDetailRow;
@@ -940,6 +1000,11 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnAsstAOApplicationID = base.Columns["AsstAOApplicationID"];
                 this.columnCreatedDateTime = base.Columns["CreatedDateTime"];
                 this.columnAadharCardNo = base.Columns["AadharCardNo"];
+                this.columnphoto = base.Columns["photo"];
+                this.columnsignature = base.Columns["signature"];
+                this.columnPhysicalDisability = base.Columns["PhysicalDisability"];
+                this.columnDisabilityPercentage = base.Columns["DisabilityPercentage"];
+                this.columnIsMSBEmp = base.Columns["IsMSBEmp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1015,6 +1080,16 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 base.Columns.Add(this.columnCreatedDateTime);
                 this.columnAadharCardNo = new global::System.Data.DataColumn("AadharCardNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAadharCardNo);
+                this.columnphoto = new global::System.Data.DataColumn("photo", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnphoto);
+                this.columnsignature = new global::System.Data.DataColumn("signature", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsignature);
+                this.columnPhysicalDisability = new global::System.Data.DataColumn("PhysicalDisability", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhysicalDisability);
+                this.columnDisabilityPercentage = new global::System.Data.DataColumn("DisabilityPercentage", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDisabilityPercentage);
+                this.columnIsMSBEmp = new global::System.Data.DataColumn("IsMSBEmp", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsMSBEmp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnApplicantID}, true));
                 this.columnApplicantID.AutoIncrement = true;
@@ -1068,7 +1143,11 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnPinCode.AllowDBNull = false;
                 this.columnSupervisotApplicationID.MaxLength = 50;
                 this.columnAsstAOApplicationID.MaxLength = 50;
+                this.columnCreatedDateTime.AllowDBNull = false;
                 this.columnAadharCardNo.MaxLength = 50;
+                this.columnPhysicalDisability.AllowDBNull = false;
+                this.columnDisabilityPercentage.AllowDBNull = false;
+                this.columnIsMSBEmp.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2584,13 +2663,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime CreatedDateTime {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableSP_GetApplicationDetail.CreatedDateTimeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CreatedDateTime\' in table \'SP_GetApplicationDetail\' is DBNu" +
-                                "ll.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableSP_GetApplicationDetail.CreatedDateTimeColumn]));
                 }
                 set {
                     this[this.tableSP_GetApplicationDetail.CreatedDateTimeColumn] = value;
@@ -2611,6 +2684,71 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 }
                 set {
                     this[this.tableSP_GetApplicationDetail.AadharCardNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] photo {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableSP_GetApplicationDetail.photoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'photo\' in table \'SP_GetApplicationDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.photoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] signature {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableSP_GetApplicationDetail.signatureColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'signature\' in table \'SP_GetApplicationDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.signatureColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool PhysicalDisability {
+                get {
+                    return ((bool)(this[this.tableSP_GetApplicationDetail.PhysicalDisabilityColumn]));
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.PhysicalDisabilityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int DisabilityPercentage {
+                get {
+                    return ((int)(this[this.tableSP_GetApplicationDetail.DisabilityPercentageColumn]));
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.DisabilityPercentageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMSBEmp {
+                get {
+                    return ((bool)(this[this.tableSP_GetApplicationDetail.IsMSBEmpColumn]));
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.IsMSBEmpColumn] = value;
                 }
             }
             
@@ -2748,18 +2886,6 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCreatedDateTimeNull() {
-                return this.IsNull(this.tableSP_GetApplicationDetail.CreatedDateTimeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCreatedDateTimeNull() {
-                this[this.tableSP_GetApplicationDetail.CreatedDateTimeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsAadharCardNoNull() {
                 return this.IsNull(this.tableSP_GetApplicationDetail.AadharCardNoColumn);
             }
@@ -2768,6 +2894,30 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAadharCardNoNull() {
                 this[this.tableSP_GetApplicationDetail.AadharCardNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsphotoNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.photoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetphotoNull() {
+                this[this.tableSP_GetApplicationDetail.photoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssignatureNull() {
+                return this.IsNull(this.tableSP_GetApplicationDetail.signatureColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsignatureNull() {
+                this[this.tableSP_GetApplicationDetail.signatureColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3441,6 +3591,11 @@ namespace NPSSOnlineRecruitmentPortal.Report.NPSSDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("AsstAOApplicationID", "AsstAOApplicationID");
             tableMapping.ColumnMappings.Add("CreatedDateTime", "CreatedDateTime");
             tableMapping.ColumnMappings.Add("AadharCardNo", "AadharCardNo");
+            tableMapping.ColumnMappings.Add("photo", "photo");
+            tableMapping.ColumnMappings.Add("signature", "signature");
+            tableMapping.ColumnMappings.Add("PhysicalDisability", "PhysicalDisability");
+            tableMapping.ColumnMappings.Add("DisabilityPercentage", "DisabilityPercentage");
+            tableMapping.ColumnMappings.Add("IsMSBEmp", "IsMSBEmp");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

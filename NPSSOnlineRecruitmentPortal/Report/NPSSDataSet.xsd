@@ -57,6 +57,11 @@
               <Mapping SourceColumn="AsstAOApplicationID" DataSetColumn="AsstAOApplicationID" />
               <Mapping SourceColumn="CreatedDateTime" DataSetColumn="CreatedDateTime" />
               <Mapping SourceColumn="AadharCardNo" DataSetColumn="AadharCardNo" />
+              <Mapping SourceColumn="photo" DataSetColumn="photo" />
+              <Mapping SourceColumn="signature" DataSetColumn="signature" />
+              <Mapping SourceColumn="PhysicalDisability" DataSetColumn="PhysicalDisability" />
+              <Mapping SourceColumn="DisabilityPercentage" DataSetColumn="DisabilityPercentage" />
+              <Mapping SourceColumn="IsMSBEmp" DataSetColumn="IsMSBEmp" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -302,7 +307,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CreatedDateTime" msprop:Generator_ColumnVarNameInTable="columnCreatedDateTime" msprop:Generator_ColumnPropNameInRow="CreatedDateTime" msprop:Generator_ColumnPropNameInTable="CreatedDateTimeColumn" msprop:Generator_UserColumnName="CreatedDateTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreatedDateTime" msprop:Generator_ColumnVarNameInTable="columnCreatedDateTime" msprop:Generator_ColumnPropNameInRow="CreatedDateTime" msprop:Generator_ColumnPropNameInTable="CreatedDateTimeColumn" msprop:Generator_UserColumnName="CreatedDateTime" type="xs:dateTime" />
               <xs:element name="AadharCardNo" msprop:Generator_ColumnVarNameInTable="columnAadharCardNo" msprop:Generator_ColumnPropNameInRow="AadharCardNo" msprop:Generator_ColumnPropNameInTable="AadharCardNoColumn" msprop:Generator_UserColumnName="AadharCardNo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -310,6 +315,11 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="photo" msprop:Generator_ColumnVarNameInTable="columnphoto" msprop:Generator_ColumnPropNameInRow="photo" msprop:Generator_ColumnPropNameInTable="photoColumn" msprop:Generator_UserColumnName="photo" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="signature" msprop:Generator_ColumnVarNameInTable="columnsignature" msprop:Generator_ColumnPropNameInRow="signature" msprop:Generator_ColumnPropNameInTable="signatureColumn" msprop:Generator_UserColumnName="signature" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="PhysicalDisability" msprop:Generator_ColumnVarNameInTable="columnPhysicalDisability" msprop:Generator_ColumnPropNameInRow="PhysicalDisability" msprop:Generator_ColumnPropNameInTable="PhysicalDisabilityColumn" msprop:Generator_UserColumnName="PhysicalDisability" type="xs:boolean" />
+              <xs:element name="DisabilityPercentage" msprop:Generator_ColumnVarNameInTable="columnDisabilityPercentage" msprop:Generator_ColumnPropNameInRow="DisabilityPercentage" msprop:Generator_ColumnPropNameInTable="DisabilityPercentageColumn" msprop:Generator_UserColumnName="DisabilityPercentage" type="xs:int" />
+              <xs:element name="IsMSBEmp" msprop:Generator_ColumnVarNameInTable="columnIsMSBEmp" msprop:Generator_ColumnPropNameInRow="IsMSBEmp" msprop:Generator_ColumnPropNameInTable="IsMSBEmpColumn" msprop:Generator_UserColumnName="IsMSBEmp" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

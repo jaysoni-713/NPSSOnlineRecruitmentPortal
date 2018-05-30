@@ -7,6 +7,7 @@
             $.ajaxSetup({
                 cache: false,
                 error: function (xhr, status, error) {
+                    $("#pageloader").css("display", "none");
                     location.href = common.options.errorpageurl;
                 }
             });

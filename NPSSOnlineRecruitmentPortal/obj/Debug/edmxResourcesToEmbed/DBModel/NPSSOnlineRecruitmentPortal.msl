@@ -126,6 +126,8 @@
     <EntitySetMapping Name="ApplicantMasters">
       <EntityTypeMapping TypeName="NPSSModel.ApplicantMaster">
         <MappingFragment StoreEntitySet="ApplicantMaster">
+          <ScalarProperty Name="signature" ColumnName="signature" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
           <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
           <ScalarProperty Name="PinCode" ColumnName="PinCode" />
           <ScalarProperty Name="Taluka" ColumnName="Taluka" />
@@ -141,7 +143,6 @@
           <ScalarProperty Name="SupervisorSeatNumber" ColumnName="SupervisorSeatNumber" />
           <ScalarProperty Name="SupervisotApplicationID" ColumnName="SupervisotApplicationID" />
           <ScalarProperty Name="IsAppliedForSupervisor" ColumnName="IsAppliedForSupervisor" />
-          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
           <ScalarProperty Name="MaritalStaus" ColumnName="MaritalStaus" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="SubCast" ColumnName="SubCast" />
@@ -151,6 +152,9 @@
           <ScalarProperty Name="Address3" ColumnName="Address3" />
           <ScalarProperty Name="Address2" ColumnName="Address2" />
           <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="IsMSBEmp" ColumnName="IsMSBEmp" />
+          <ScalarProperty Name="DisabilityPercentage" ColumnName="DisabilityPercentage" />
+          <ScalarProperty Name="PhysicalDisability" ColumnName="PhysicalDisability" />
           <ScalarProperty Name="AadharCardNo" ColumnName="AadharCardNo" />
           <ScalarProperty Name="BirthPlaceState" ColumnName="BirthPlaceState" />
           <ScalarProperty Name="BirthPlaceCity" ColumnName="BirthPlaceCity" />

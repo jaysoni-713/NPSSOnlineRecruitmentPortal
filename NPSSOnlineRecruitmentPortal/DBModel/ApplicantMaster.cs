@@ -24,6 +24,9 @@ namespace NPSSOnlineRecruitmentPortal.DBModel
         public string BirthPlaceCity { get; set; }
         public string BirthPlaceState { get; set; }
         public string AadharCardNo { get; set; }
+        public bool PhysicalDisability { get; set; }
+        public int DisabilityPercentage { get; set; }
+        public bool IsMSBEmp { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
@@ -33,7 +36,6 @@ namespace NPSSOnlineRecruitmentPortal.DBModel
         public string SubCast { get; set; }
         public string Category { get; set; }
         public string MaritalStaus { get; set; }
-        public string ImagePath { get; set; }
         public bool IsAppliedForSupervisor { get; set; }
         public string SupervisotApplicationID { get; set; }
         public string SupervisorSeatNumber { get; set; }
@@ -48,6 +50,8 @@ namespace NPSSOnlineRecruitmentPortal.DBModel
         public string District { get; set; }
         public string Taluka { get; set; }
         public int PinCode { get; set; }
-        public Nullable<System.DateTime> CreatedDateTime { get; set; }
+        public System.DateTime CreatedDateTime { get; set; }
+        public byte[] photo { get; set; }
+        public byte[] signature { get; set; }
     }
 }

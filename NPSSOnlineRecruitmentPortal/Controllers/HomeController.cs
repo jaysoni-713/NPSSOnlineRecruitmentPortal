@@ -13,6 +13,7 @@ using System.Net.Mail;
 using System.IO;
 using Microsoft.Reporting.WebForms;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace NPSSOnlineRecruitmentPortal.Controllers
 {
@@ -49,6 +50,8 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             string ApplicationNumber = string.Empty;
             try
             {
+                byte[] photo = (byte[])TempData["Photo"];
+                byte[] signBytes = (byte[])TempData["Signature"];
                 using (context = new DBModel.NPSSEntities())
                 {
                     if (objApplication != null)
@@ -73,6 +76,9 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
                                 BirthPlaceCity = objApplication.BirthPlaceCity,
                                 BirthPlaceState = objApplication.BirthPlaceState,
                                 AadharCardNo = objApplication.AadharCardNo,
+                                PhysicalDisability = objApplication.PhysicalDisability,
+                                DisabilityPercentage = objApplication.PhysicalDisability ? objApplication.DisabilityPercentage : 0,
+                                IsMSBEmp = objApplication.IsMSBEmp,
                                 Address1 = objApplication.Address1,
                                 Address2 = objApplication.Address2,
                                 Address3 = objApplication.Address3,
@@ -80,7 +86,6 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
                                 EmailId = objApplication.EmailId,
                                 Cast = objApplication.Cast,
                                 SubCast = objApplication.SubCast,
-                                ImagePath = objApplication.ImagePath,
                                 IsAppliedForSupervisor = objApplication.IsAppliedForSupervisor,
                                 SupervisorSeatNumber = objApplication.SupervisorSeatNumber,
                                 ISAppliedForAsstAO = objApplication.ISAppliedForAsstAO,
@@ -95,7 +100,9 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
                                 District = objApplication.District.Trim(),
                                 Taluka = objApplication.Taluka.Trim(),
                                 Country = "INDIA",
-                                CreatedDateTime = DateTime.Now
+                                CreatedDateTime = DateTime.Now,
+                                photo = photo,
+                                signature = signBytes,
                             };
                             context.ApplicantMasters.Add(dbApplication);
                             context.SaveChanges();
@@ -147,6 +154,7 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
 
                             context.UpdateApplicationIDByPost(dbApplication.ApplicantID, objApplication.postSelected);
                             Report("Application Form", dbApplication.ApplicantID, dbApplication.EmailId, objApplication.postSelected, dbApplication);
+                            TempData["key"] = "fromSave";
                         }
                         else
                         {
@@ -182,6 +190,30 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             return Json(new { IsSuccess = true, ApplicantID = ApplicantID, IsDuplicate = IsDuplicateFlag, ApplicationID = ApplicationNumber }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult UploadImages()
+        {
+            HttpPostedFileBase file = Request.Files[0];
+            HttpPostedFileBase file1 = Request.Files[1];
+            if (file != null)
+            {
+                byte[] thePictureAsBytes = new byte[file.ContentLength];
+                using (BinaryReader theReader = new BinaryReader(file.InputStream))
+                {
+                    thePictureAsBytes = theReader.ReadBytes(file.ContentLength);
+                }
+
+                byte[] signBytes = new byte[file1.ContentLength];
+                using (BinaryReader theReader = new BinaryReader(file1.InputStream))
+                {
+                    signBytes = theReader.ReadBytes(file1.ContentLength);
+                }
+                TempData["Photo"] = thePictureAsBytes;
+                TempData["Signature"] = signBytes;
+                return Json(new { IsSuccess = true }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { IsSuccess = false }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Instructions()
         {
             return View();
@@ -200,8 +232,9 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
 
         public ActionResult ApplicationSuccessful(int applicantID = 0)
         {
+            string str = Convert.ToString(TempData["key"] == null ? string.Empty : TempData["key"]);
             ApplicantMaster applicantMaster = new ApplicantMaster();
-            if (applicantID == 0)
+            if (applicantID == 0 || str == "")
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -271,14 +304,15 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
         {
             List<ApplicantMaster> lstappmaster = new List<ApplicantMaster>();
             ApplicantMaster dbApplication;
+            int appId = 1;
             using (context = new NPSSEntities())
             {
-                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + 6).ToList<ApplicantMaster>();
-                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + 6).ToList<ApplicantExperienceDetail>();
-                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + 6).ToList<ApplicationQualificationDetail>();
-                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == 6).FirstOrDefault();
+                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + appId).ToList<ApplicantMaster>();
+                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + appId).ToList<ApplicantExperienceDetail>();
+                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + appId).ToList<ApplicationQualificationDetail>();
+                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == appId).FirstOrDefault();
             }
-            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), 6, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
+            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), appId, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
         }
 
         private void CreatePDF(string fileName, List<ApplicantMaster> ds, string reportFileName, int applicantID, string toMail, string isSuperVisor, ApplicantMaster dbApplication, string ApplicationId)
@@ -327,11 +361,12 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             string subject = ConfigurationManager.AppSettings["Subject"].ToString();
             string body = ConfigurationManager.AppSettings["Body"].ToString();
             string message = body.Replace("@@NewLine", "<br />")
-                .Replace("@@Name", dbApplication.Surname + " " + dbApplication.FirstName + " " + dbApplication.LastName)
-                .Replace("@@Position", isSuperVisor == "true" ? "Supervisor (સુપરવાઇઝર)" : "Assistant Administration Officer (મદદનિશ શાસનાઅધિકારી)")
-                .Replace("@@ApplicationNo", ApplicationId);
+               .Replace("@@Name", dbApplication.Surname + " " + dbApplication.FirstName + " " + dbApplication.LastName)
+               .Replace("@@Position", isSuperVisor == "true" ? "Supervisor (સુપરવાઇઝર)" : "Assistant Administrative Officer (મદદનીશ શાસનાધિકારી)")
+               .Replace("@@ApplicationNo", ApplicationId);
             string Host = ConfigurationManager.AppSettings["Host"].ToString();
             int Port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"].ToString());
+            attachmentFileName = "MSBABD_" + (isSuperVisor == "true" ? "SUPERVISOR_" : "AsstAO_") + ApplicationId;
 
             MailMessage objEmail = new MailMessage();
             try
@@ -370,6 +405,40 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             finally
             {
                 objEmail.Dispose();
+            }
+        }
+
+        public void SendSMS()
+        {
+            using (var web = new System.Net.WebClient())
+            {
+                try
+                {
+                    string userName = "msbabdsms";
+                    string userPassword = "Reset!@#4";
+                    string msgRecepient = "8905455289";
+                    string msgText = "Test";
+                    string strjson = HttpUtility.UrlEncode("{'sms':[{'to':'918905455829','custom':34,'message':'Test','sender':'MSBABD'}]}");
+                    string url = "http://premiumsms.markteq.com/v4/?api_key=A4a416ad5067ff4e0b27e6633404f4a1d&method=sms.json&json=" + strjson;
+                    //string strurl = "http://premiumsms.markteq.com/v4/?api_key=A4a416ad5067ff4e0b27e6633404f4a1d&method=sms&message=Test&sender=msbabd&to=9408754603" + strjson;
+                    //string result = web.DownloadString(url);
+
+                    var http = (HttpWebRequest)WebRequest.Create(url);
+                    http.Method = "POST";
+                    var response = http.GetResponse();
+                    var stream = response.GetResponseStream();
+                    if (true)
+                    {
+                    }
+                    else
+                    {
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Catch and show the exception if needed. Donot supress. :)  
+
+                }
             }
         }
     }
