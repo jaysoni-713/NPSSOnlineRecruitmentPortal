@@ -44,19 +44,19 @@
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblSurname" class="headerstyle">Surname</span>
                                     <span class="required">*</span>
-                                    <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control" />
+                                    <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control OnlyStringTextbox" />
                                     <span id="msgSurname" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
                                     <span id="lblFname" class="headerstyle">First Name</span>
                                     <span class="required">*</span>
-                                    <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control" />
+                                    <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control OnlyStringTextbox" />
                                     <span id="msgFirstName" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
                                     <span id="lblLname" class="headerstyle">Father/Husband Name</span>
                                     <span class="required">*</span>
-                                    <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control" />
+                                    <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control OnlyStringTextbox" />
                                     <span id="msgLastName" style="color:red;display:none;">*</span>
                                 </div>
                             </div>
@@ -98,8 +98,17 @@
                                     <span id="lblDOB" class="headerstyle">Birth Date</span>
                                     <span class="required">*</span>
                                     <br />
+                                    @*<div class="input-group date" id="contractDateContainer">
+                                            <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
+                                            <div class="input-group-addon" id="btncontractDateContainer">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>*@
                                     <input id="txtBirthDt" data-inputmask="'alias': 'date'" tabindex="8" class="form-control DateValidation" />
-                                    <span id="msgBirthDt" style="color:red;display:none;">*</span>
+                                    @*<div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>*@
+                                    @*<input name="txtBirthDt" type="text" id="txtBirthDt" tabindex="8" class="form-control" />*@
                                 </div>
                             </div>
                         </div>
@@ -109,24 +118,24 @@
                                     <span id="lblBirthVillage" class="headerstyle">Birth Village</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthVillage" type="text" id="txtBirthVillage" tabindex="9" class="form-control" />
-                                    <span id="msgBirthVillage" style="color:red;display:none;">*</span>
+                                    <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
                                     <span id="lblBirthCity" class="headerstyle">Birth City</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthCity" type="text" id="txtBirthCity" tabindex="10" class="form-control" />
-                                    <span id="msgBirthCity" style="color:red;display:none;">*</span>
+                                    <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
                                     <span id="lblBirthState" class="headerstyle">Birth State</span>
                                     <span class="required">*</span>
                                     <input name="txtBirthState" type="text" id="txtBirthState" tabindex="11" class="form-control" />
-                                    <span id="msgBirthState" style="color:red;display:none;">*</span>
+                                    <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblAadharCard" class="headerstyle QualificationInt">Aadhar Card Number (Optional)</span>
                                     <input name="txtAadharCard" type="text" id="txtAadharCard" tabindex="12" class="form-control" />
-                                    <span id="msgAadharCard" style="color:red;visibility:hidden;">*</span>
+                                    <span id="msgAadharCard" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblPhysicalDisability" class="headerstyle">Physical Disability</span>
@@ -143,7 +152,7 @@
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblDOB" style="font-weight: bold; color: #03a9f3; font-size: 16px;">Age as on Advertisement date </span>
+                                    <span id="lblDOB" style="font-weight: bold; color: #03a9f3;">Age as on Advertisement date </span>
                                     <br />
                                     @*<span id="lblAgeAsOnToday" style="font-weight: bold; color: #03a9f3; font-size: 16px;"> </span>*@
                                     <a href="javascript:void(0)" title="Agree" id="btnAgeAsOnToday" style="font-weight: bold; font-size: initial; display: none" class="btn btn-info"></a>
@@ -152,25 +161,38 @@
                         </div>
                         <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <input type="checkbox" id="chkIsMSBEmp" class="filled-in" tabindex="15"/>
-                                    <label for="chkIsMSBEmp" class="headerstyle">Are you an Employee of Nagar Prathmik Shikshan Samati,Ahmedabad?</label>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-12">
+                                    <input type="checkbox" id="chkIsMSBEmp" class="filled-in" tabindex="15" />
+                                    <label style=" font-size: 17px;" for="chkIsMSBEmp" class="headerstyle">Are you an Employee of Nagar Prathmik Shikshan Samati, Ahmedabad ?</label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-12">
+                                    <input type="checkbox" id="chkIsAMCEmp" class="filled-in" tabindex="16" />
+                                    <label style=" font-size: 17px;" for="chkIsAMCEmp" class="headerstyle">Are you an Employee of Ahmedabad Muncipal Corporation ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblUploadImage" class="headerstyle">Upload Photo</span>
                                     <span class="required">*</span>
                                     <span class="btn btn-success btn-file">
-                                        Browse...<input type="file" name="file1" id="file1" class="form-control-file" accept=".jpg,.jpeg,.jpe">
+                                        Browse...<input type="file" name="file1" id="file1" tabindex="17" class="form-control-file" accept=".jpg,.jpeg,.jpe">
                                     </span>
-                                    <span id="lblfile1" class="headerstyle" style="margin-left:100px;">No File Chosen</span>
+                                    <span id="lblfile1" class="headerstyle" style="margin-left:100px;">Choose File</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblUploadsign" class="headerstyle">Upload Signature</span>
                                     <span class="required">*</span>
                                     <span class="btn btn-success btn-file">
-                                        Browse...<input type="file" name="file2" id="file2" class="form-control-file" accept=".jpg,.jpeg,.jpe">
+                                        Browse...<input type="file" name="file2" id="file2" tabindex="18" class="form-control-file" accept=".jpg,.jpeg,.jpe">
                                     </span>
-                                    <span id="lblfile2" class="headerstyle" style="margin-left:128px;">No File Chosen</span>
+                                    <span id="lblfile2" class="headerstyle" style="margin-left:128px;">Choose File</span>
                                 </div>
                             </div>
                         </div>
@@ -186,19 +208,19 @@
                                     <span id="lblAddress1" class="headerstyle">Address 1</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress1" type="text" id="txtAddress1" tabindex="1" class="form-control" />
-                                    <span id="msgAddress1" style="color:red;display:none;">*</span>
+                                    <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblAddress2" class="headerstyle">Address 2</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress2" type="text" id="txtAddress2" tabindex="2" class="form-control" />
-                                    <span id="msgAddress2" style="color:red;display:none;">*</span>
+                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblAddress3" class="headerstyle">Address 3</span>
                                     <span class="required">*</span>
                                     <input name="txtAddress3" type="text" id="txtAddress3" tabindex="3" class="form-control" />
-                                    <span id="msgAddress3" style="color:red;display:none;">*</span>
+                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
                                 </div>
                             </div>
                         </div>
@@ -208,19 +230,17 @@
                                     <span id="lblAddressCity" class="headerstyle">City / Village</span>
                                     <span class="required">*</span>
                                     <input type="text" id="ddlAddressCity" tabindex="4" class="form-control" style="width: 100%" />
-                                    <span id="RequiredFieldValidator14" style="color:red;display:none;">*</span>
+                                    <span id="RequiredFieldValidator14" style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
                                     <span id="lbltaluka" class="headerstyle">Taluka</span>
                                     <span class="required">*</span>
                                     <input type="text" id="txttaluka" tabindex="5" class="form-control" style="width: 100%" />
-                                    <span id="msgtaluka" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
                                     <span id="lbldistrict" class="headerstyle">District</span>
                                     <span class="required">*</span>
                                     <input type="text" id="txtdistrict" tabindex="6" class="form-control" style="width: 100%" />
-                                    <span id="msgdistrict" style="color:red;display:none;">*</span>
                                 </div>
 
 
@@ -298,14 +318,12 @@
 
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblEmail" class="headerstyle">Email</span>
-                                    <span class="required">*</span>
                                     <input name="txtEmail" type="text" id="txtEmail" tabindex="12" class="form-control" style="width: 100%" />
                                     <span id="msgEmail" style="color:red;display:none;"></span>
                                 </div>
 
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblEmail" class="headerstyle">Re-Type Email</span>
-                                    <span class="required">*</span>
                                     <input name="txtretypeEmail" type="text" id="txtretypeEmail" tabindex="13" class="form-control retype" style="width: 100%" />
                                     <span id="msgretypeEmail" style="color:red;display:none;"></span>
                                 </div>
@@ -337,21 +355,43 @@
                                         <td>
                                             <p class="headerstyle">
                                                 @item.QualificationType1
-                                            @if (item.IsRequired)
-                                            {
-                                                <span class="required">*</span>
-                                            }
-                                        </p>
-                                    </td>
-                                    @foreach (var HeaderItem in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
-                                    {
-                                        var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
-                                        var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
-                                        <td>
-                                            <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                @if (item.IsRequired)
+                                                {
+                                                    <span class="required">*</span>
+                                                }
+                                            </p>
                                         </td>
-                                    }
-                                </tr>
+                                        @foreach (var HeaderItem in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
+                                        {
+                                            var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
+                                            var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
+                                            <td>
+                                                @if (HeaderItem.QualificationHeaderID == 1 && item.QualificationTypeID == 1)
+                                                {
+                                                    <input type="text" id="@TextboxID" value="@item.QualificationType1" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                }
+                                                else
+                                                {
+                                                    if (HeaderItem.QualificationHeaderID == 5)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName markvalidationclass TTM_@item.QualificationTypeID" />
+                                                    }
+                                                    else if (HeaderItem.QualificationHeaderID == 6)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName OBTM_@item.QualificationTypeID" />
+                                                    }
+                                                    else if (HeaderItem.QualificationHeaderID == 7)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName percentagevalidation" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                    }
+                                                }
+                                            </td>
+                                        }
+                                    </tr>
                                 }
                             </tbody>
                         </table>

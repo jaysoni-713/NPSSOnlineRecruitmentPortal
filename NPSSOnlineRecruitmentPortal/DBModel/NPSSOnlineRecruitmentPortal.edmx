@@ -34,6 +34,7 @@
           <Property Name="PhysicalDisability" Type="bit" Nullable="false" />
           <Property Name="DisabilityPercentage" Type="int" Nullable="false" />
           <Property Name="IsMSBEmp" Type="bit" Nullable="false" />
+          <Property Name="IsAMCEmp" Type="bit" Nullable="false" />
           <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -288,6 +289,7 @@
           <Property Name="PhysicalDisability" Type="Boolean" Nullable="false" />
           <Property Name="DisabilityPercentage" Type="Int32" Nullable="false" />
           <Property Name="IsMSBEmp" Type="Boolean" Nullable="false" />
+          <Property Name="IsAMCEmp" Type="Boolean" Nullable="false" />
           <Property Name="Address1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Address2" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Address3" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -472,6 +474,7 @@
                 <ScalarProperty Name="Address3" ColumnName="Address3" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="IsAMCEmp" ColumnName="IsAMCEmp" />
                 <ScalarProperty Name="IsMSBEmp" ColumnName="IsMSBEmp" />
                 <ScalarProperty Name="DisabilityPercentage" ColumnName="DisabilityPercentage" />
                 <ScalarProperty Name="PhysicalDisability" ColumnName="PhysicalDisability" />

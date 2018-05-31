@@ -8,17 +8,17 @@
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="content" style="padding-top:0px">
-        <!-- Step wizard --> 
+        <!-- Step wizard -->
         <div class="box box-default">
             @*<h4 class="box-title" style="font-weight:bold">
-            <span class="required">*</span> indicates mandatory field.
-            </h4>*@    
+                <span class="required">*</span> indicates mandatory field.
+                </h4>*@
             <div class="box-header with-border">
                 <h4 class="box-title">Online Application Form</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body wizard-content">
-                @using (Html.BeginForm(null, null, new { @id = string.Empty }, FormMethod.Post, new { @id = "frmbasicinfo", @class = "tab-wizard wizard-circle" }))
+                @using (Html.BeginForm(null, null, new { @id = string.Empty }, FormMethod.Post, new { @id = "frmbasicinfo", @class = "tab-wizard wizard-circle", @enctype = "multipart/form-data" }))
                 {
                 <!-- Step 1 -->
                     <h6>
@@ -44,19 +44,20 @@
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblSurname" class="headerstyle">Surname</span>
                                     <span class="required">*</span>
-                                    <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control" />
-                                    <span id="RequiredFieldValidator1" style="color:red;visibility:hidden;">*</span>
+                                    <input name="txtSurname" type="text" id="txtSurname" tabindex="2" class="form-control OnlyStringTextbox" />
+                                    <span id="msgSurname" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
                                     <span id="lblFname" class="headerstyle">First Name</span>
                                     <span class="required">*</span>
-                                    <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control" />
-                                    <span id="RequiredFieldValidator2" style="color:red;visibility:hidden;">*</span>
+                                    <input name="txtFirstName" type="text" id="txtFirstName" tabindex="3" class="form-control OnlyStringTextbox" />
+                                    <span id="msgFirstName" style="color:red;display:none;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
                                     <span id="lblLname" class="headerstyle">Father/Husband Name</span>
                                     <span class="required">*</span>
-                                    <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control" />
+                                    <input name="txtLastName" type="text" id="txtLastName" tabindex="4" class="form-control OnlyStringTextbox" />
+                                    <span id="msgLastName" style="color:red;display:none;">*</span>
                                 </div>
                             </div>
                         </div>
@@ -78,9 +79,6 @@
                                     <select name="ddlCategory" id="ddlCategory" tabindex="6" class="form-control">
                                         <option value="General">General</option>
                                         <option value="SC">SC</option>
-                                        <option value="SEBC">SEBC</option>
-                                        <option value="ST">ST</option>
-
                                     </select>
                                     <span id="RequiredFieldValidator3321" style="color:red;visibility:hidden;">*</span>
                                 </div>
@@ -101,12 +99,12 @@
                                     <span class="required">*</span>
                                     <br />
                                     @*<div class="input-group date" id="contractDateContainer">
-                                        <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
-                                        <div class="input-group-addon" id="btncontractDateContainer">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>*@
-                                    <input id="txtBirthDt" data-inputmask="'alias': 'date'" tabindex="8" class="form-control" />
+                                            <input type="text" id="txtBirthDt" tabindex="8" class="form-control datepicker" readonly>
+                                            <div class="input-group-addon" id="btncontractDateContainer">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>*@
+                                    <input id="txtBirthDt" data-inputmask="'alias': 'date'" tabindex="8" class="form-control DateValidation" />
                                     @*<div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>*@
@@ -137,10 +135,24 @@
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblAadharCard" class="headerstyle QualificationInt">Aadhar Card Number (Optional)</span>
                                     <input name="txtAadharCard" type="text" id="txtAadharCard" tabindex="12" class="form-control" />
+                                    <span id="msgAadharCard" style="color:red;display:none;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblPhysicalDisability" class="headerstyle">Physical Disability</span>
+                                    <span class="required">*</span>
+                                    <select name="ddlPhysicalDisability" id="ddlPhysicalDisability" tabindex="13" class="form-control">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+                                    </select>
                                     <span style="color:red;visibility:hidden;">*</span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblDOB" style="font-weight: bold; color: #03a9f3; font-size: 16px;">Age as on Advertisement date </span>
+                                    <span id="lblDisabilityPercentage" class="headerstyle">Disability Percentage (%)</span>
+                                    <input name="txtDisabilityPercentage" type="text" id="txtDisabilityPercentage" tabindex="14" class="form-control QualificationInt" />
+                                    <span style="color:red;visibility:hidden;">*</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblDOB" style="font-weight: bold; color: #03a9f3;">Age as on Advertisement date </span>
                                     <br />
                                     @*<span id="lblAgeAsOnToday" style="font-weight: bold; color: #03a9f3; font-size: 16px;"> </span>*@
                                     <a href="javascript:void(0)" title="Agree" id="btnAgeAsOnToday" style="font-weight: bold; font-size: initial; display: none" class="btn btn-info"></a>
@@ -149,12 +161,38 @@
                         </div>
                         <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3" style="display:none">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-12">
+                                    <input type="checkbox" id="chkIsMSBEmp" class="filled-in" tabindex="15" />
+                                    <label style=" font-size: 17px;" for="chkIsMSBEmp" class="headerstyle">Are you an Employee of Nagar Prathmik Shikshan Samati, Ahmedabad ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-12">
+                                    <input type="checkbox" id="chkIsAMCEmp" class="filled-in" tabindex="16" />
+                                    <label style=" font-size: 17px;" for="chkIsAMCEmp" class="headerstyle">Are you an Employee of Ahmedabad Muncipal Corporation ?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row table-responsive col-md-12 col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
                                     <span id="lblUploadImage" class="headerstyle">Upload Photo</span>
                                     <span class="required">*</span>
                                     <span class="btn btn-success btn-file">
-                                        Browse...<input type="file" name="file" class="form-control">
+                                        Browse...<input type="file" name="file1" id="file1" tabindex="17" class="form-control-file" accept=".jpg,.jpeg,.jpe">
                                     </span>
+                                    <span id="lblfile1" class="headerstyle" style="margin-left:100px;">Choose File</span>
+                                </div>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
+                                    <span id="lblUploadsign" class="headerstyle">Upload Signature</span>
+                                    <span class="required">*</span>
+                                    <span class="btn btn-success btn-file">
+                                        Browse...<input type="file" name="file2" id="file2" tabindex="18" class="form-control-file" accept=".jpg,.jpeg,.jpe">
+                                    </span>
+                                    <span id="lblfile2" class="headerstyle" style="margin-left:128px;">Choose File</span>
                                 </div>
                             </div>
                         </div>
@@ -258,17 +296,13 @@
                                     <span id="lblPin1" class="headerstyle">PIN Code</span>
                                     <span class="required">*</span>
                                     <input name="txtPIN" type="text" maxlength="6" id="txtPIN" tabindex="9" class="form-control QualificationInt" style="width: 100%" />
-                                    <span id="RequiredFieldValidator11" style="display:inline-block;width:1px;color:red;display:none;">*</span>
-                                    <span id="rngvalidate1" style="visibility:hidden;">Enter Correct PIN</span>
+                                    <span id="msgPIN" style="color:red;display:none;"></span>
                                 </div>
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
                                     <span id="lblMobileNO" class="headerstyle">Mobile No</span>
                                     <span class="required">*</span>
                                     <input name="txtMobileNo" type="text" maxlength="10" id="txtMobileNo" tabindex="10" class="form-control QualificationInt" style="width: 100%" />
-                                    <span id="RequiredFieldValidator1767" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
-                                    @*<span id="lblmobmsg" style="color:Red;">SMS Alert મેળવવા માટે <br /></span>*@
-                                    <span id="check" style="display:none;">*</span>
-                                    <span id="revtelephone" style="display:none;">*</span>
+                                    <span id="msgMobileNo" style="color:red;display:none;"></span>
                                 </div>
                             </div>
                         </div>
@@ -278,29 +312,20 @@
                                 <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
                                     <span id="lblReTypeMobileNO" class="headerstyle">Re-Type Mobile No</span>
                                     <span class="required">*</span>
-                                    <input name="txtMobileNo" type="text" maxlength="10" id="txtMobileNo" tabindex="11" class="form-control QualificationInt" style="width: 100%" />
-                                    <span id="RequiredFieldValidator1767" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
-                                    @*<span id="lblmobmsg" style="color:Red;">SMS Alert મેળવવા માટે <br /></span>*@
-                                    <span id="check" style="display:none;">*</span>
-                                    <span id="revtelephone" style="display:none;">*</span>
+                                    <input name="txtretypeMobileNo" type="text" maxlength="10" id="txtretypeMobileNo" tabindex="11" class="form-control QualificationInt retype" style="width: 100%" />
+                                    <span id="msgretypeMobileNo" style="color:red;display:none;"></span>
                                 </div>
 
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblEmail" class="headerstyle">Email</span>
-                                    <span class="required">*</span>
                                     <input name="txtEmail" type="text" id="txtEmail" tabindex="12" class="form-control" style="width: 100%" />
-                                    <span id="RequiredFieldValidator13453456" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
-                                    @*<span id="Label9" style="color:Red;">Registration details will be sent to Email</span>*@
-                                    <span id="RegularExpressionValidator1" style="color:Red;display:none;">Email Address is not Valid</span>
+                                    <span id="msgEmail" style="color:red;display:none;"></span>
                                 </div>
 
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-4">
                                     <span id="lblEmail" class="headerstyle">Re-Type Email</span>
-                                    <span class="required">*</span>
-                                    <input name="txtEmail" type="text" id="txtEmail" tabindex="13" class="form-control" style="width: 100%" />
-                                    <span id="RequiredFieldValidator13453456" style="display:inline-block;width:1px;color:red;visibility:hidden;">*</span>
-                                    @*<span id="Label9" style="color:Red;">Registration details will be sent to Email</span>*@
-                                    <span id="RegularExpressionValidator1" style="color:Red;display:none;">Email Address is not Valid</span>
+                                    <input name="txtretypeEmail" type="text" id="txtretypeEmail" tabindex="13" class="form-control retype" style="width: 100%" />
+                                    <span id="msgretypeEmail" style="color:red;display:none;"></span>
                                 </div>
                             </div>
                         </div>
@@ -328,14 +353,42 @@
                                     var QualificationTypeRequiredclassName = @item.IsRequired == true ? "QualificationRequired" : "";
                                     <tr>
                                         <td>
-                                            <p class="headerstyle">@item.QualificationType1</p>
+                                            <p class="headerstyle">
+                                                @item.QualificationType1
+                                                @if (item.IsRequired)
+                                                {
+                                                    <span class="required">*</span>
+                                                }
+                                            </p>
                                         </td>
                                         @foreach (var HeaderItem in Model.QualificationHeaderList.OrderBy(x => x.QualificationHeaderID))
                                         {
                                             var TextboxID = @item.QualificationTypeID + "_" + @HeaderItem.QualificationHeaderID;
                                             var className = @HeaderItem.FIELDTYPE == true ? "QualificationInt" : "QualificationString";
                                             <td>
-                                                <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                @if (HeaderItem.QualificationHeaderID == 1 && item.QualificationTypeID == 1)
+                                                {
+                                                    <input type="text" id="@TextboxID" value="@item.QualificationType1" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                }
+                                                else
+                                                {
+                                                    if (HeaderItem.QualificationHeaderID == 5)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName markvalidationclass TTM_@item.QualificationTypeID" />
+                                                    }
+                                                    else if (HeaderItem.QualificationHeaderID == 6)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName OBTM_@item.QualificationTypeID" />
+                                                    }
+                                                    else if (HeaderItem.QualificationHeaderID == 7)
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName percentagevalidation" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="@TextboxID" class="form-control ApplicantQualificationDetails @className @QualificationTypeRequiredclassName" />
+                                                    }
+                                                }
                                             </td>
                                         }
                                     </tr>
@@ -353,8 +406,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp1">(1)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization1" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization1" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization1" type="text" id="txtOrganization1" tabindex="1" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -363,23 +416,23 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate1" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate1" data-inputmask="'alias': 'date'" tabindex="3" class="form-control expdatepicker" />
+                                    <input id="txtStartDate1" data-inputmask="'alias': 'date'" tabindex="3" class="form-control expdatepicker DateValidation" />
                                     @*<div class="input-group date" id="startDate1Container">
-                                        <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>*@
+                                            <input name="txtStartDate1" type="text" id="txtStartDate1" tabindex="3" class="form-control expdatepicker DateValidation" readonly required />
+                                            <div class="input-group-addon expGroupaddon" id="btnstartDate1Container">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>*@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate1" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate1" data-inputmask="'alias': 'date'" tabindex="4" class="form-control expdatepicker" />
+                                    <input id="txtEndDate1" data-inputmask="'alias': 'date'" tabindex="4" class="form-control expdatepicker DateValidation" />
                                     @*<div class="input-group date" id="endDate1Container">
-                                        <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker" readonly required />
-                                        <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </div>
-                                    </div>*@
+                                            <input name="txtendDate1" type="text" id="txtEndDate1" tabindex="4" class="form-control expdatepicker DateValidation" readonly required />
+                                            <div class="input-group-addon expGroupaddon" id="btnendDate1Container">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>*@
                                 </div>
                             </div>
                         </div>
@@ -388,8 +441,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp2">(2)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization2" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization2" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization2" type="text" id="txtOrganization2" tabindex="5" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -398,11 +451,11 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate2" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate2" data-inputmask="'alias': 'date'" tabindex="7" class="form-control expdatepicker" />
+                                    <input id="txtStartDate2" data-inputmask="'alias': 'date'" tabindex="7" class="form-control expdatepicker DateValidation" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate2" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate2" data-inputmask="'alias': 'date'" tabindex="8" class="form-control expdatepicker" />
+                                    <input id="txtEndDate2" data-inputmask="'alias': 'date'" tabindex="8" class="form-control expdatepicker DateValidation" />
                                 </div>
                             </div>
                         </div>
@@ -411,8 +464,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp3">(3)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization3" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization3" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization3" type="text" id="txtOrganization3" tabindex="9" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -421,11 +474,11 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate3" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate3" data-inputmask="'alias': 'date'" tabindex="11" class="form-control expdatepicker" />
+                                    <input id="txtStartDate3" data-inputmask="'alias': 'date'" tabindex="11" class="form-control expdatepicker DateValidation" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate1" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate3" data-inputmask="'alias': 'date'" tabindex="12" class="form-control expdatepicker" />
+                                    <input id="txtEndDate3" data-inputmask="'alias': 'date'" tabindex="12" class="form-control expdatepicker DateValidation" />
                                 </div>
                             </div>
                         </div>
@@ -434,8 +487,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp4">(4)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization4" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization4" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization4" type="text" id="txtOrganization4" tabindex="13" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -444,11 +497,11 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate4" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate4" data-inputmask="'alias': 'date'" tabindex="15" class="form-control expdatepicker" />
+                                    <input id="txtStartDate4" data-inputmask="'alias': 'date'" tabindex="15" class="form-control expdatepicker DateValidation" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate4" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate4" data-inputmask="'alias': 'date'" tabindex="16" class="form-control expdatepicker" />
+                                    <input id="txtEndDate4" data-inputmask="'alias': 'date'" tabindex="16" class="form-control expdatepicker DateValidation" />
                                 </div>
                             </div>
                         </div>
@@ -457,8 +510,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp5">(5)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization5" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization5" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization5" type="text" id="txtOrganization5" tabindex="17" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -467,11 +520,11 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate5" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate5" data-inputmask="'alias': 'date'" tabindex="19" class="form-control expdatepicker" />
+                                    <input id="txtStartDate5" data-inputmask="'alias': 'date'" tabindex="19" class="form-control expdatepicker DateValidation" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate5" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate5" data-inputmask="'alias': 'date'" tabindex="20" class="form-control expdatepicker" />
+                                    <input id="txtEndDate5" data-inputmask="'alias': 'date'" tabindex="20" class="form-control expdatepicker DateValidation" />
                                 </div>
                             </div>
                         </div>
@@ -480,8 +533,8 @@
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2" style=" margin-top: 22px; font-size: 1.2em; width: 5%;">
                                     <span id="exp6">(6)</span>
                                 </div>
-                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-3">
-                                    <span id="lblOrganization6" class="headerstyle">Organization</span>
+                                <div class="col-md-2 col-xs-6 col-sm-6 col-lg-4">
+                                    <span id="lblOrganization6" class="headerstyle">Organization Name</span>
                                     <input name="txtOrganization6" type="text" id="txtOrganization6" tabindex="21" class="form-control" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-3">
@@ -490,11 +543,11 @@
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblStartDate6" class="headerstyle">From Date</span>
-                                    <input id="txtStartDate6" data-inputmask="'alias': 'date'" tabindex="23" class="form-control expdatepicker" />
+                                    <input id="txtStartDate6" data-inputmask="'alias': 'date'" tabindex="23" class="form-control expdatepicker DateValidation" />
                                 </div>
                                 <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2">
                                     <span id="lblEndDate6" class="headerstyle">To Date</span>
-                                    <input id="txtEndDate6" data-inputmask="'alias': 'date'" tabindex="24" class="form-control expdatepicker" />
+                                    <input id="txtEndDate6" data-inputmask="'alias': 'date'" tabindex="24" class="form-control expdatepicker DateValidation" />
                                 </div>
                             </div>
                         </div>
@@ -512,9 +565,10 @@
 @Scripts.Render("~/bundles/Application")
 <script>
     Application.init();
-    Application.options.postSelection = @Convert.ToString(ViewBag.postSelection);
+    Application.options.postSelection = "@Convert.ToString(ViewBag.postSelection)";
     Application.options.saveapplicationdormurl = "@Url.Action("Application", "Home")";
     Application.options.errorPageurl = "@Url.Action("Index", "Error")";
     Application.options.homepageurl = "@Url.Action("Index", "Home")";
     Application.options.applicationsuccessful = "@Url.Action("ApplicationSuccessful", "Home")";
+    Application.options.uploadImagesurl = "@Url.Action("UploadImages", "Home")";
 </script>

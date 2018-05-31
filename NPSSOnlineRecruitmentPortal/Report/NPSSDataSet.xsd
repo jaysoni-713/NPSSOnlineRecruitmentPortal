@@ -62,6 +62,7 @@
               <Mapping SourceColumn="PhysicalDisability" DataSetColumn="PhysicalDisability" />
               <Mapping SourceColumn="DisabilityPercentage" DataSetColumn="DisabilityPercentage" />
               <Mapping SourceColumn="IsMSBEmp" DataSetColumn="IsMSBEmp" />
+              <Mapping SourceColumn="IsAMCEmp" DataSetColumn="IsAMCEmp" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -87,6 +88,7 @@
               <Mapping SourceColumn="StartDate" DataSetColumn="StartDate" />
               <Mapping SourceColumn="EndDate" DataSetColumn="EndDate" />
               <Mapping SourceColumn="Sequence" DataSetColumn="Sequence" />
+              <Mapping SourceColumn="Duration" DataSetColumn="Duration" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -320,6 +322,7 @@
               <xs:element name="PhysicalDisability" msprop:Generator_ColumnVarNameInTable="columnPhysicalDisability" msprop:Generator_ColumnPropNameInRow="PhysicalDisability" msprop:Generator_ColumnPropNameInTable="PhysicalDisabilityColumn" msprop:Generator_UserColumnName="PhysicalDisability" type="xs:boolean" />
               <xs:element name="DisabilityPercentage" msprop:Generator_ColumnVarNameInTable="columnDisabilityPercentage" msprop:Generator_ColumnPropNameInRow="DisabilityPercentage" msprop:Generator_ColumnPropNameInTable="DisabilityPercentageColumn" msprop:Generator_UserColumnName="DisabilityPercentage" type="xs:int" />
               <xs:element name="IsMSBEmp" msprop:Generator_ColumnVarNameInTable="columnIsMSBEmp" msprop:Generator_ColumnPropNameInRow="IsMSBEmp" msprop:Generator_ColumnPropNameInTable="IsMSBEmpColumn" msprop:Generator_UserColumnName="IsMSBEmp" type="xs:boolean" />
+              <xs:element name="IsAMCEmp" msprop:Generator_ColumnVarNameInTable="columnIsAMCEmp" msprop:Generator_ColumnPropNameInRow="IsAMCEmp" msprop:Generator_ColumnPropNameInTable="IsAMCEmpColumn" msprop:Generator_UserColumnName="IsAMCEmp" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -345,6 +348,13 @@
               <xs:element name="StartDate" msprop:Generator_ColumnVarNameInTable="columnStartDate" msprop:Generator_ColumnPropNameInRow="StartDate" msprop:Generator_ColumnPropNameInTable="StartDateColumn" msprop:Generator_UserColumnName="StartDate" type="xs:dateTime" />
               <xs:element name="EndDate" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" msprop:Generator_UserColumnName="EndDate" type="xs:dateTime" />
               <xs:element name="Sequence" msprop:Generator_ColumnVarNameInTable="columnSequence" msprop:Generator_ColumnPropNameInRow="Sequence" msprop:Generator_ColumnPropNameInTable="SequenceColumn" msprop:Generator_UserColumnName="Sequence" type="xs:int" />
+              <xs:element name="Duration" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDuration" msprop:Generator_ColumnPropNameInRow="Duration" msprop:Generator_ColumnPropNameInTable="DurationColumn" msprop:Generator_UserColumnName="Duration" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

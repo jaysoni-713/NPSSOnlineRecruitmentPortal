@@ -147,6 +147,7 @@
     <Property Name="PhysicalDisability" Type="Boolean" Nullable="false" />
     <Property Name="DisabilityPercentage" Type="Int32" Nullable="false" />
     <Property Name="IsMSBEmp" Type="Boolean" Nullable="false" />
+    <Property Name="IsAMCEmp" Type="Boolean" Nullable="false" />
     <Property Name="Address1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Address2" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Address3" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />

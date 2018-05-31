@@ -464,6 +464,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             private global::System.Data.DataColumn columnIsMSBEmp;
             
+            private global::System.Data.DataColumn columnIsAMCEmp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_GetApplicationDetailDataTable() {
@@ -819,6 +821,14 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsAMCEmpColumn {
+                get {
+                    return this.columnIsAMCEmp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -893,7 +903,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         byte[] signature, 
                         bool PhysicalDisability, 
                         int DisabilityPercentage, 
-                        bool IsMSBEmp) {
+                        bool IsMSBEmp, 
+                        bool IsAMCEmp) {
                 SP_GetApplicationDetailRow rowSP_GetApplicationDetailRow = ((SP_GetApplicationDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -935,7 +946,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         signature,
                         PhysicalDisability,
                         DisabilityPercentage,
-                        IsMSBEmp};
+                        IsMSBEmp,
+                        IsAMCEmp};
                 rowSP_GetApplicationDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_GetApplicationDetailRow);
                 return rowSP_GetApplicationDetailRow;
@@ -1005,6 +1017,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnPhysicalDisability = base.Columns["PhysicalDisability"];
                 this.columnDisabilityPercentage = base.Columns["DisabilityPercentage"];
                 this.columnIsMSBEmp = base.Columns["IsMSBEmp"];
+                this.columnIsAMCEmp = base.Columns["IsAMCEmp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1090,6 +1103,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 base.Columns.Add(this.columnDisabilityPercentage);
                 this.columnIsMSBEmp = new global::System.Data.DataColumn("IsMSBEmp", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsMSBEmp);
+                this.columnIsAMCEmp = new global::System.Data.DataColumn("IsAMCEmp", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsAMCEmp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnApplicantID}, true));
                 this.columnApplicantID.AutoIncrement = true;
@@ -1148,6 +1163,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnPhysicalDisability.AllowDBNull = false;
                 this.columnDisabilityPercentage.AllowDBNull = false;
                 this.columnIsMSBEmp.AllowDBNull = false;
+                this.columnIsAMCEmp.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1295,6 +1311,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             private global::System.Data.DataColumn columnSequence;
             
+            private global::System.Data.DataColumn columnDuration;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_ExpierienceDetailDataTable() {
@@ -1386,6 +1404,14 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DurationColumn {
+                get {
+                    return this.columnDuration;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1421,7 +1447,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SP_ExpierienceDetailRow AddSP_ExpierienceDetailRow(int ApplicantID, string OrganizationName, string Designation, System.DateTime StartDate, System.DateTime EndDate, int Sequence) {
+            public SP_ExpierienceDetailRow AddSP_ExpierienceDetailRow(int ApplicantID, string OrganizationName, string Designation, System.DateTime StartDate, System.DateTime EndDate, int Sequence, string Duration) {
                 SP_ExpierienceDetailRow rowSP_ExpierienceDetailRow = ((SP_ExpierienceDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1430,7 +1456,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                         Designation,
                         StartDate,
                         EndDate,
-                        Sequence};
+                        Sequence,
+                        Duration};
                 rowSP_ExpierienceDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_ExpierienceDetailRow);
                 return rowSP_ExpierienceDetailRow;
@@ -1467,6 +1494,7 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnStartDate = base.Columns["StartDate"];
                 this.columnEndDate = base.Columns["EndDate"];
                 this.columnSequence = base.Columns["Sequence"];
+                this.columnDuration = base.Columns["Duration"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1486,6 +1514,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 base.Columns.Add(this.columnEndDate);
                 this.columnSequence = new global::System.Data.DataColumn("Sequence", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSequence);
+                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDuration);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnApplicantEDID}, true));
                 this.columnApplicantEDID.AutoIncrement = true;
@@ -1502,6 +1532,8 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 this.columnStartDate.AllowDBNull = false;
                 this.columnEndDate.AllowDBNull = false;
                 this.columnSequence.AllowDBNull = false;
+                this.columnDuration.ReadOnly = true;
+                this.columnDuration.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2754,6 +2786,17 @@ namespace NPSSOnlineRecruitmentPortal.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAMCEmp {
+                get {
+                    return ((bool)(this[this.tableSP_GetApplicationDetail.IsAMCEmpColumn]));
+                }
+                set {
+                    this[this.tableSP_GetApplicationDetail.IsAMCEmpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsBirthPlaceVillageNull() {
                 return this.IsNull(this.tableSP_GetApplicationDetail.BirthPlaceVillageColumn);
             }
@@ -3010,6 +3053,34 @@ namespace NPSSOnlineRecruitmentPortal.Report {
                 set {
                     this[this.tableSP_ExpierienceDetail.SequenceColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Duration {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_ExpierienceDetail.DurationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Duration\' in table \'SP_ExpierienceDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_ExpierienceDetail.DurationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDurationNull() {
+                return this.IsNull(this.tableSP_ExpierienceDetail.DurationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDurationNull() {
+                this[this.tableSP_ExpierienceDetail.DurationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3596,6 +3667,7 @@ namespace NPSSOnlineRecruitmentPortal.Report.NPSSDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("PhysicalDisability", "PhysicalDisability");
             tableMapping.ColumnMappings.Add("DisabilityPercentage", "DisabilityPercentage");
             tableMapping.ColumnMappings.Add("IsMSBEmp", "IsMSBEmp");
+            tableMapping.ColumnMappings.Add("IsAMCEmp", "IsAMCEmp");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3783,6 +3855,7 @@ namespace NPSSOnlineRecruitmentPortal.Report.NPSSDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("StartDate", "StartDate");
             tableMapping.ColumnMappings.Add("EndDate", "EndDate");
             tableMapping.ColumnMappings.Add("Sequence", "Sequence");
+            tableMapping.ColumnMappings.Add("Duration", "Duration");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

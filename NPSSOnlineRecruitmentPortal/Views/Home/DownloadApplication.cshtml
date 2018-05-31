@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Download Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content" style="padding-left:300px;">
+        <!-- Step wizard -->
+        <div class="box box-default" style="width:75%;">
+            <!-- /.box-header -->
+            <div class="box-body wizard-content" id="postSelection">
+                <h2 style="font-weight: bold; padding-left: 33px;" class="headerstyle">Download Application Form</h2>
+                <br />
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="col-md-2 col-xs-6 col-sm-6 col-lg-6">
+                            <span id="lblApplicationNumber" class="headerstyle" style="font-size:20px;">Application Number :</span>
+                        </div>
+                        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-6">
+                            <input name="txtApplicationNumber" maxlength="7" type="text" id="txtApplicationNumber" class="form-control" />
+                            <span id="msgApplicationNumber" style="color:red;display:none;"></span>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="col-md-2 col-xs-6 col-sm-6 col-lg-6">
+                            <span id="lblBirthDate" class="headerstyle" style="font-size:20px;">Birth Date :</span>
+                        </div>
+                        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-6">
+                            <input name="txtBirthDate" type="text" id="txtBirthDate" class="form-control" />
+                            <span id="msgBirthDate" style="color:red;display:none;"></span>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="col-md-2 col-xs-6 col-sm-6 col-lg-6">
+                            <span id="lblMobileNo" class="headerstyle" style="font-size:20px;">Mobile No :</span>
+                        </div>
+                        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-6">
+                            <input name="txtMobileNo" type="text" id="txtMobileNo" maxlength="10" class="form-control numberinput" />
+                            <span id="msgMobileNo" style="color:red;display:none;"></span>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="col-md-2 col-xs-6 col-sm-6 col-lg-12">
+                            <div class="text-xs-right">
+                                <button id="btnDownloadForm" onclick="DownloadApp.downloadApplication();" style="font-weight: bold;" class="btn btn-info">Download Form</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!-- Validation wizard -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<script src="~/Scripts/Custom/DownloadApplication.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#txtBirthDate').mask('99/99/9999', { placeholder: "DD/MM/YYYY" });
+        DownloadApp.init();
+        DownloadApp.option.downloadUrl = "@Url.Action("DownloadApplicationPDF", "Home")";
+        DownloadApp.option.checkApplicanturl = "@Url.Action("CheckApplicant", "Home")";
+    });
+</script>

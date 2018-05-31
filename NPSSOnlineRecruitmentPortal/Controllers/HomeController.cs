@@ -20,7 +20,7 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
     public class HomeController : BaseController
     {
         NPSSOnlineRecruitmentPortal.DBModel.NPSSEntities context;
-        List<ApplicantExperienceDetail> expdetail;
+        List<ApplicantExperienceDetailViewModel> expdetail;
         List<ApplicationQualificationDetail> qualificationdetail;
         public ActionResult Index()
         {
@@ -79,6 +79,7 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
                                 PhysicalDisability = objApplication.PhysicalDisability,
                                 DisabilityPercentage = objApplication.PhysicalDisability ? objApplication.DisabilityPercentage : 0,
                                 IsMSBEmp = objApplication.IsMSBEmp,
+                                IsAMCEmp = objApplication.IsAMCEmp,
                                 Address1 = objApplication.Address1,
                                 Address2 = objApplication.Address2,
                                 Address3 = objApplication.Address3,
@@ -214,7 +215,67 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             return Json(new { IsSuccess = false }, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult DownloadApplication()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CheckApplicant(string appId, string birthdate, string mobile)
+        {
+            ApplicantMaster dbApp;
+            using (context = new NPSSEntities())
+            {
+                DateTime birth = Convert.ToDateTime(birthdate);
+                Int64 mobileNo = Convert.ToInt64(mobile);
+                dbApp = context.ApplicantMasters.Where(x => x.AsstAOApplicationID == appId && x.BirthDate == birth && x.MobileNumber == mobileNo).FirstOrDefault();
+                if (dbApp != null && dbApp.ApplicantID > 0)
+                {
+                    return Json(new { IsSuccess = true, applicantId = dbApp.ApplicantID, isSupervisor = false }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    dbApp = context.ApplicantMasters.Where(x => x.SupervisotApplicationID == appId && x.BirthDate == birth && x.MobileNumber == mobileNo).FirstOrDefault();
+                    if (dbApp != null && dbApp.ApplicantID > 0)
+                    {
+                        return Json(new { IsSuccess = true, applicantId = dbApp.ApplicantID, isSupervisor = true }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            return Json(new { IsSuccess = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        public void DownloadApplicationPDF(string applicantId, bool isSupervisor)
+        {
+            ApplicantMaster dbApp;
+            using (context = new NPSSEntities())
+            {
+                int appId = Convert.ToInt32(applicantId);
+                if (isSupervisor)
+                {
+                    dbApp = context.ApplicantMasters.Where(x => x.ApplicantID == appId && x.IsAppliedForSupervisor).FirstOrDefault();
+                    if (dbApp != null && dbApp.ApplicantID > 0)
+                    {
+                        DownloadPDF(Server.MapPath("~/Report/ApplicantDetail.rdlc"), dbApp.ApplicantID, "true", dbApp);
+                    }
+                }
+                else
+                {
+                    dbApp = context.ApplicantMasters.Where(x => x.ApplicantID == appId && x.ISAppliedForAsstAO).FirstOrDefault();
+                    if (dbApp != null && dbApp.ApplicantID > 0)
+                    {
+                        DownloadPDF(Server.MapPath("~/Report/ApplicantDetail.rdlc"), dbApp.ApplicantID, "false", dbApp);
+                    }
+                }
+            }
+        }
+
         public ActionResult Instructions()
+        {
+            return View();
+        }
+
+        public ActionResult MoreDetails()
         {
             return View();
         }
@@ -274,45 +335,58 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
         public void Report(string fileName, int applicantID, string toMail, int postSelection, ApplicantMaster dbApplication)
         {
             List<ApplicantMaster> lstappmaster = new List<ApplicantMaster>();
-            expdetail = new List<ApplicantExperienceDetail>();
+            expdetail = new List<ApplicantExperienceDetailViewModel>();
             qualificationdetail = new List<ApplicationQualificationDetail>();
-
+            
             using (context = new NPSSEntities())
             {
                 lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + applicantID).ToList<ApplicantMaster>();
-                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + applicantID).ToList<ApplicantExperienceDetail>();
-                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + applicantID).ToList<ApplicationQualificationDetail>();
+                if (dbApplication.EmailId != null && dbApplication.EmailId != "")
+                {
+                    expdetail = context.Database.SqlQuery<ApplicantExperienceDetailViewModel>("SP_ExpierienceDetail " + applicantID).ToList<ApplicantExperienceDetailViewModel>();
+                    qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + applicantID).ToList<ApplicationQualificationDetail>();
+                }
             }
-
             if (postSelection == 1)
             {
-                CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "true", dbApplication, lstappmaster.FirstOrDefault().SupervisotApplicationID);
+                if (dbApplication.EmailId != null && dbApplication.EmailId != "")
+                {
+                    CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "true", dbApplication, lstappmaster.FirstOrDefault().SupervisotApplicationID);
+                }
+                SendSMS(dbApplication, "true", lstappmaster.FirstOrDefault().SupervisotApplicationID);
             }
             else if (postSelection == 2)
             {
-                CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "false", dbApplication, lstappmaster.FirstOrDefault().AsstAOApplicationID);
+                if (dbApplication.EmailId != null && dbApplication.EmailId != "")
+                {
+                    CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "false", dbApplication, lstappmaster.FirstOrDefault().AsstAOApplicationID);
+                }
+                SendSMS(dbApplication, "false", lstappmaster.FirstOrDefault().AsstAOApplicationID);
             }
             else if (postSelection == 3)
             {
-                CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "true", dbApplication, lstappmaster.FirstOrDefault().SupervisotApplicationID);
-                CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "false", dbApplication, lstappmaster.FirstOrDefault().AsstAOApplicationID);
+                if (dbApplication.EmailId != null && dbApplication.EmailId != "")
+                {
+                    CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "true", dbApplication, lstappmaster.FirstOrDefault().SupervisotApplicationID);
+                    CreatePDF(fileName, lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), applicantID, toMail, "false", dbApplication, lstappmaster.FirstOrDefault().AsstAOApplicationID);
+                }
+                SendSMS(dbApplication, "true", lstappmaster.FirstOrDefault().SupervisotApplicationID);
+                SendSMS(dbApplication, "false", lstappmaster.FirstOrDefault().AsstAOApplicationID);
             }
-
         }
 
         public void ReportDetail()
         {
             List<ApplicantMaster> lstappmaster = new List<ApplicantMaster>();
             ApplicantMaster dbApplication;
-            int appId = 1;
             using (context = new NPSSEntities())
             {
-                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + appId).ToList<ApplicantMaster>();
-                expdetail = context.Database.SqlQuery<ApplicantExperienceDetail>("SP_ExpierienceDetail " + appId).ToList<ApplicantExperienceDetail>();
-                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + appId).ToList<ApplicationQualificationDetail>();
-                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == appId).FirstOrDefault();
+                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + 1).ToList<ApplicantMaster>();
+                expdetail = context.Database.SqlQuery<ApplicantExperienceDetailViewModel>("SP_ExpierienceDetail " + 1).ToList<ApplicantExperienceDetailViewModel>();
+                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + 1).ToList<ApplicationQualificationDetail>();
+                dbApplication = context.ApplicantMasters.Where(x => x.ApplicantID == 1).FirstOrDefault();
             }
-            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), appId, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
+            CreatePDF("Form", lstappmaster, Server.MapPath("~/Report/ApplicantDetail.rdlc"), 1, "", "true", dbApplication, dbApplication.SupervisotApplicationID);
         }
 
         private void CreatePDF(string fileName, List<ApplicantMaster> ds, string reportFileName, int applicantID, string toMail, string isSuperVisor, ApplicantMaster dbApplication, string ApplicationId)
@@ -337,8 +411,49 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
 
             byte[] bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
-            //SendMailToMultipleUser(toMail, fileName, bytes, dbApplication, isSuperVisor, ApplicationId);
+            SendMailToMultipleUser(toMail, fileName, bytes, dbApplication, isSuperVisor, ApplicationId);
 
+            //Response.Buffer = true;
+            //Response.Clear();
+            //Response.ContentType = mimeType;
+            //Response.AddHeader("content-disposition", "attachment; filename=" + fileName + "." + extension);
+            //Response.BinaryWrite(bytes); // create the file
+            //Response.Flush(); // send it to the client to download
+        }
+
+        private void DownloadPDF(string reportFileName, int applicantID, string isSuperVisor, ApplicantMaster dbApplication)
+        {
+            List<ApplicantMaster> lstappmaster = new List<ApplicantMaster>();
+            expdetail = new List<ApplicantExperienceDetailViewModel>();
+            qualificationdetail = new List<ApplicationQualificationDetail>();
+
+            using (context = new NPSSEntities())
+            {
+                lstappmaster = context.Database.SqlQuery<ApplicantMaster>("SP_GetApplicationDetail " + applicantID).ToList<ApplicantMaster>();
+                expdetail = context.Database.SqlQuery<ApplicantExperienceDetailViewModel>("SP_ExpierienceDetail " + applicantID).ToList<ApplicantExperienceDetailViewModel>();
+                qualificationdetail = context.Database.SqlQuery<ApplicationQualificationDetail>("SP_QualificationDetail " + applicantID).ToList<ApplicationQualificationDetail>();
+            }
+            // Create Report DataSource
+            ReportDataSource rds = new ReportDataSource("DataSet1", lstappmaster);
+
+            // Variables
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
+
+            // Setup the report viewer object and get the array of bytes
+            ReportViewer viewer = new ReportViewer();
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.ReportPath = reportFileName;
+            viewer.LocalReport.SetParameters(new ReportParameter("IsSupervisor", isSuperVisor));
+            viewer.LocalReport.DataSources.Add(rds); // Add datasource here
+            viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
+
+            byte[] bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+
+            string fileName = "MSBABD_" + (isSuperVisor == "true" ? "SUPERVISOR_" + lstappmaster[0].SupervisotApplicationID : "AsstAO_" + lstappmaster[0].AsstAOApplicationID);
             Response.Buffer = true;
             Response.Clear();
             Response.ContentType = mimeType;
@@ -353,6 +468,28 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             e.DataSources.Add(new ReportDataSource("Qualification", qualificationdetail));
         }
 
+        public static void SendSMS(ApplicantMaster dbApplication, string isSuperVisor, string ApplicationId)
+        {
+            try
+            {
+                string strurl = "http://premiumsms.markteq.com/api/v4/?method=sms&api_key=A4a416ad5067ff4e0b27e6633404f4a1d&to=" + dbApplication.MobileNumber + " &sender=MSBABD&message=Your application no " + ApplicationId + " for the post of " + (isSuperVisor == "true" ? "SUPERVISOR" : "AsstAO") + " is submitted successfully.";
+                var http = (HttpWebRequest)WebRequest.Create(strurl);
+                http.Method = "POST";
+                var response = http.GetResponse();
+            }
+            catch (Exception)
+            {
+                using (NPSSOnlineRecruitmentPortal.DBModel.NPSSEntities context = new NPSSEntities())
+                {
+                    EmailFailureBacklog logFailure = new EmailFailureBacklog();
+                    logFailure.ApplicantID = dbApplication.ApplicantID;
+                    logFailure.FailureReason = "SMS Failure";
+                    context.EmailFailureBacklogs.Add(logFailure);
+                    context.SaveChanges();
+                }
+            }
+        }
+
         public static void SendMailToMultipleUser(string toemailid, string attachmentFileName, byte[] bytes, ApplicantMaster dbApplication, string isSuperVisor, string ApplicationId)
         {
             string UserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
@@ -361,8 +498,8 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             string subject = ConfigurationManager.AppSettings["Subject"].ToString();
             string body = ConfigurationManager.AppSettings["Body"].ToString();
             string message = body.Replace("@@NewLine", "<br />")
-               .Replace("@@Name", dbApplication.Surname + " " + dbApplication.FirstName + " " + dbApplication.LastName)
-               .Replace("@@Position", isSuperVisor == "true" ? "Supervisor (સુપરવાઇઝર)" : "Assistant Administrative Officer (મદદનીશ શાસનાધિકારી)")
+               .Replace("@@Name", dbApplication.FirstName + " " + dbApplication.LastName + " " + dbApplication.Surname)
+               .Replace("@@Position", isSuperVisor == "true" ? "Trained Graduate Supervisor (ટ્રેઈનડ ગ્રેજ્યુએટ સુપરવાઇઝર)" : "Assistant Administrative Officer (મદદનીશ શાસનાધિકારી)")
                .Replace("@@ApplicationNo", ApplicationId);
             string Host = ConfigurationManager.AppSettings["Host"].ToString();
             int Port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"].ToString());
@@ -405,40 +542,6 @@ namespace NPSSOnlineRecruitmentPortal.Controllers
             finally
             {
                 objEmail.Dispose();
-            }
-        }
-
-        public void SendSMS()
-        {
-            using (var web = new System.Net.WebClient())
-            {
-                try
-                {
-                    string userName = "msbabdsms";
-                    string userPassword = "Reset!@#4";
-                    string msgRecepient = "8905455289";
-                    string msgText = "Test";
-                    string strjson = HttpUtility.UrlEncode("{'sms':[{'to':'918905455829','custom':34,'message':'Test','sender':'MSBABD'}]}");
-                    string url = "http://premiumsms.markteq.com/v4/?api_key=A4a416ad5067ff4e0b27e6633404f4a1d&method=sms.json&json=" + strjson;
-                    //string strurl = "http://premiumsms.markteq.com/v4/?api_key=A4a416ad5067ff4e0b27e6633404f4a1d&method=sms&message=Test&sender=msbabd&to=9408754603" + strjson;
-                    //string result = web.DownloadString(url);
-
-                    var http = (HttpWebRequest)WebRequest.Create(url);
-                    http.Method = "POST";
-                    var response = http.GetResponse();
-                    var stream = response.GetResponseStream();
-                    if (true)
-                    {
-                    }
-                    else
-                    {
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //Catch and show the exception if needed. Donot supress. :)  
-
-                }
             }
         }
     }

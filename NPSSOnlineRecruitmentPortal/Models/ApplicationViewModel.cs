@@ -22,6 +22,7 @@ namespace NPSSOnlineRecruitmentPortal.Models
         public bool PhysicalDisability { get; set; }
         public int DisabilityPercentage { get; set; }
         public bool IsMSBEmp { get; set; }
+        public bool IsAMCEmp { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }

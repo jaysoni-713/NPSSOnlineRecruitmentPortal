@@ -6,7 +6,7 @@
         <ReportItems>
           <Rectangle Name="Rectangle4">
             <KeepTogether>true</KeepTogether>
-            <Top>3.55711in</Top>
+            <Top>3.79461in</Top>
             <Height>1.74789in</Height>
             <Width>7.32986in</Width>
             <Style>
@@ -259,10 +259,46 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Textbox Name="Textbox18">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="આપ હાલમાં અમદાવાદ મ્યુનિસિપલ કોર્પોરેશનની સેવામાં ફરજ બજાઓ છો?: " + Microsoft.VisualBasic.Interaction.IIf(First(Fields!IsAMCEmp.Value, "DataSet1") = True, "Yes", "No")</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox4</rd:DefaultName>
+                <Top>4.49291cm</Top>
+                <Left>0.38806cm</Left>
+                <Height>0.62646cm</Height>
+                <Width>13.1328cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>1.38044in</Top>
-            <Height>1.7875in</Height>
+            <Height>2.03333in</Height>
             <Width>7.32986in</Width>
             <ZIndex>2</ZIndex>
             <Style>
@@ -314,7 +350,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="૧. અરજી કરેલી જગ્યાનું નામ : " + IIf(Parameters!IsSupervisor.Value = "true", "SUPERVISOR (સુપરવાઇઝર)" , "ASSISTANT ADMINISTRATATIVE OFFICER (મદદનિશ શાસનાઅધિકારી)")</Value>
+                    <Value>="૧. અરજી કરેલી જગ્યાનું નામ : " + IIf(Parameters!IsSupervisor.Value = "true", "TRAINED GRADUATE SUPERVISOR (ટ્રેઈનડ ગ્રેજ્યુએટ સુપરવાઇઝર)" , "ASSISTANT ADMINISTRATATIVE OFFICER (મદદનિશ શાસનાઅધિકારી)")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>8pt</FontSize>
@@ -508,7 +544,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>9.2044cm</Top>
+            <Top>9.80765cm</Top>
             <Left>0.33514cm</Left>
             <Height>0.65292cm</Height>
             <Width>1.25646cm</Width>
@@ -542,7 +578,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>9.2044cm</Top>
+            <Top>9.80765cm</Top>
             <Left>1.5916cm</Left>
             <Height>0.65292cm</Height>
             <Width>16.55065cm</Width>
@@ -578,7 +614,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>11.47008cm</Top>
+            <Top>12.07333cm</Top>
             <Left>0.33514cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.56242cm</Width>
@@ -614,7 +650,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>11.47008cm</Top>
+            <Top>12.07333cm</Top>
             <Left>9.04396cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.78608cm</Width>
@@ -650,7 +686,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>12.12476cm</Top>
+            <Top>12.72801cm</Top>
             <Left>0.3175cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.58006cm</Width>
@@ -686,7 +722,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>12.12476cm</Top>
+            <Top>12.72801cm</Top>
             <Left>9.07924cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.7508cm</Width>
@@ -722,7 +758,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>12.81119cm</Top>
+            <Top>13.41444cm</Top>
             <Left>0.3175cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.58006cm</Width>
@@ -758,7 +794,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>12.81119cm</Top>
+            <Top>13.41444cm</Top>
             <Left>9.07924cm</Left>
             <Height>0.57354cm</Height>
             <Width>8.7508cm</Width>
@@ -792,7 +828,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>9.93846cm</Top>
+            <Top>10.54171cm</Top>
             <Left>1.5916cm</Left>
             <Height>0.65292cm</Height>
             <Width>16.55065cm</Width>
@@ -826,7 +862,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>10.73602cm</Top>
+            <Top>11.33927cm</Top>
             <Left>1.5916cm</Left>
             <Height>0.65292cm</Height>
             <Width>16.55065cm</Width>
@@ -898,7 +934,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox50</rd:DefaultName>
-            <Top>8.22296cm</Top>
+            <Top>8.79446cm</Top>
             <Left>0.41275cm</Left>
             <Height>0.69922cm</Height>
             <Width>17.82475cm</Width>
@@ -917,7 +953,7 @@
         <KeepTogether>true</KeepTogether>
         <Top>0.17639cm</Top>
         <Left>0.24695cm</Left>
-        <Height>13.4747cm</Height>
+        <Height>14.1732cm</Height>
         <Width>18.61784cm</Width>
         <Style>
           <Border>
@@ -927,7 +963,7 @@
       </Rectangle>
       <Subreport Name="Subreport1">
         <ReportName>ExpierienceDetail</ReportName>
-        <Top>5.83082in</Top>
+        <Top>6.03082in</Top>
         <Left>0.125in</Left>
         <Height>0.38541in</Height>
         <Width>7.32986in</Width>
@@ -940,7 +976,7 @@
       </Subreport>
       <Subreport Name="Subreport2">
         <ReportName>QualificationDetail</ReportName>
-        <Top>5.45778in</Top>
+        <Top>5.65778in</Top>
         <Left>0.125in</Left>
         <Height>0.3286in</Height>
         <Width>7.30208in</Width>
@@ -968,7 +1004,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>6.28584in</Top>
+        <Top>6.48584in</Top>
         <Left>0.09722in</Left>
         <Height>1.19024in</Height>
         <Width>7.32987in</Width>
@@ -1000,7 +1036,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>7.99417in</Top>
+        <Top>8.19417in</Top>
         <Left>0.09723in</Left>
         <Height>0.1875in</Height>
         <Width>2.48958in</Width>
@@ -1032,7 +1068,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>7.99417in</Top>
+        <Top>8.19417in</Top>
         <Left>4.64193in</Left>
         <Height>0.1875in</Height>
         <Width>0.9375in</Width>
@@ -1048,7 +1084,7 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>8.18167in</Top>
+        <Top>8.38167in</Top>
         <Left>5.69458in</Left>
         <Height>0in</Height>
         <Width>1.72in</Width>
@@ -1076,7 +1112,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>8.23723in</Top>
+        <Top>8.43723in</Top>
         <Left>5.69458in</Left>
         <Height>0.1875in</Height>
         <Width>1.72in</Width>
@@ -1096,7 +1132,7 @@
         <Value>=First(Fields!signature.Value, "DataSet1")</Value>
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>7.54552in</Top>
+        <Top>7.74552in</Top>
         <Left>5.69458in</Left>
         <Height>0.60837in</Height>
         <Width>1.73251in</Width>
@@ -1108,7 +1144,7 @@
         </Style>
       </Image>
     </ReportItems>
-    <Height>8.54973in</Height>
+    <Height>8.69556in</Height>
     <Style />
   </Body>
   <Width>7.80209in</Width>
@@ -1139,6 +1175,47 @@
         </Border>
       </Style>
     </PageHeader>
+    <PageFooter>
+      <Height>0.29027in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox19">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="Page "&amp;Globals!PageNumber &amp;" of "&amp;Globals!TotalPages</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox19</rd:DefaultName>
+          <Top>0.01389in</Top>
+          <Left>6.42709in</Left>
+          <Height>0.25in</Height>
+          <Width>1in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <PageHeight>11.69in</PageHeight>
     <PageWidth>8.27in</PageWidth>
     <LeftMargin>0.3937in</LeftMargin>
@@ -1319,6 +1396,10 @@
         </Field>
         <Field Name="IsMSBEmp">
           <DataField>IsMSBEmp</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsAMCEmp">
+          <DataField>IsAMCEmp</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>

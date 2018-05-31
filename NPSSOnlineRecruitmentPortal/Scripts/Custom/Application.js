@@ -20,21 +20,37 @@
                     Application.validateField($(this).attr("id"));
                 });
             }
-            $("#txtAadharCard").on("focusout", function (e) {
-                if ($("#txtAadharCard").val() != "" && $("#txtAadharCard").val().length < 12) {
-                    $("#txtAadharCard").addClass("error");
-                }
-                else {
-                    $("#txtAadharCard").removeClass("error");
-                }
-            });
-
 
             $('#txtBirthDt').mask('99/99/9999', { placeholder: "DD/MM/YYYY" });
 
             $('#txtAadharCard').mask('9999-9999-9999', { placeholder: "XXXX-XXXX-XXXX" });
 
             $('.expdatepicker').mask('99/99/9999', { placeholder: "DD/MM/YYYY" });
+
+            $('#chkIsMSBEmp').change(function () {
+                if (this.checked) {
+                    $("#chkIsAMCEmp").prop('checked', false);
+                }
+            });
+
+            $('#chkIsAMCEmp').change(function () {
+                if (this.checked) {
+                    $("#chkIsMSBEmp").prop('checked', false);
+                }
+            });
+
+            $("#txtAadharCard").on("focusout", function (e) {
+                if ($("#txtAadharCard").val() != "" && $("#txtAadharCard").val().length < 12) {
+                    $("#txtAadharCard").addClass("error");
+                    $("#msgAadharCard").show();
+                    $("#msgAadharCard").text("Aadhar Card Number cannot be less than 12 characters");
+                }
+                else {
+                    $("#msgAadharCard").hide();
+                    $("#msgAadharCard").text("");
+                    $("#txtAadharCard").removeClass("error");
+                }
+            });
 
             $("input[type='file']").change(function () {
                 var fileExtension = ['jpeg', 'jpg', 'jpe'];
@@ -70,13 +86,16 @@
             });
 
             $('.QualificationString').keydown(function (e) {
-                if (e.shiftKey || e.ctrlKey || e.altKey) {
+                var key = e.keyCode;
+                if (!((key == 8) || (key == 9) || (key == 32) || (key == 16) || (key == 46) || (key == 190) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
                     e.preventDefault();
-                } else {
-                    var key = e.keyCode;
-                    if (!((key == 8) || (key == 9) || (key == 32) || (key == 46) || (key == 190) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
-                        e.preventDefault();
-                    }
+                }
+            });
+
+            $('.OnlyStringTextbox').keydown(function (e) {
+                var key = e.keyCode;
+                if (!((key == 8) || (key == 9) || (key == 16) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+                    e.preventDefault();
                 }
             });
 
@@ -116,11 +135,21 @@
             if (Application.validateApplicant(enumeration.requiredFields, true) && Application.validateExperienceDetail(Application.ExperienceDetailsList())) {
                 if ($("#ddlPhysicalDisability option:selected").val() == "false" || ($("#ddlPhysicalDisability option:selected").val() == "true" && $("#txtDisabilityPercentage").val() != null && $("#txtDisabilityPercentage").val() != "" && $("#txtDisabilityPercentage").val() >= 0 && $("#txtDisabilityPercentage").val() <= 100)) {
                     if (Application.validateQualificationDetail()) {
-                        if ($("#chkIsMSBEmp").prop('checked') == true || ($("#chkIsMSBEmp").prop('checked') == false && Application.options.ApplicantAge >= 25 && Application.options.ApplicantAge <= 40)) {
-                            $("#modal-center").modal("show");
+                        if (Application.QualificationMarkValidation()) {
+                            if (Application.QualificationPercentageValidation()) {
+                                if (($("#chkIsMSBEmp").prop('checked') == true || $("#chkIsAMCEmp").prop('checked') == true) || ($("#chkIsMSBEmp").prop('checked') == false && $("#chkIsAMCEmp").prop('checked') == false && Application.options.ApplicantAge >= 25)) {
+                                    $("#modal-center").modal("show");
+                                }
+                                else {
+                                    alert("Your age is below 25 years. You are not qualifying to apply for this post.");
+                                }
+                            }
+                            else {
+                                alert("Any Qualification Percentage should be between 0 and 100.");
+                            }
                         }
                         else {
-                            alert("You are not eligible to apply for this post.");
+                            alert("Any Qualification should not have Obtained marks greater then Total marks.");
                         }
                     }
                     else {
@@ -192,6 +221,7 @@
             PhysicalDisability: $("#ddlPhysicalDisability option:selected").val(),
             DisabilityPercentage: $("#txtDisabilityPercentage").val(),
             IsMSBEmp: $("#chkIsMSBEmp").prop('checked'),
+            IsAMCEmp: $("#chkIsAMCEmp").prop('checked'),
             Address1: $("#txtAddress1").val().trim(),
             Address2: $("#txtAddress2").val().trim(),
             Address3: $("#txtAddress3").val().trim(),
@@ -248,17 +278,20 @@
         var strVal = "";
         var isValid = true;
         for (var field in fields) {
-            if ($("#" + fields[field]["id"]).val() == null || $("#" + fields[field]["id"]).val() == "") {
-                if (isValid) {
-                    $("#" + fields[field]["id"]).focus();
-                    isValid = false;
+            if (field.toString().toLowerCase() != "email" && field.toString().toLowerCase() != "retypeemail") {
+                if ($("#" + fields[field]["id"]).val() == null || $("#" + fields[field]["id"]).val() == "") {
+                    if (isValid) {
+                        $("#" + fields[field]["id"]).focus();
+                        isValid = false;
+                    }
+                    $("#" + fields[field]["id"]).addClass("error");
+                    strVal += enumeration.validationMessages.requiredVal.format(fields[field]["DisplayName"]) + "\n\n";
                 }
-                $("#" + fields[field]["id"]).addClass("error");
-                strVal += enumeration.validationMessages.requiredVal.format(fields[field]["DisplayName"]) + "\n\n";
+                else {
+                    $("#" + fields[field]["id"]).removeClass("error");
+                }
             }
-            else {
-                $("#" + fields[field]["id"]).removeClass("error");
-            }
+            
             if (isValid) {
                 if ($("#" + fields[field]["id"]).val().length > Number(fields[field]["length"])) {
                     if (isValid) {
@@ -327,9 +360,13 @@
         if ($("#txtAadharCard").val() != "" && $("#txtAadharCard").val().length < 12) {
             isValid = false;
             $("#txtAadharCard").addClass("error");
+            $("#msgAadharCard").show();
+            $("#msgAadharCard").text("Aadhar Card Number cannot be less than 12 characters");
             strVal += enumeration.validationMessages.minlength.toString().format("Aadhar Card Number", 12);
         }
         else {
+            $("#msgAadharCard").hide();
+            $("#msgAadharCard").text("");
             $("#txtAadharCard").removeClass("error");
         }
         if (strVal != "") { //isFromSave && 
@@ -362,7 +399,7 @@
         if (field.toString().toLowerCase() == "txtmobileno" || field.toString().toLowerCase() == "txtretypemobileno") {
             if ($("#" + field).val().length < 10) {
                 ismobvalid = false;
-                $("#" + field.toString().replace("txt","msg")).show();
+                $("#" + field.toString().replace("txt", "msg")).show();
                 $("#" + field.toString().replace("txt", "msg")).text(enumeration.validationMessages.minlength.toString().format("Mobile No", 10));
                 $("#" + field).addClass("error");
             }
@@ -408,6 +445,50 @@
                 $("#" + field).removeClass("error");
             }
         }
+    },
+    QualificationPercentageValidation: function () {
+        var isValid = true;
+        var PercentageValidationCounter = 0;
+        $(".percentagevalidation").each(function () {
+            var percentage = $('#' + this.id).val().trim();
+            if (percentage != "" && percentage != null && percentage != undefined) {
+                if (parseInt(percentage) >= 0 && parseInt(percentage) <= 100) {
+                    $('#' + this.id).removeClass("error");
+                }
+                else {
+                    PercentageValidationCounter = PercentageValidationCounter + 1;
+                    $('#' + this.id).addClass("error");
+                }
+            }
+        })
+        if (PercentageValidationCounter > 0) {
+            isValid = false;
+        }
+        return isValid;
+    },
+    QualificationMarkValidation: function () {
+        var isValid = true;
+        var QualificationValidationCounter = 0;
+        $(".markvalidationclass").each(function () {
+            var totalmarks = $('.TTM_' + this.id.split("_")[0]).val().trim();
+            var obtainedmarks = $('.OBTM_' + this.id.split("_")[0]).val().trim();
+
+            if (totalmarks != "" && totalmarks != null && totalmarks != undefined && obtainedmarks != "" && obtainedmarks != null && obtainedmarks != undefined) {
+                if (parseInt(obtainedmarks) > parseInt(totalmarks)) {
+                    QualificationValidationCounter = QualificationValidationCounter + 1;
+                    $('.TTM_' + this.id.split("_")[0]).addClass("error");
+                    $('.OBTM_' + this.id.split("_")[0]).addClass("error");
+                }
+                else {
+                    $('.TTM_' + this.id.split("_")[0]).removeClass("error");
+                    $('.OBTM_' + this.id.split("_")[0]).removeClass("error");
+                }
+            }
+        })
+        if (QualificationValidationCounter > 0) {
+            isValid = false;
+        }
+        return isValid;
     },
     QualificationDetailsList: function () {
         var array = [];
@@ -546,7 +627,7 @@
 
         if (days < 731) {
             isValid = false;
-            alert("At least two years of expierience is required for applying this post.");
+            alert("At least two years of experience is required for applying this post.");
         }
 
         return isValid;

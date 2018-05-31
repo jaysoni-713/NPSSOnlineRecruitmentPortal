@@ -25,7 +25,11 @@
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
 
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-
+    <style>
+        .navbar-nav li a {
+            color: #fff !important;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="loader-overlay" id="pageloader" style="display: none">
@@ -51,12 +55,14 @@
             </nav>*@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                <li>@Html.ActionLink("Application", "Instructions", "Home")</li>
-                <li>@Html.ActionLink("ReportDetail", "ReportDetail", "Home")</li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("More Details", "MoreDetails", "Home")</li>
+                <li>@Html.ActionLink("Application", "PostSelection", "Home")</li>
+                <li>@Html.ActionLink("Download Application", "DownloadApplication", "Home")</li>
+                <li><a href="javascript:void(0)">Call Letter</a></li>
+                <li><a href="javascript:void(0)">Hall Ticket</a></li>
             </ul>
         </div>
-
     </div>
     <div class="wrapper">
         @RenderBody()

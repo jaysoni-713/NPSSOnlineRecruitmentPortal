@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="NPSSModel.QualificationType" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="NPSSModel.SupervisorApplicationID" Width="1.5" PointX="4.75" PointY="6.75" />
         <EntityTypeShape EntityType="NPSSModel.EmailFailureBacklog" Width="1.5" PointX="7.375" PointY="6.75" />
-        <EntityTypeShape EntityType="NPSSModel.ApplicantMaster" Width="1.5" PointX="2.875" PointY="0.625" />
+        <EntityTypeShape EntityType="NPSSModel.ApplicantMaster" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

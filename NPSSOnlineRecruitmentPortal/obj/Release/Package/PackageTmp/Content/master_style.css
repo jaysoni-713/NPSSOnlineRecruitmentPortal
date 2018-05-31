@@ -67,7 +67,7 @@ Body :		Poppins, sans-serif;
     background: #4b6c9e !important;
     font-size: 1.2em !important;
     font-weight: bold !important;
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 /***** Loader scss start here *****/
@@ -10543,7 +10543,7 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
     }
 
 .btn-success {
-    background-color: #26c6da;
+    background-color: #03a9f3;
     border-color: #26c6da;
     color: #fff;
 }

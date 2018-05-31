@@ -15,13 +15,17 @@
                     <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">
                         @if (Model.IsAppliedForSupervisor)
                         {
-                        <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of Supervisor is successfully submitted.<br /><br />Your application number is <b> @Model.SupervisotApplicationID </b> </p>
-                            <br /><br /><br /><br /><br />
+                        <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of <u>Trained Graduate Supervisor</u> is successfully submitted.<br />Your application number is <b> <u>@Model.SupervisotApplicationID</u></b> </p>
+                            <br /><br /><br />
                         }
                         @if (Model.ISAppliedForAsstAO)
                         {
-                            
-                            <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of Assistant Administration Officer is successfully submitted.<br /><br />Your application number is <b> @Model.AsstAOApplicationID </b> </p>
+                            <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your application for the post of <u>Assistant Administrative Officer</u> is successfully submitted.<br />Your application number is <b> <u>@Model.AsstAOApplicationID</u></b> </p>
+                        }
+                        @if (Model.ISAppliedForAsstAO || Model.IsAppliedForSupervisor)
+                        {
+                            <br />
+                            <p style="padding-left: 50px; color:#398bf7;font-size:x-large;">Your Application Details is sent to your email id (@Model.EmailId).</p>
                         }
                         </p>
                     </div>

@@ -219,6 +219,7 @@
     </Compile>
     <Compile Include="Helper\Enumeration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicantExperienceDetailViewModel.cs" />
     <Compile Include="Models\ApplicationQualificationDetail.cs" />
     <Compile Include="Models\ApplicationViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -369,6 +370,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\Application.js" />
     <Content Include="Scripts\Custom\common.js" />
+    <Content Include="Scripts\Custom\DownloadApplication.js" />
     <Content Include="Scripts\Custom\enumeration.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\fastclick.js" />
@@ -420,6 +422,8 @@
     <Content Include="Views\Home\PostSelection.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Home\ApplicationSuccessful.cshtml" />
+    <Content Include="Views\Home\MoreDetails.cshtml" />
+    <Content Include="Views\Home\DownloadApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

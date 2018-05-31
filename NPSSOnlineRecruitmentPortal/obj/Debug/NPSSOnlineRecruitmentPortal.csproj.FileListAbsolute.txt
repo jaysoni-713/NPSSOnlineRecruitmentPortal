@@ -107,10 +107,8 @@ D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\bin\Micr
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\bin\Microsoft.Owin.Security.Google.xml
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\NPSSOnlineRecruitmentPortal.csprojResolveAssemblyReference.cache
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\RdlCompile.cache
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\RdlCompile.compiled
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\NPSSOnlineRecruitmentPortal.dll
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\NPSSOnlineRecruitmentPortal.pdb
-D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\NPSSOnlineRecruitmentPortal.csprojResolveAssemblyReference.cache
-F:\project\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\RdlCompile.cache
-F:\project\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Debug\RdlCompile.compiled

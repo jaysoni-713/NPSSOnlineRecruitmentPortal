@@ -25,7 +25,11 @@
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
 
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-
+    <style>
+        .navbar-nav li a {
+            color: #fff !important;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="loader-overlay" id="pageloader" style="display: none">
@@ -52,10 +56,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Application", "Instructions", "Home")</li>
+                <li>@Html.ActionLink("More Details", "MoreDetails", "Home")</li>
+                <li>@Html.ActionLink("Application", "PostSelection", "Home")</li>
+                <li>@Html.ActionLink("Download Application", "DownloadApplication", "Home")</li>
+                <li><a href="javascript:void(0)">Call Letter</a></li>
+                <li><a href="javascript:void(0)">Hall Ticket</a></li>
             </ul>
         </div>
-
     </div>
     <div class="wrapper">
         @RenderBody()
@@ -66,13 +73,13 @@
     <div class="modal" id="modal-center" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="font-weight:bold;">
                     <h5 class="modal-title">Self Declaration (બાંહેધરી)</h5>
                     <button type="button" class="close" data-dismiss="modal" style="margin-top:-35px;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="font-weight:bold;">
                     <p>
                         હું ખાત્રી પૂર્વક જાહેર કરું છું કે
                         (૧) મને નગર પ્રાથમિક શિક્ષણ સમિતિ, અમદાવાદ કે અન્ય સરકારી/અર્ધ સરકારી / સરકાર હસ્તકની કોઈપણ સંસ્થા દ્વારા કયારેય પણ ગેરલાયક ઠરાવેલ નથી કે મારી ગેરલાયકાતનો સમય ચાલુ નથી.

@@ -26,6 +26,10 @@
     <Property Name="BirthPlaceCity" Type="nvarchar" MaxLength="50" />
     <Property Name="BirthPlaceState" Type="nvarchar" MaxLength="50" />
     <Property Name="AadharCardNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhysicalDisability" Type="bit" Nullable="false" />
+    <Property Name="DisabilityPercentage" Type="int" Nullable="false" />
+    <Property Name="IsMSBEmp" Type="bit" Nullable="false" />
+    <Property Name="IsAMCEmp" Type="bit" Nullable="false" />
     <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -35,7 +39,6 @@
     <Property Name="SubCast" Type="nvarchar" MaxLength="50" />
     <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MaritalStaus" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ImagePath" Type="nvarchar" MaxLength="250" />
     <Property Name="IsAppliedForSupervisor" Type="bit" Nullable="false" />
     <Property Name="SupervisotApplicationID" Type="nvarchar" MaxLength="50" />
     <Property Name="SupervisorSeatNumber" Type="nvarchar" MaxLength="100" />
@@ -50,7 +53,9 @@
     <Property Name="District" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Taluka" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PinCode" Type="int" Nullable="false" />
-    <Property Name="CreatedDateTime" Type="datetime" />
+    <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+    <Property Name="photo" Type="varbinary(max)" />
+    <Property Name="signature" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="ApplicantQualificationDetails">
     <Key>

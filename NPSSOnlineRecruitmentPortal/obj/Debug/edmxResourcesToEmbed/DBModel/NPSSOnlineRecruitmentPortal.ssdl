@@ -29,6 +29,7 @@
     <Property Name="PhysicalDisability" Type="bit" Nullable="false" />
     <Property Name="DisabilityPercentage" Type="int" Nullable="false" />
     <Property Name="IsMSBEmp" Type="bit" Nullable="false" />
+    <Property Name="IsAMCEmp" Type="bit" Nullable="false" />
     <Property Name="Address1" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address2" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Address3" Type="nvarchar" MaxLength="250" Nullable="false" />

@@ -55,3 +55,4 @@ D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Rele
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Release\RdlCompile.compiled
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Release\NPSSOnlineRecruitmentPortal.dll
 D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Release\NPSSOnlineRecruitmentPortal.pdb
+D:\Projects\MSB\NPSSOnlineRecruitmentPortal\NPSSOnlineRecruitmentPortal\obj\Release\NPSSOnlineRecruitmentPortal.csprojResolveAssemblyReference.cache

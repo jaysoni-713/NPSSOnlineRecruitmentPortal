@@ -152,6 +152,7 @@
           <ScalarProperty Name="Address3" ColumnName="Address3" />
           <ScalarProperty Name="Address2" ColumnName="Address2" />
           <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="IsAMCEmp" ColumnName="IsAMCEmp" />
           <ScalarProperty Name="IsMSBEmp" ColumnName="IsMSBEmp" />
           <ScalarProperty Name="DisabilityPercentage" ColumnName="DisabilityPercentage" />
           <ScalarProperty Name="PhysicalDisability" ColumnName="PhysicalDisability" />
